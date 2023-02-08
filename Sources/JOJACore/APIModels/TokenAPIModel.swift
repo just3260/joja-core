@@ -17,16 +17,16 @@ public struct TokenAPIModel: Codable {
     public let user: UserAPIModel
     public let value: String
     public let source: SessionSource
+    public let expiresAt: Date
     public let createdAt: Date
-    public let updatedAt: Date
     
-    public init(id: UUID, user: UserAPIModel, value: String, source: SessionSource, createdAt: Date, updatedAt: Date) {
+    public init(id: UUID, user: UserAPIModel, value: String, source: SessionSource, expiresAt: Date, createdAt: Date) {
         self.id = id
         self.user = user
         self.value = value
         self.source = source
+        self.expiresAt = expiresAt
         self.createdAt = createdAt
-        self.updatedAt = updatedAt
     }
 }
 
