@@ -7,12 +7,18 @@
 
 import Foundation
 
-public enum SessionSource: Int, Codable {
-    case signup
-    case login
-}
+//public enum SessionSource: Int, Codable {
+//    case signup
+//    case login
+//}
 
 public struct TokenAPIModel: Codable {
+    
+    public enum SessionSource: Int, Codable {
+        case signup
+        case login
+    }
+    
     public let id: UUID
     public let user: UserAPIModel
     public let value: String
