@@ -33,7 +33,7 @@ extension UserAPIModel {
             self.password = password
         }
         
-        public init(from signup: SignupAPIModel) {
+        public init(signup: SignupAPIModel) {
             self.username = signup.username
             self.password = signup.password
         }
