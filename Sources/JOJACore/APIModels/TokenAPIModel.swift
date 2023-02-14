@@ -7,11 +7,6 @@
 
 import Foundation
 
-//public enum SessionSource: Int, Codable {
-//    case signup
-//    case login
-//}
-
 public struct TokenAPIModel: Codable {
     
     public enum SessionSource: Int, Codable {

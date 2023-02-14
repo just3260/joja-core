@@ -39,3 +39,19 @@ extension UserAPIModel {
         }
     }
 }
+
+extension UserAPIModel {
+    public struct Public: Codable {
+        public let id: UUID
+        public let username: String
+        public let createdAt: Date
+        public let updatedAt: Date
+        
+        public init(id: UUID, username: String, createdAt: Date, updatedAt: Date) {
+            self.id = id
+            self.username = username
+            self.createdAt = createdAt
+            self.updatedAt = updatedAt
+        }
+    }
+}
