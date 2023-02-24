@@ -1,9 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Andrew on 2023/2/22.
-//
 
 import Foundation
 
@@ -68,7 +62,7 @@ public struct MemberAPIModel: Codable {
 }
 
 extension MemberAPIModel {
-    public struct Create: Codable {
+    public struct Request: Codable {
         public let name: String
         public let phone: String
         public let birthday: Date?
@@ -98,33 +92,33 @@ extension MemberAPIModel {
 }
 
 extension MemberAPIModel {
-    public struct Public: Codable {
+    public struct Response: Codable {
         public let id: UUID
         public let name: String
         public let phone: String
-        public let birthday: Date
+        public let birthday: Date?
         public let from: FromType
-        public let address: String
-        public let email: String
-        public let note: String
+        public let address: String?
+        public let email: String?
+        public let note: String?
         public let amount: Int
         public let isVip: Bool
-        public let createdAt: Date
-        public let updatedAt: Date
+        public let createdAt: Date?
+        public let updatedAt: Date?
         
         public init(
             id: UUID,
             name: String,
             phone: String,
-            birthday: Date,
+            birthday: Date?,
             from: FromType,
-            address: String,
-            email: String,
-            note: String,
+            address: String?,
+            email: String?,
+            note: String?,
             amount: Int,
             isVip: Bool,
-            createdAt: Date,
-            updatedAt: Date
+            createdAt: Date?,
+            updatedAt: Date?
         ) {
             self.id = id
             self.name = name
