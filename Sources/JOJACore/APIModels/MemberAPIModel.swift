@@ -31,6 +31,7 @@ public struct MemberAPIModel: Codable {
     public let isVip: Bool
     public let createdAt: Date?
     public let updatedAt: Date?
+    public let trades: [TradeAPIModel]?
     
     public init(
         id: UUID,
@@ -44,7 +45,8 @@ public struct MemberAPIModel: Codable {
         amount: Int,
         isVip: Bool,
         createdAt: Date?,
-        updatedAt: Date?
+        updatedAt: Date?,
+        trades: [TradeAPIModel]?
     ) {
         self.id = id
         self.name = name
@@ -58,6 +60,7 @@ public struct MemberAPIModel: Codable {
         self.isVip = isVip
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.trades = trades
     }
 }
 
@@ -105,6 +108,7 @@ extension MemberAPIModel {
         public let isVip: Bool
         public let createdAt: Date?
         public let updatedAt: Date?
+        public let trades: [TradeAPIModel]?
         
         public init(
             id: UUID,
@@ -118,7 +122,8 @@ extension MemberAPIModel {
             amount: Int,
             isVip: Bool,
             createdAt: Date?,
-            updatedAt: Date?
+            updatedAt: Date?,
+            trades: [TradeAPIModel]?
         ) {
             self.id = id
             self.name = name
@@ -132,6 +137,7 @@ extension MemberAPIModel {
             self.isVip = isVip
             self.createdAt = createdAt
             self.updatedAt = updatedAt
+            self.trades = trades
         }
     }
 }
