@@ -19,7 +19,7 @@ public struct TradeAPIModel: Codable {
     public let types: [GoodsType]
     public let amount: Int
     public let note: String?
-    public let buyer: MemberAPIModel
+    public let buyerID: UUID
     public let createdAt: Date
     
     public init(
@@ -28,7 +28,7 @@ public struct TradeAPIModel: Codable {
         types: [GoodsType],
         amount: Int,
         note: String?,
-        buyer: MemberAPIModel,
+        buyerID: UUID,
         createdAt: Date
     ) {
         self.id = id
@@ -36,14 +36,13 @@ public struct TradeAPIModel: Codable {
         self.types = types
         self.amount = amount
         self.note = note
-        self.buyer = buyer
+        self.buyerID = buyerID
         self.createdAt = createdAt
     }
 }
 
 extension TradeAPIModel {
     public struct Request: Codable {
-        public let id: UUID
         public let goods: String
         public let types: [GoodsType]
         public let amount: Int
@@ -51,14 +50,12 @@ extension TradeAPIModel {
         public let buyerID: UUID
         
         public init(
-            id: UUID,
             goods: String,
             types: [GoodsType],
             amount: Int,
             note: String?,
             buyerID: UUID
         ) {
-            self.id = id
             self.goods = goods
             self.types = types
             self.amount = amount
@@ -75,7 +72,7 @@ extension TradeAPIModel {
         public let types: [GoodsType]
         public let amount: Int
         public let note: String?
-        public let buyer: MemberAPIModel
+        public let buyerID: UUID
         public let createdAt: Date
         
         public init(
@@ -84,7 +81,7 @@ extension TradeAPIModel {
             types: [GoodsType],
             amount: Int,
             note: String?,
-            buyer: MemberAPIModel,
+            buyerID: UUID,
             createdAt: Date
         ) {
             self.id = id
@@ -92,7 +89,7 @@ extension TradeAPIModel {
             self.types = types
             self.amount = amount
             self.note = note
-            self.buyer = buyer
+            self.buyerID = buyerID
             self.createdAt = createdAt
         }
     }
