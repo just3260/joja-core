@@ -73,7 +73,7 @@ extension TradeAPIModel {
         public let amount: Int
         public let note: String?
         public let buyerID: UUID
-        public let createdAt: Date
+        public let createdAt: Date?
         
         public init(
             id: UUID,
@@ -82,7 +82,7 @@ extension TradeAPIModel {
             amount: Int,
             note: String?,
             buyerID: UUID,
-            createdAt: Date
+            createdAt: Date?
         ) {
             self.id = id
             self.goods = goods
