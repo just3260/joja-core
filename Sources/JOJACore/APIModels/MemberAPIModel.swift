@@ -1,9 +1,15 @@
 
 import Foundation
 
+extension CaseIterable where Self: RawRepresentable {
+    static var allValues: [RawValue] {
+        return allCases.map { $0.rawValue }
+    }
+}
+
 public struct MemberAPIModel: Codable {
     
-    public enum FromType: Int, Codable {
+    public enum FromType: Int, Codable, CaseIterable {
         case passBy // 路過
         case fb // Facebook
         case ig // Instagram
@@ -138,6 +144,33 @@ extension MemberAPIModel {
             self.createdAt = createdAt
             self.updatedAt = updatedAt
             self.trades = trades
+        }
+    }
+}
+
+extension MemberAPIModel {
+    public struct ListData: Codable {
+        public let id: UUID
+        public let name: String
+        public let phone: String
+        public let amount: Int
+        public let isVip: Bool
+        public let createdAt: Date?
+        
+        public init(
+            id: UUID,
+            name: String,
+            phone: String,
+            amount: Int,
+            isVip: Bool,
+            createdAt: Date?
+        ) {
+            self.id = id
+            self.name = name
+            self.phone = phone
+            self.amount = amount
+            self.isVip = isVip
+            self.createdAt = createdAt
         }
     }
 }
