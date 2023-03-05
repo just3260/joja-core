@@ -3,7 +3,7 @@ import Foundation
 
 public struct TradeAPIModel: Codable {
     
-    public enum GoodsType: Int, Codable {
+    public enum GoodsType: Int, Codable, CaseIterable {
         case beret // 貝雷帽
         case flatBeret // 平頂貝雷帽
         case bucketHat // 漁夫帽
@@ -20,7 +20,7 @@ public struct TradeAPIModel: Codable {
     public let amount: Int
     public let note: String?
     public let buyerID: UUID
-    public let createdAt: Date
+    public let createdAt: Date?
     
     public init(
         id: UUID,
@@ -29,7 +29,7 @@ public struct TradeAPIModel: Codable {
         amount: Int,
         note: String?,
         buyerID: UUID,
-        createdAt: Date
+        createdAt: Date?
     ) {
         self.id = id
         self.goods = goods
