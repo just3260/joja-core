@@ -108,7 +108,7 @@ extension MemberAPIModel {
         public let isVip: Bool
         public let createdAt: Date?
         public let updatedAt: Date?
-        public let trades: [TradeAPIModel]?
+        public let trades: [TradeAPIModel.Response]?
         
         public init(
             id: UUID,
@@ -123,7 +123,7 @@ extension MemberAPIModel {
             isVip: Bool,
             createdAt: Date?,
             updatedAt: Date?,
-            trades: [TradeAPIModel]?
+            trades: [TradeAPIModel.Response]?
         ) {
             self.id = id
             self.name = name
