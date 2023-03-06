@@ -17,6 +17,10 @@ public struct TypeAPIModel: Codable {
         case goyound // 古漾
         case treasureHill // 寶藏巖國際藝術村
         case consignmentShop // 寄賣店
+        
+        public static func getKey() -> String {
+            "where_to_know_type"
+        }
     }
     
     public enum Brand: String, Codable, CaseIterable {
@@ -31,6 +35,10 @@ public struct TypeAPIModel: Codable {
         case n_trail // N’trail
         case japan_socks // 日本襪
         case josie_personal // Josie私物
+        
+        public static func getKey() -> String {
+            "brand_type"
+        }
     }
     
     public enum Employee: String, Codable, CaseIterable {
@@ -40,6 +48,10 @@ public struct TypeAPIModel: Codable {
         case yuu // 陳郁
         case yi_fan // 李宜凡
         case andrew // Andrew
+        
+        public static func getKey() -> String {
+            "employee_type"
+        }
     }
     
     public enum Goods: String, Codable, CaseIterable {
@@ -66,6 +78,10 @@ public struct TypeAPIModel: Codable {
         case bag_frame // 口金包
         case skirt // 裙
         case other // 其他
+        
+        public static func getKey() -> String {
+            "goods_type"
+        }
     }
     
     public enum OtherGoods: String, Codable, CaseIterable {
@@ -77,6 +93,10 @@ public struct TypeAPIModel: Codable {
         case pin // 別針
         case ring // 戒指
         case other // 其他
+        
+        public static func getKey() -> String {
+            "other_goods_type"
+        }
     }
     
     public enum Material: String, Codable, CaseIterable {
@@ -97,6 +117,10 @@ public struct TypeAPIModel: Codable {
         case headbands_opaque // 領/髮（不透明）
         case headbands_translucent // 領/髮（半透明）
         case silk // 絲
+        
+        public static func getKey() -> String {
+            "material_type"
+        }
     }
     
     public enum Transaction: String, Codable, CaseIterable {
@@ -114,9 +138,13 @@ public struct TypeAPIModel: Codable {
         case wechat // 微信支付
         case stimulus_voucher // 振興券
         case coupons // 折價券
+        
+        public static func getKey() -> String {
+            "transaction_type"
+        }
     }
     
-    public enum ColorType: String, Codable, CaseIterable {
+    public enum Color: String, Codable, CaseIterable {
         case red // 紅色
         case orange // 橘色
         case yellow // 黃色
@@ -132,6 +160,10 @@ public struct TypeAPIModel: Codable {
         case gold // 金色
         case silvery // 銀色
         case multi_color // 彩色
+        
+        public static func getKey() -> String {
+            "color_type"
+        }
     }
     
 }
