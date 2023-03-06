@@ -4,8 +4,7 @@ import Foundation
 public struct TradeAPIModel: Codable {
     
     public let id: UUID
-    public let goods: String
-    public let types: TypeAPIModel.Goods
+    public let goods: [GoodsAPIModel]
     public let amount: Int
     public let note: String?
     public let buyerID: UUID
@@ -13,8 +12,7 @@ public struct TradeAPIModel: Codable {
     
     public init(
         id: UUID,
-        goods: String,
-        types: TypeAPIModel.Goods,
+        goods: [GoodsAPIModel],
         amount: Int,
         note: String?,
         buyerID: UUID,
@@ -22,7 +20,6 @@ public struct TradeAPIModel: Codable {
     ) {
         self.id = id
         self.goods = goods
-        self.types = types
         self.amount = amount
         self.note = note
         self.buyerID = buyerID
@@ -32,21 +29,18 @@ public struct TradeAPIModel: Codable {
 
 extension TradeAPIModel {
     public struct Request: Codable {
-        public let goods: String
-        public let types: TypeAPIModel.Goods
+        public let goods: [GoodsAPIModel.Request]
         public let amount: Int
         public let note: String?
         public let buyerID: UUID
         
         public init(
-            goods: String,
-            types: TypeAPIModel.Goods,
+            goods: [GoodsAPIModel.Request],
             amount: Int,
             note: String?,
             buyerID: UUID
         ) {
             self.goods = goods
-            self.types = types
             self.amount = amount
             self.note = note
             self.buyerID = buyerID
@@ -57,8 +51,7 @@ extension TradeAPIModel {
 extension TradeAPIModel {
     public struct Response: Codable {
         public let id: UUID
-        public let goods: String
-        public let types: TypeAPIModel.Goods
+        public let goods: [GoodsAPIModel.Response]
         public let amount: Int
         public let note: String?
         public let buyerID: UUID
@@ -66,8 +59,7 @@ extension TradeAPIModel {
         
         public init(
             id: UUID,
-            goods: String,
-            types: TypeAPIModel.Goods,
+            goods: [GoodsAPIModel.Response],
             amount: Int,
             note: String?,
             buyerID: UUID,
@@ -75,7 +67,6 @@ extension TradeAPIModel {
         ) {
             self.id = id
             self.goods = goods
-            self.types = types
             self.amount = amount
             self.note = note
             self.buyerID = buyerID
