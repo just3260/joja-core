@@ -3,27 +3,11 @@ import Foundation
 
 public struct MemberAPIModel: Codable {
     
-    public enum FromType: Int, Codable, CaseIterable {
-        case passBy // 路過
-        case fb // Facebook
-        case ig // Instagram
-        case market // 市集
-        case search // 網路搜尋
-        case friend // 親友介紹
-        case pinkoi // Pinkoi
-        case eslite // 誠品
-        case qsquare // 京站
-        case jccac // JCCAC - 香港賽馬協會
-        case goyound // 古漾
-        case treasureHill // 寶藏巖國際藝術村
-        case consignmentShop // 寄賣店
-    }
-    
     public let id: UUID
     public let name: String
     public let phone: String
     public let birthday: Date?
-    public let from: FromType
+    public let from: TypeAPIModel.WhereToKnow
     public let address: String?
     public let email: String?
     public let note: String?
@@ -38,7 +22,7 @@ public struct MemberAPIModel: Codable {
         name: String,
         phone: String,
         birthday: Date?,
-        from: FromType,
+        from: TypeAPIModel.WhereToKnow,
         address: String?,
         email: String?,
         note: String?,
@@ -69,7 +53,7 @@ extension MemberAPIModel {
         public let name: String
         public let phone: String
         public let birthday: Date?
-        public let from: FromType
+        public let from: TypeAPIModel.WhereToKnow
         public let address: String?
         public let email: String?
         public let note: String?
@@ -78,7 +62,7 @@ extension MemberAPIModel {
             name: String,
             phone: String,
             birthday: Date?,
-            from: FromType,
+            from: TypeAPIModel.WhereToKnow,
             address: String?,
             email: String?,
             note: String?
@@ -100,7 +84,7 @@ extension MemberAPIModel {
         public let name: String
         public let phone: String
         public let birthday: Date?
-        public let from: FromType
+        public let from: TypeAPIModel.WhereToKnow
         public let address: String?
         public let email: String?
         public let note: String?
@@ -115,7 +99,7 @@ extension MemberAPIModel {
             name: String,
             phone: String,
             birthday: Date?,
-            from: FromType,
+            from: TypeAPIModel.WhereToKnow,
             address: String?,
             email: String?,
             note: String?,

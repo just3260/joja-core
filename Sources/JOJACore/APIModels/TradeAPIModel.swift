@@ -3,26 +3,9 @@ import Foundation
 
 public struct TradeAPIModel: Codable {
     
-    public enum GoodsType: String, Codable, CaseIterable {
-        case beret // 貝雷帽
-        case flatBeret // 平頂貝雷帽
-        case bucketHat // 漁夫帽
-        case sun // 太陽帽
-        case scarf // 領巾
-        case ring // 戒指
-        case bucketBag // 水桶包
-        case other // 其他
-    }
-    
-    public enum TradeType: Int, Codable, CaseIterable {
-        case cash // 現金
-        case credit // 信用卡
-        case linePay // Line Pay
-    }
-    
     public let id: UUID
     public let goods: String
-    public let types: GoodsType
+    public let types: TypeAPIModel.Goods
     public let amount: Int
     public let note: String?
     public let buyerID: UUID
@@ -31,7 +14,7 @@ public struct TradeAPIModel: Codable {
     public init(
         id: UUID,
         goods: String,
-        types: GoodsType,
+        types: TypeAPIModel.Goods,
         amount: Int,
         note: String?,
         buyerID: UUID,
@@ -50,14 +33,14 @@ public struct TradeAPIModel: Codable {
 extension TradeAPIModel {
     public struct Request: Codable {
         public let goods: String
-        public let types: GoodsType
+        public let types: TypeAPIModel.Goods
         public let amount: Int
         public let note: String?
         public let buyerID: UUID
         
         public init(
             goods: String,
-            types: GoodsType,
+            types: TypeAPIModel.Goods,
             amount: Int,
             note: String?,
             buyerID: UUID
@@ -75,7 +58,7 @@ extension TradeAPIModel {
     public struct Response: Codable {
         public let id: UUID
         public let goods: String
-        public let types: GoodsType
+        public let types: TypeAPIModel.Goods
         public let amount: Int
         public let note: String?
         public let buyerID: UUID
@@ -84,7 +67,7 @@ extension TradeAPIModel {
         public init(
             id: UUID,
             goods: String,
-            types: GoodsType,
+            types: TypeAPIModel.Goods,
             amount: Int,
             note: String?,
             buyerID: UUID,

@@ -1,9 +1,3 @@
-//
-//  SignupAPIModel.swift
-//  
-//
-//  Created by Andrew on 2023/2/10.
-//
 
 import Foundation
 

@@ -1,9 +1,3 @@
-//
-//  SessionAPIModel.swift
-//  
-//
-//  Created by Andrew on 2023/2/13.
-//
 
 import Foundation
 

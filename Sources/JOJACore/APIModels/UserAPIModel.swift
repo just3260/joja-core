@@ -1,9 +1,3 @@
-//
-//  UserAPIModel.swift
-//  
-//
-//  Created by Andrew on 2023/2/7.
-//
 
 import Foundation
 

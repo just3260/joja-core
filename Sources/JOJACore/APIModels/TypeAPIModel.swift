@@ -134,29 +134,4 @@ public struct TypeAPIModel: Codable {
         case multi_color // 彩色
     }
     
-    public let id: UUID
-    public let goods: String
-    public let types: GoodsType
-    public let amount: Int
-    public let note: String?
-    public let buyerID: UUID
-    public let createdAt: Date?
-    
-    public init(
-        id: UUID,
-        goods: String,
-        types: GoodsType,
-        amount: Int,
-        note: String?,
-        buyerID: UUID,
-        createdAt: Date?
-    ) {
-        self.id = id
-        self.goods = goods
-        self.types = types
-        self.amount = amount
-        self.note = note
-        self.buyerID = buyerID
-        self.createdAt = createdAt
-    }
 }
