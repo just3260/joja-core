@@ -22,7 +22,7 @@ public struct TypeAPIModel: Codable {
             "where_to_know_type"
         }
         
-        func getName() -> String {
+        public func getName() -> String {
             switch self {
             case .passBy:
                 return "路過"
@@ -71,7 +71,7 @@ public struct TypeAPIModel: Codable {
             "brand_type"
         }
         
-        func getName() -> String {
+        public func getName() -> String {
             switch self {
             case .joja:
                 return "JOJA"
@@ -111,7 +111,7 @@ public struct TypeAPIModel: Codable {
             "employee_type"
         }
         
-        func getName() -> String {
+        public func getName() -> String {
             switch self {
             case .josie:
                 return "Josie"
@@ -158,7 +158,7 @@ public struct TypeAPIModel: Codable {
             "goods_type"
         }
         
-        func getName() -> String {
+        public func getName() -> String {
             switch self {
             case .beret:
                 return "貝蕾"
@@ -224,7 +224,7 @@ public struct TypeAPIModel: Codable {
             "other_goods_type"
         }
         
-        func getName() -> String {
+        public func getName() -> String {
             switch self {
             case .clip_earrings:
                 return "夾式耳環"
@@ -269,7 +269,7 @@ public struct TypeAPIModel: Codable {
             "material_type"
         }
         
-        func getName() -> String {
+        public func getName() -> String {
             switch self {
             case .cotton_wash:
                 return  "素棉（水洗）"
@@ -329,7 +329,7 @@ public struct TypeAPIModel: Codable {
             "transaction_type"
         }
         
-        func getName() -> String {
+        public func getName() -> String {
             switch self {
             case .cash:
                 return "現金"
@@ -384,7 +384,7 @@ public struct TypeAPIModel: Codable {
             "color_type"
         }
         
-        func getName() -> String {
+        public func getName() -> String {
             switch self {
             case .red:
                 return "紅色"
