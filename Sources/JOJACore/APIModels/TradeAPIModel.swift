@@ -4,7 +4,7 @@ import Foundation
 public struct TradeAPIModel: Codable {
     
     public let id: UUID
-    public let goods: [GoodsAPIModel]
+    public let products: [ProductAPIModel]
     public let amount: Int
     public let note: String?
     public let buyerID: UUID
@@ -12,14 +12,14 @@ public struct TradeAPIModel: Codable {
     
     public init(
         id: UUID,
-        goods: [GoodsAPIModel],
+        products: [ProductAPIModel],
         amount: Int,
         note: String?,
         buyerID: UUID,
         createdAt: Date?
     ) {
         self.id = id
-        self.goods = goods
+        self.products = products
         self.amount = amount
         self.note = note
         self.buyerID = buyerID
@@ -29,19 +29,16 @@ public struct TradeAPIModel: Codable {
 
 extension TradeAPIModel {
     public struct Request: Codable {
-        public let goods: [GoodsAPIModel.Request]
-        public let amount: Int
+        public let products: [ProductAPIModel.Request]
         public let note: String?
         public let buyerID: UUID
         
         public init(
-            goods: [GoodsAPIModel.Request],
-            amount: Int,
+            products: [ProductAPIModel.Request],
             note: String?,
             buyerID: UUID
         ) {
-            self.goods = goods
-            self.amount = amount
+            self.products = products
             self.note = note
             self.buyerID = buyerID
         }
@@ -51,7 +48,7 @@ extension TradeAPIModel {
 extension TradeAPIModel {
     public struct Response: Codable {
         public let id: UUID
-        public let goods: [GoodsAPIModel.Response]
+        public let products: [ProductAPIModel.Response]
         public let amount: Int
         public let note: String?
         public let buyerID: UUID
@@ -59,14 +56,14 @@ extension TradeAPIModel {
         
         public init(
             id: UUID,
-            goods: [GoodsAPIModel.Response],
+            products: [ProductAPIModel.Response],
             amount: Int,
             note: String?,
             buyerID: UUID,
             createdAt: Date?
         ) {
             self.id = id
-            self.goods = goods
+            self.products = products
             self.amount = amount
             self.note = note
             self.buyerID = buyerID

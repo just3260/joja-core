@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct GoodsAPIModel: Codable {
+public struct ProductAPIModel: Codable {
     
     public let id: UUID
     public let brand: TypeAPIModel.Brand
@@ -39,7 +39,7 @@ public struct GoodsAPIModel: Codable {
     }
 }
 
-extension GoodsAPIModel {
+extension ProductAPIModel {
     public struct Request: Codable {
         
         public let brand: TypeAPIModel.Brand
@@ -49,7 +49,7 @@ extension GoodsAPIModel {
         public let amount: Int
         public let count: Int
         public let note: String?
-        public let tradeID: UUID
+//        public let tradeID: UUID
         
         public init(
             brand: TypeAPIModel.Brand,
@@ -58,8 +58,8 @@ extension GoodsAPIModel {
             color: TypeAPIModel.Color,
             amount: Int,
             count: Int,
-            note: String?,
-            tradeID: UUID
+            note: String?
+//            tradeID: UUID
         ) {
             self.brand = brand
             self.goods = goods
@@ -68,12 +68,12 @@ extension GoodsAPIModel {
             self.amount = amount
             self.count = count
             self.note = note
-            self.tradeID = tradeID
+//            self.tradeID = tradeID
         }
     }
 }
 
-extension GoodsAPIModel {
+extension ProductAPIModel {
     public struct Response: Codable {
         public let id: UUID
         public let brand: TypeAPIModel.Brand
