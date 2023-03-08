@@ -8,6 +8,7 @@ public struct ProductAPIModel: Codable {
     public let goods: TypeAPIModel.Goods
     public let material: TypeAPIModel.Material
     public let color: TypeAPIModel.Color
+    public let design: TypeAPIModel.Design
     public let amount: Int
     public let count: Int
     public let note: String?
@@ -20,6 +21,7 @@ public struct ProductAPIModel: Codable {
         goods: TypeAPIModel.Goods,
         material: TypeAPIModel.Material,
         color: TypeAPIModel.Color,
+        design: TypeAPIModel.Design,
         amount: Int,
         count: Int,
         note: String?,
@@ -31,6 +33,7 @@ public struct ProductAPIModel: Codable {
         self.goods = goods
         self.material = material
         self.color = color
+        self.design = design
         self.amount = amount
         self.count = count
         self.note = note
@@ -46,29 +49,29 @@ extension ProductAPIModel {
         public let goods: TypeAPIModel.Goods
         public let material: TypeAPIModel.Material
         public let color: TypeAPIModel.Color
+        public let design: TypeAPIModel.Design
         public let amount: Int
         public let count: Int
         public let note: String?
-//        public let tradeID: UUID
         
         public init(
             brand: TypeAPIModel.Brand,
             goods: TypeAPIModel.Goods,
             material: TypeAPIModel.Material,
             color: TypeAPIModel.Color,
+            design: TypeAPIModel.Design,
             amount: Int,
             count: Int,
             note: String?
-//            tradeID: UUID
         ) {
             self.brand = brand
             self.goods = goods
             self.material = material
             self.color = color
+            self.design = design
             self.amount = amount
             self.count = count
             self.note = note
-//            self.tradeID = tradeID
         }
     }
 }
@@ -80,6 +83,7 @@ extension ProductAPIModel {
         public let goods: TypeAPIModel.Goods
         public let material: TypeAPIModel.Material
         public let color: TypeAPIModel.Color
+        public let design: TypeAPIModel.Design
         public let amount: Int
         public let count: Int
         public let note: String?
@@ -92,6 +96,7 @@ extension ProductAPIModel {
             goods: TypeAPIModel.Goods,
             material: TypeAPIModel.Material,
             color: TypeAPIModel.Color,
+            design: TypeAPIModel.Design,
             amount: Int,
             count: Int,
             note: String?,
@@ -103,6 +108,7 @@ extension ProductAPIModel {
             self.goods = goods
             self.material = material
             self.color = color
+            self.design = design
             self.amount = amount
             self.count = count
             self.note = note

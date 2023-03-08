@@ -420,4 +420,60 @@ public struct TypeAPIModel: Codable {
         }
     }
     
+    public enum Design: String, Codable, CaseIterable {
+        case plain // 素色
+        case gradation // 漸層
+        case block // 色塊
+        case geometry // 幾何
+        case stripe // 條紋
+        case dot // 點點
+        case plaid // 格紋
+        case paisley // 變形蟲
+        case totem // 圖騰
+        case graffiti // 塗鴉
+        case painting // 油畫
+        case watercolor // 水彩
+        case plant // 植物
+        case animal // 動物
+        case festival // 節慶限定
+
+        public static func getKey() -> String {
+            "design_type"
+        }
+        
+        public func getName() -> String {
+            switch self {
+            case .plain:
+                return "素色"
+            case .gradation:
+                return "漸層"
+            case .block:
+                return "色塊"
+            case .geometry:
+                return "幾何"
+            case .stripe:
+                return "條紋"
+            case .dot:
+                return "點點"
+            case .plaid:
+                return "格紋"
+            case .paisley:
+                return "變形蟲"
+            case .totem:
+                return "圖騰"
+            case .graffiti:
+                return "塗鴉"
+            case .painting:
+                return "油畫"
+            case .watercolor:
+                return "水彩"
+            case .plant:
+                return "植物"
+            case .animal:
+                return "動物"
+            case .festival:
+                return "節慶限定"
+            }
+        }
+    }
 }
