@@ -370,7 +370,7 @@ public struct TypeAPIModel: Codable {
         case green // 綠色
         case blue // 藍色
         case purple // 紫色
-        case pink // 粉色
+        case pink // 粉&桃色
 //        case peach // 桃色
         case brown // 大地色
         case black // 黑色
@@ -399,7 +399,7 @@ public struct TypeAPIModel: Codable {
             case .purple:
                 return "紫"
             case .pink:
-                return "粉"
+                return "粉/桃"
 //            case .peach:
 //                return "桃"
             case .brown:
