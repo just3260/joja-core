@@ -432,13 +432,13 @@ public struct TypeAPIModel: Codable {
             case .blue:
                 return "#25449d"
             case .purple:
-                return "#402555"
+                return "#6547AA"
             case .pink:
-                return "#bb4780"
+                return "#f681b5"
 //            case .peach:
 //                return "#bb4780"
             case .brown:
-                return "#3f2a0f"
+                return "#7E4E20"
             case .black:
                 return "#000000"
             case .white:
