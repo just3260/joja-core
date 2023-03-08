@@ -371,7 +371,7 @@ public struct TypeAPIModel: Codable {
         case blue // 藍色
         case purple // 紫色
         case pink // 粉色
-        case peach // 粉色
+//        case peach // 桃色
         case brown // 大地色
         case black // 黑色
         case white // 白色
@@ -400,8 +400,8 @@ public struct TypeAPIModel: Codable {
                 return "紫"
             case .pink:
                 return "粉"
-            case .peach:
-                return "粉"
+//            case .peach:
+//                return "桃"
             case .brown:
                 return "大地"
             case .black:
@@ -416,6 +416,41 @@ public struct TypeAPIModel: Codable {
                 return "銀"
             case .multi_color:
                 return "彩色"
+            }
+        }
+        
+        public func getHexColor() -> String {
+            switch self {
+            case .red:
+                return "#8d0901"
+            case .orange:
+                return "#c25a15"
+            case .yellow:
+                return "#ffd100"
+            case .green:
+                return "#578e24"
+            case .blue:
+                return "#25449d"
+            case .purple:
+                return "#402555"
+            case .pink:
+                return "#bb4780"
+//            case .peach:
+//                return "#bb4780"
+            case .brown:
+                return "#3f2a0f"
+            case .black:
+                return "#000000"
+            case .white:
+                return "#FEFEFE"
+            case .grey:
+                return "#706f6f"
+            case .gold:
+                return "#ca9f2d"
+            case .silvery:
+                return "#c3c3c3"
+            case .multi_color:
+                return "#000000"
             }
         }
     }
