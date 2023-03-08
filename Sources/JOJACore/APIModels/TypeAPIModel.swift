@@ -247,22 +247,22 @@ public struct TypeAPIModel: Codable {
     }
     
     public enum Material: String, Codable, CaseIterable {
-        case cotton_wash // 素棉（水洗）
-        case cotton_bubble // 素棉（泡泡）
-        case calico_cotton // 印花（棉紗）
-        case calico_new // 印花（新布）
-        case calico_old // 印花（老布）
+        case cotton_wash // 素棉(水洗)
+        case cotton_bubble // 素棉(泡泡)
+        case calico_cotton // 印花(棉紗)
+        case calico_new // 印花(新布)
+        case calico_old // 印花(老布)
         case wool_old // 毛料-老花
-        case wool // 毛料（一般）
-        case flannel // 絨布（素色）
-        case flannel_old // 絨布（老花）
+        case wool // 毛料(一般)
+        case flannel // 絨布(素色)
+        case flannel_old // 絨布(老花)
         case suit // 西裝料
-        case linen_old // 麻（老）
-        case linen_new // 麻（新）
-        case synthetic_fiber_old // 合成纖維（老）
-        case synthetic_fiber_new // 合成纖維（新）
-        case headbands_opaque // 領/髮（不透明）
-        case headbands_translucent // 領/髮（半透明）
+        case linen_old // 麻(老)
+        case linen_new // 麻(新)
+        case synthetic_fiber_old // 合成纖維(老)
+        case synthetic_fiber_new // 合成纖維(新)
+        case headbands_opaque // 領/髮(不透明)
+        case headbands_translucent // 領/髮(半透明)
         case silk // 絲
         
         public static func getKey() -> String {
@@ -272,37 +272,37 @@ public struct TypeAPIModel: Codable {
         public func getName() -> String {
             switch self {
             case .cotton_wash:
-                return  "素棉（水洗）"
+                return  "素棉(水洗)"
             case .cotton_bubble:
-                return  "素棉（泡泡）"
+                return  "素棉(泡泡)"
             case .calico_cotton:
-                return  "印花（棉紗）"
+                return  "印花(棉紗)"
             case .calico_new:
-                return  "印花（新布）"
+                return  "印花(新布)"
             case .calico_old:
-                return  "印花（老布）"
+                return  "印花(老布)"
             case .wool_old:
                 return  "毛料-老花"
             case .wool:
-                return  "毛料（一般）"
+                return  "毛料(一般)"
             case .flannel:
-                return  "絨布（素色）"
+                return  "絨布(素色)"
             case .flannel_old:
-                return  "絨布（老花）"
+                return  "絨布(老花)"
             case .suit:
                 return  "西裝料"
             case .linen_old:
-                return  "麻（老）"
+                return  "麻(老)"
             case .linen_new:
-                return  "麻（新）"
+                return  "麻(新)"
             case .synthetic_fiber_old:
-                return  "合成纖維（老）"
+                return  "合成纖維(老)"
             case .synthetic_fiber_new:
-                return  "合成纖維（新）"
+                return  "合成纖維(新)"
             case .headbands_opaque:
-                return  "領/髮（不透明）"
+                return  "領/髮(不透明)"
             case .headbands_translucent:
-                return  "領/髮（半透明）"
+                return  "領/髮(半透明)"
             case .silk:
                 return  "絲"
             }
@@ -387,33 +387,33 @@ public struct TypeAPIModel: Codable {
         public func getName() -> String {
             switch self {
             case .red:
-                return "紅色"
+                return "紅"
             case .orange:
-                return "橘色"
+                return "橘"
             case .yellow:
-                return "黃色"
+                return "黃"
             case .green:
-                return "綠色"
+                return "綠"
             case .blue:
-                return "藍色"
+                return "藍"
             case .purple:
-                return "紫色"
+                return "紫"
             case .pink:
-                return "粉色"
+                return "粉"
             case .peach:
-                return "粉色"
+                return "粉"
             case .brown:
-                return "大地色"
+                return "大地"
             case .black:
-                return "黑色"
+                return "黑"
             case .white:
-                return "白色"
+                return "白"
             case .grey:
-                return "灰色"
+                return "灰"
             case .gold:
-                return "金色"
+                return "金"
             case .silvery:
-                return "銀色"
+                return "銀"
             case .multi_color:
                 return "彩色"
             }
