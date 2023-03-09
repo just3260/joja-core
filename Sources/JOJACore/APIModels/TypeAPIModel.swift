@@ -3,7 +3,7 @@ import Foundation
 
 public struct TypeAPIModel: Codable, Hashable {
     
-    public enum WhereToKnow: String, Codable, CaseIterable, Hashable {
+    public enum WhereToKnow: String, Codable, CaseIterable {
         case passBy // 路過
         case fb // Facebook
         case ig // Instagram
@@ -54,7 +54,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    public enum Brand: String, Codable, CaseIterable, Hashable {
+    public enum Brand: String, Codable, CaseIterable {
         case joja // JOJA
         case yuu // YUU
         case shishi // 實實
@@ -99,7 +99,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    public enum Employee: String, Codable, CaseIterable, Hashable {
+    public enum Employee: String, Codable, CaseIterable {
         case josie // Josie
         case jn // 黃潔恩
         case yo_ya // 張由亞
@@ -129,7 +129,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    public enum Goods: String, Codable, CaseIterable, Hashable {
+    public enum Goods: String, Codable, CaseIterable {
         case beret // 貝蕾
         case newsboy // 報童
         case bucket_hat // 漁夫
@@ -210,7 +210,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    public enum OtherGoods: String, Codable, CaseIterable, Hashable {
+    public enum OtherGoods: String, Codable, CaseIterable {
         case clip_earrings // 夾式耳環
         case pin_earrings // 針式耳環
         case mask_chain // 口罩鍊
@@ -246,7 +246,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    public enum Material: String, Codable, CaseIterable, Hashable {
+    public enum Material: String, Codable, CaseIterable {
         case cotton_wash // 素棉(水洗)
         case cotton_bubble // 素棉(泡泡)
         case calico_cotton // 印花(棉紗)
@@ -309,7 +309,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    public enum Transaction: String, Codable, CaseIterable, Hashable {
+    public enum Transaction: String, Codable, CaseIterable {
         case cash // 現金
         case remittance // 匯款
         case jkos_pay // 街口支付
@@ -363,7 +363,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    public enum Color: String, Codable, CaseIterable, Hashable {
+    public enum Color: String, Codable, CaseIterable {
         case red // 紅色
         case orange // 橘色
         case yellow // 黃色
@@ -455,7 +455,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    public enum Design: String, Codable, CaseIterable, Hashable {
+    public enum Design: String, Codable, CaseIterable {
         case plain // 素色
         case gradation // 漸層
         case block // 色塊
