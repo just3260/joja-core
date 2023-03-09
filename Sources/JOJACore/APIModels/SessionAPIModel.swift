@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct SessionAPIModel: Codable {
+public struct SessionAPIModel: Codable, Hashable {
     public let token: String
     public let user: UserAPIModel.Public
     

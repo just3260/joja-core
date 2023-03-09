@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct SignupAPIModel: Codable {
+public struct SignupAPIModel: Codable, Hashable {
     public let username: String
     public let email: String
     public let password: String

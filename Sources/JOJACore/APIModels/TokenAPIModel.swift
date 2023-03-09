@@ -1,9 +1,9 @@
 
 import Foundation
 
-public struct TokenAPIModel: Codable {
+public struct TokenAPIModel: Codable, Hashable {
     
-    public enum SessionSource: Int, Codable {
+    public enum SessionSource: Int, Codable, Hashable {
         case signup
         case login
     }
@@ -26,7 +26,7 @@ public struct TokenAPIModel: Codable {
 }
 
 extension TokenAPIModel {
-    public struct Create: Codable {
+    public struct Create: Codable, Hashable {
         public let user: UserAPIModel
         public let value: String
         public let source: SessionSource

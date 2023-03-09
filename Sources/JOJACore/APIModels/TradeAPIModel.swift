@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct TradeAPIModel: Codable {
+public struct TradeAPIModel: Codable, Hashable {
     
     public let id: UUID
     public let products: [ProductAPIModel]
@@ -28,7 +28,7 @@ public struct TradeAPIModel: Codable {
 }
 
 extension TradeAPIModel {
-    public struct Request: Codable {
+    public struct Request: Codable, Hashable {
         public let products: [ProductAPIModel.Request]
         public let note: String?
         public let buyerID: UUID
@@ -46,7 +46,7 @@ extension TradeAPIModel {
 }
 
 extension TradeAPIModel {
-    public struct Response: Codable {
+    public struct Response: Codable, Hashable {
         public let id: UUID
         public let products: [ProductAPIModel.Response]
         public let amount: Int

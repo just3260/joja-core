@@ -1,7 +1,8 @@
 
 import Foundation
 
-public struct UserAPIModel: Codable {
+public struct UserAPIModel: Codable, Hashable {
+    
     public let id: UUID
     public let username: String
     public let email: String
@@ -22,7 +23,8 @@ public struct UserAPIModel: Codable {
 }
 
 extension UserAPIModel {
-    public struct Create: Codable {
+    public struct Create: Codable, Hashable {
+        
         public let username: String
         public let email: String
         public let password: String
@@ -42,7 +44,7 @@ extension UserAPIModel {
 }
 
 extension UserAPIModel {
-    public struct Public: Codable {
+    public struct Public: Codable, Hashable {
         public let id: UUID
         public let username: String
         public let email: String
