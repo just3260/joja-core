@@ -7,6 +7,7 @@ public struct TradeAPIModel: Codable, Hashable {
     public let products: [ProductAPIModel]
     public let amount: Int
     public let note: String?
+    public let description: String?
     public let buyerID: UUID
     public let createdAt: Date?
     
@@ -15,6 +16,7 @@ public struct TradeAPIModel: Codable, Hashable {
         products: [ProductAPIModel],
         amount: Int,
         note: String?,
+        description: String?,
         buyerID: UUID,
         createdAt: Date?
     ) {
@@ -22,6 +24,7 @@ public struct TradeAPIModel: Codable, Hashable {
         self.products = products
         self.amount = amount
         self.note = note
+        self.description = description
         self.buyerID = buyerID
         self.createdAt = createdAt
     }
@@ -43,14 +46,13 @@ extension TradeAPIModel {
             self.buyerID = buyerID
         }
     }
-}
-
-extension TradeAPIModel {
+    
     public struct Response: Codable, Hashable {
         public let id: UUID
         public let products: [ProductAPIModel.Response]
         public let amount: Int
         public let note: String?
+        public let description: String?
         public let buyerID: UUID
         public let createdAt: Date?
         
@@ -59,6 +61,7 @@ extension TradeAPIModel {
             products: [ProductAPIModel.Response],
             amount: Int,
             note: String?,
+            description: String?,
             buyerID: UUID,
             createdAt: Date?
         ) {
@@ -66,6 +69,32 @@ extension TradeAPIModel {
             self.products = products
             self.amount = amount
             self.note = note
+            self.description = description
+            self.buyerID = buyerID
+            self.createdAt = createdAt
+        }
+    }
+    
+    public struct SimpleTrade: Codable, Hashable {
+        public let id: UUID
+        public let amount: Int
+        public let note: String?
+        public let description: String?
+        public let buyerID: UUID
+        public let createdAt: Date?
+        
+        public init(
+            id: UUID,
+            amount: Int,
+            note: String?,
+            description: String?,
+            buyerID: UUID,
+            createdAt: Date?
+        ) {
+            self.id = id
+            self.amount = amount
+            self.note = note
+            self.description = description
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
