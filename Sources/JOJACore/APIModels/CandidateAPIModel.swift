@@ -107,23 +107,17 @@ extension CandidateAPIModel {
         public let id: UUID
         public let name: String
         public let phone: String
-        public let amount: Int
-        public let isVip: Bool
         public let createdAt: Date?
         
         public init(
             id: UUID,
             name: String,
             phone: String,
-            amount: Int,
-            isVip: Bool,
             createdAt: Date?
         ) {
             self.id = id
             self.name = name
             self.phone = phone
-            self.amount = amount
-            self.isVip = isVip
             self.createdAt = createdAt
         }
     }
