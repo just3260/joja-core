@@ -40,7 +40,7 @@ extension CandidateAPIModel {
     public struct Request: Codable, Hashable {
         public let name: String
         public let phone: String
-        public let birthday: Date?
+        public let birthday: String?
         public let from: TypeAPIModel.WhereToKnow
         public let address: String?
         public let email: String?
@@ -49,7 +49,7 @@ extension CandidateAPIModel {
         public init(
             name: String,
             phone: String,
-            birthday: Date?,
+            birthday: String?,
             from: TypeAPIModel.WhereToKnow,
             address: String?,
             email: String?,
