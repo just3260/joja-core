@@ -50,6 +50,7 @@ public struct MemberAPIModel: Codable, Hashable {
 
 extension MemberAPIModel {
     public struct Request: Codable, Hashable {
+        public let id: UUID?    // 從 candidate 帶來的 id
         public let name: String
         public let phone: String
         public let birthday: Date?
@@ -59,6 +60,7 @@ extension MemberAPIModel {
         public let note: String?
         
         public init(
+            id: UUID?,
             name: String,
             phone: String,
             birthday: Date?,
@@ -67,6 +69,7 @@ extension MemberAPIModel {
             email: String?,
             note: String?
         ) {
+            self.id = id
             self.name = name
             self.phone = phone
             self.birthday = birthday
