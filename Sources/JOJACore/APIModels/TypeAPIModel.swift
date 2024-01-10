@@ -3,6 +3,7 @@ import Foundation
 
 public struct TypeAPIModel: Codable, Hashable {
     
+    /// 從哪裡知道 JOJA 的？
     public enum WhereToKnow: String, Codable, CaseIterable {
         case passBy // 路過
         case fb // Facebook
@@ -54,6 +55,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 品牌
     public enum Brand: String, Codable, CaseIterable {
         case joja // JOJA
         case yuu // YUU
@@ -99,6 +101,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 員工
     public enum Employee: String, Codable, CaseIterable {
         case josie // Josie
         case jn // 黃潔恩
@@ -129,6 +132,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 品項
     public enum Goods: String, Codable, CaseIterable {
         case beret // 貝蕾
         case newsboy // 報童
@@ -210,6 +214,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 寄賣品項
     public enum OtherGoods: String, Codable, CaseIterable {
         case clip_earrings // 夾式耳環
         case pin_earrings // 針式耳環
@@ -246,6 +251,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 材質
     public enum Material: String, Codable, CaseIterable {
         case cotton_wash // 素棉(水洗)
         case cotton_bubble // 素棉(泡泡)
@@ -309,6 +315,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 交易方式
     public enum Transaction: String, Codable, CaseIterable {
         case cash // 現金
         case remittance // 匯款
@@ -363,6 +370,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 顏色
     public enum Color: String, Codable, CaseIterable {
         case red // 紅色
         case orange // 橘色
@@ -455,6 +463,7 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 花色
     public enum Design: String, Codable, CaseIterable {
         case plain // 素色
         case gradation // 漸層
@@ -508,6 +517,53 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "動物"
             case .festival:
                 return "節慶限定"
+            }
+        }
+    }
+    
+    /// 搜尋類型
+    public enum SearchType: String, Codable, CaseIterable {
+        case name // 姓名
+        case phone // 電話
+        case birthday // 生日
+        case from // 從哪裡知道
+        case address // 地址
+        case email // email
+        case note // 備註
+        case amount // 消費金額
+        case isVip // 是否為vip
+        case createdAt // 建立日期
+        case updatedAt // 最後更新日期
+        
+        
+        public static func getKey() -> String {
+            "search_type"
+        }
+        
+        public func getName() -> String {
+            switch self {
+            case .name:
+                return "姓名"
+            case .phone:
+                return "電話"
+            case .birthday:
+                return "生日"
+            case .from:
+                return "從哪裡知道"
+            case .address:
+                return "地址"
+            case .email:
+                return "email"
+            case .note:
+                return "備註"
+            case .amount:
+                return "消費金額"
+            case .isVip:
+                return "是否為vip"
+            case .createdAt:
+                return "建立日期"
+            case .updatedAt:
+                return "最後更新日期"
             }
         }
     }
