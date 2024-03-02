@@ -58,6 +58,7 @@ extension MemberAPIModel {
         public let address: String?
         public let email: String?
         public let note: String?
+        public let isVip: Bool
         
         public init(
             id: UUID?,
@@ -67,7 +68,9 @@ extension MemberAPIModel {
             from: TypeAPIModel.WhereToKnow,
             address: String?,
             email: String?,
-            note: String?
+            note: String?,
+            isVip: Bool
+            
         ) {
             self.id = id
             self.name = name
@@ -77,6 +80,7 @@ extension MemberAPIModel {
             self.address = address
             self.email = email
             self.note = note
+            self.isVip = isVip
         }
     }
 }
