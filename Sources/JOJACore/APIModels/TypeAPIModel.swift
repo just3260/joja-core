@@ -5,7 +5,8 @@ public struct TypeAPIModel: Codable, Hashable {
     
     /// 從哪裡知道 JOJA 的？
     public enum WhereToKnow: String, Codable, CaseIterable {
-        case passBy // 路過
+        case taipei // JOJA台北赤峰
+        case tainan // JOJA台南店
         case fb // Facebook
         case ig // Instagram
         case market // 市集
@@ -15,7 +16,7 @@ public struct TypeAPIModel: Codable, Hashable {
         case eslite // 誠品
         case qsquare // 京站
         case jccac // JCCAC - 香港賽馬協會
-        case goyound // 古漾
+        case goyoung // 古漾
         case treasureHill // 寶藏巖國際藝術村
         case consignmentShop // 寄賣店
         
@@ -25,8 +26,10 @@ public struct TypeAPIModel: Codable, Hashable {
         
         public func getName() -> String {
             switch self {
-            case .passBy:
-                return "路過"
+            case .taipei:
+                return "JOJA台北赤峰"
+            case .tainan:
+                return "JOJA台南店"
             case .fb:
                 return "Facebook"
             case .ig:
@@ -45,7 +48,7 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "京站"
             case .jccac:
                 return "JCCAC - 香港賽馬協會"
-            case .goyound:
+            case .goyoung:
                 return "古漾"
             case .treasureHill:
                 return "寶藏巖國際藝術村"
@@ -58,14 +61,19 @@ public struct TypeAPIModel: Codable, Hashable {
     /// 品牌
     public enum Brand: String, Codable, CaseIterable {
         case joja // JOJA
-        case yuu // YUU
+        case yuu // YUU YUU LAB
+        case how_fan // 好煩小姐
+        case marco // MARCO
+        case st_light // 陌光
+        case vingt_six // Vingt Six
         case shishi // 實實
         case mount // 山牌
-        case vingt_six // Vingt six
-        case y_art // Y ART
-        case childhood // CHILD
         case giants_tiedye // 巨人染
         case n_trail // N’trail
+        case feat_yuu // JOJA x YUU
+        case feat_howfan // JOJA好煩
+        case feat_y_art // JOJA x Y ART
+        case feat_childhood // JOJA x CHILDHOOD
         case japan_socks // 日本襪
         case josie_personal // Josie私物
         
@@ -78,21 +86,31 @@ public struct TypeAPIModel: Codable, Hashable {
             case .joja:
                 return "JOJA"
             case .yuu:
-                return "YUU"
+                return "YUU YUU LAB"
+            case .how_fan:
+                return "好煩小姐"
+            case .marco:
+                return "MARCO"
+            case .st_light:
+                return "陌光"
+            case .vingt_six:
+                return "Vingt Six"
             case .shishi:
                 return "實實"
             case .mount:
                 return "山牌"
-            case .vingt_six:
-                return "Vingt six"
-            case .y_art:
-                return "Y ART"
-            case .childhood:
-                return "CHILD"
             case .giants_tiedye:
                 return "巨人染"
             case .n_trail:
                 return "N’trail"
+            case .feat_yuu:
+                return "JOJA x YUU"
+            case .feat_howfan:
+                return "JOJA好煩"
+            case .feat_y_art:
+                return "JOJA x Y ART"
+            case .feat_childhood:
+                return "JOJA x CHILDHOOD"
             case .japan_socks:
                 return "日本襪"
             case .josie_personal:
@@ -105,9 +123,13 @@ public struct TypeAPIModel: Codable, Hashable {
     public enum Employee: String, Codable, CaseIterable {
         case josie // Josie
         case jn // 黃潔恩
-        case yo_ya // 張由亞
         case yuu // 陳郁
         case yi_fan // 李宜凡
+        case mini // Mini
+        case jiajie // 家婕
+        case tian // 內田
+        case du // 小杜
+        case xing // 阿心
         case andrew // Andrew
         
         public static func getKey() -> String {
@@ -120,12 +142,20 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "Josie"
             case .jn:
                 return "黃潔恩"
-            case .yo_ya:
-                return "張由亞"
             case .yuu:
                 return "陳郁"
             case .yi_fan:
                 return "李宜凡"
+            case .mini:
+                return "Mini"
+            case .jiajie:
+                return "家婕"
+            case .tian:
+                return "內田"
+            case .du:
+                return "小杜"
+            case .xing:
+                return "阿心"
             case .andrew:
                 return "Andrew"
             }
