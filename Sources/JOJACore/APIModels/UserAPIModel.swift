@@ -9,13 +9,15 @@ public struct PermissionOptions: OptionSet, Codable, Hashable {
     public let rawValue: Int
     
     public static let transaction = PermissionOptions(rawValue: 1 << 0)
+    // candidate
+    public static let deleteCandidate = PermissionOptions(rawValue: 1 << 1)
     // member
-    public static let createMember = PermissionOptions(rawValue: 1 << 1)
-    public static let editMember = PermissionOptions(rawValue: 1 << 2)
-    public static let deleteMember = PermissionOptions(rawValue: 1 << 3)
+    public static let createMember = PermissionOptions(rawValue: 1 << 2)
+    public static let editMember = PermissionOptions(rawValue: 1 << 3)
+    public static let deleteMember = PermissionOptions(rawValue: 1 << 4)
     // trade
-    public static let createTrade = PermissionOptions(rawValue: 1 << 4)
-    public static let deleteTrade = PermissionOptions(rawValue: 1 << 5)
+    public static let createTrade = PermissionOptions(rawValue: 1 << 5)
+    public static let deleteTrade = PermissionOptions(rawValue: 1 << 6)
 }
 
 public struct UserAPIModel: Codable, Hashable {
