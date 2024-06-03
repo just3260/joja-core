@@ -24,18 +24,18 @@ public struct UserAPIModel: Codable, Hashable {
     public let username: String
     public let email: String
     public let isAdmin: Bool
-    public let permission: PermissionOptions
+    public let permissions: PermissionOptions
     public let password: String
     public let createdAt: Date
     public let updatedAt: Date
     
-    public init(id: UUID, username: String, email: String, password: String, isAdmin: Bool, permission: PermissionOptions, createdAt: Date, updatedAt: Date) {
+    public init(id: UUID, username: String, email: String, password: String, isAdmin: Bool, permissions: PermissionOptions, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.username = username
         self.email = email
         self.password = password
         self.isAdmin = isAdmin
-        self.permission = permission
+        self.permissions = permissions
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
