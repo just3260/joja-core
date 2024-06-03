@@ -68,14 +68,16 @@ extension UserAPIModel {
         public let username: String
         public let email: String
         public let isAdmin: Bool
+        public let permissions: PermissionOptions
         public let createdAt: Date
         public let updatedAt: Date
         
-        public init(id: UUID, username: String, email: String, isAdmin: Bool, createdAt: Date, updatedAt: Date) {
+        public init(id: UUID, username: String, email: String, isAdmin: Bool, permissions: PermissionOptions, createdAt: Date, updatedAt: Date) {
             self.id = id
             self.username = username
             self.email = email
             self.isAdmin = isAdmin
+            self.permissions = permissions
             self.createdAt = createdAt
             self.updatedAt = updatedAt
         }
