@@ -162,6 +162,61 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// 交易方式
+    public enum Transaction: String, Codable, CaseIterable {
+        case cash // 現金
+        case remittance // 匯款
+        case jkos_pay // 街口支付
+        case credit_card // 實體信用卡
+        case apply_pay // Apple pay
+        case google_pay // Google pay
+        case line_pay // Line PAY
+        case insto // insto 國內
+        case insto_foreign // insto 國外
+        case ali_pay // 支付寶
+        case payme // PayMe
+        case wechat // 微信支付
+        case stimulus_voucher // 振興券
+        case coupons // 折價券
+        
+        public static func getKey() -> String {
+            "transaction_type"
+        }
+        
+        public func getName() -> String {
+            switch self {
+            case .cash:
+                return "現金"
+            case .remittance:
+                return "匯款"
+            case .jkos_pay:
+                return "街口支付"
+            case .credit_card:
+                return "實體信用卡"
+            case .apply_pay:
+                return "Apple pay"
+            case .google_pay:
+                return "Google pay"
+            case .line_pay:
+                return "Line PAY"
+            case .insto:
+                return "insto 國內"
+            case .insto_foreign:
+                return "insto 國外"
+            case .ali_pay:
+                return "支付寶"
+            case .payme:
+                return "PayMe"
+            case .wechat:
+                return "微信支付"
+            case .stimulus_voucher:
+                return "振興券"
+            case .coupons:
+                return "折價券"
+            }
+        }
+    }
+    
     /// 品項
     public enum Goods: String, Codable, CaseIterable {
         case beret // 貝蕾
@@ -283,22 +338,14 @@ public struct TypeAPIModel: Codable, Hashable {
     
     /// 材質
     public enum Material: String, Codable, CaseIterable {
-        case cotton_wash // 素棉(水洗)
-        case cotton_bubble // 素棉(泡泡)
-        case calico_cotton // 印花(棉紗)
-        case calico_new // 印花(新布)
-        case calico_old // 印花(老布)
-        case wool_old // 毛料-老花
-        case wool // 毛料(一般)
-        case flannel // 絨布(素色)
-        case flannel_old // 絨布(老花)
+        case cotton // 棉布
+        case linen // 麻
+        case denim // 牛仔布
         case suit // 西裝料
-        case linen_old // 麻(老)
-        case linen_new // 麻(新)
-        case synthetic_fiber_old // 合成纖維(老)
-        case synthetic_fiber_new // 合成纖維(新)
-        case headbands_opaque // 領/髮(不透明)
-        case headbands_translucent // 領/髮(半透明)
+        case velvet // 絨布
+        case wool // 毛料
+        case synthetic_fiber // 合成纖維
+        case chiffon // 雪紡紗
         case silk // 絲
         
         public static func getKey() -> String {
@@ -307,95 +354,143 @@ public struct TypeAPIModel: Codable, Hashable {
         
         public func getName() -> String {
             switch self {
-            case .cotton_wash:
-                return  "素棉(水洗)"
-            case .cotton_bubble:
-                return  "素棉(泡泡)"
-            case .calico_cotton:
-                return  "印花(棉紗)"
-            case .calico_new:
-                return  "印花(新布)"
-            case .calico_old:
-                return  "印花(老布)"
-            case .wool_old:
-                return  "毛料-老花"
-            case .wool:
-                return  "毛料(一般)"
-            case .flannel:
-                return  "絨布(素色)"
-            case .flannel_old:
-                return  "絨布(老花)"
+            case .cotton:
+                return "棉布"
+            case .linen:
+                return "麻"
+            case .denim:
+                return "牛仔布"
             case .suit:
-                return  "西裝料"
-            case .linen_old:
-                return  "麻(老)"
-            case .linen_new:
-                return  "麻(新)"
-            case .synthetic_fiber_old:
-                return  "合成纖維(老)"
-            case .synthetic_fiber_new:
-                return  "合成纖維(新)"
-            case .headbands_opaque:
-                return  "領/髮(不透明)"
-            case .headbands_translucent:
-                return  "領/髮(半透明)"
+                return "西裝料"
+            case .velvet:
+                return "絨布"
+            case .wool:
+                return "毛料"
+            case .synthetic_fiber:
+                return "合成纖維"
+            case .chiffon:
+                return "雪紡紗"
             case .silk:
-                return  "絲"
+                return "絲"
+            }
+        }
+        
+        public func getSerial() -> String {
+            switch self {
+            case .cotton:
+                return "1" // 棉布
+            case .linen:
+                return "2" // 麻
+            case .denim:
+                return "3" // 牛仔布
+            case .suit:
+                return "4" // 西裝料
+            case .velvet:
+                return "5" // 絨布
+            case .wool:
+                return "6" // 毛料
+            case .synthetic_fiber:
+                return "7" // 合成纖維
+            case .chiffon:
+                return "8" // 雪紡紗
+            case .silk:
+                return "9" // 絲
             }
         }
     }
     
-    /// 交易方式
-    public enum Transaction: String, Codable, CaseIterable {
-        case cash // 現金
-        case remittance // 匯款
-        case jkos_pay // 街口支付
-        case credit_card // 實體信用卡
-        case apply_pay // Apple pay
-        case google_pay // Google pay
-        case line_pay // Line PAY
-        case insto // insto 國內
-        case insto_foreign // insto 國外
-        case ali_pay // 支付寶
-        case payme // PayMe
-        case wechat // 微信支付
-        case stimulus_voucher // 振興券
-        case coupons // 折價券
+    /// 棉布材質
+    public enum CottonMaterial: String, Codable, CaseIterable {
+        case thin_bubble // 薄泡泡綿紗
+        case thick_bubble // 厚泡泡綿紗
+        case wash // 中水洗棉
+        case wrinkle_wash // 皺皺水洗棉
+        case grey // 胚布原色雜點水洗棉
+        case japan_plain // 日本素色棉紗
+        case japan_print // 印花棉紗
+        case calico // 印花棉布
+        case thin_canvas // 薄酒袋布
+        case thick_canvas // 厚酒袋布
         
         public static func getKey() -> String {
-            "transaction_type"
+            "cotton_material_type"
         }
         
         public func getName() -> String {
             switch self {
-            case .cash:
-                return "現金"
-            case .remittance:
-                return "匯款"
-            case .jkos_pay:
-                return "街口支付"
-            case .credit_card:
-                return "實體信用卡"
-            case .apply_pay:
-                return "Apple pay"
-            case .google_pay:
-                return "Google pay"
-            case .line_pay:
-                return "Line PAY"
-            case .insto:
-                return "insto 國內"
-            case .insto_foreign:
-                return "insto 國外"
-            case .ali_pay:
-                return "支付寶"
-            case .payme:
-                return "PayMe"
-            case .wechat:
-                return "微信支付"
-            case .stimulus_voucher:
-                return "振興券"
-            case .coupons:
-                return "折價券"
+            case .thin_bubble:
+                return "薄泡泡綿紗"
+            case .thick_bubble:
+                return "厚泡泡綿紗"
+            case .wash:
+                return "中水洗棉"
+            case .wrinkle_wash:
+                return "皺皺水洗棉"
+            case .grey:
+                return "胚布原色雜點水洗棉"
+            case .japan_plain:
+                return "日本素色棉紗"
+            case .japan_print:
+                return "印花棉紗"
+            case .calico:
+                return "印花棉布"
+            case .thin_canvas:
+                return "薄酒袋布"
+            case .thick_canvas:
+                return "厚酒袋布"
+            }
+        }
+        
+        public func getSerial() -> String {
+            switch self {
+            case .thin_bubble:
+                return "1" // 薄泡泡綿紗
+            case .thick_bubble:
+                return "2" // 厚泡泡綿紗
+            case .wash:
+                return "3" // 中水洗棉
+            case .wrinkle_wash:
+                return "4" // 皺皺水洗棉
+            case .grey:
+                return "5" // 胚布原色雜點水洗棉
+            case .japan_plain:
+                return "6" // 日本素色棉紗
+            case .japan_print:
+                return "7" // 印花棉紗
+            case .calico:
+                return "8" // 印花棉布
+            case .thin_canvas:
+                return "9" // 薄酒袋布
+            case .thick_canvas:
+                return "A" // 厚酒袋布
+            }
+        }
+    }
+    
+    /// 布料年代
+    public enum Age: String, Codable, CaseIterable {
+        case new // 新布
+        case old // 老布
+        
+        public static func getKey() -> String {
+            "age_type"
+        }
+        
+        public func getName() -> String {
+            switch self {
+            case .new:
+                return "新布"
+            case .old:
+                return "老布"
+            }
+        }
+        
+        public func getSerial() -> String {
+            switch self {
+            case .new:
+                return "N" // 新布
+            case .old:
+                return "O" // 老布
             }
         }
     }
@@ -408,11 +503,12 @@ public struct TypeAPIModel: Codable, Hashable {
         case green // 綠色
         case blue // 藍色
         case purple // 紫色
-        case pink // 粉&桃色
-//        case peach // 桃色
+        case pink // 粉色
+        case peach // 桃色
         case brown // 大地色
         case black // 黑色
         case white // 白色
+        case beige // 米色
         case grey // 灰色
         case gold // 金色
         case silvery // 銀色
@@ -437,15 +533,17 @@ public struct TypeAPIModel: Codable, Hashable {
             case .purple:
                 return "紫"
             case .pink:
-                return "粉/桃"
-//            case .peach:
-//                return "桃"
+                return "粉"
+            case .peach:
+                return "桃"
             case .brown:
                 return "大地"
             case .black:
                 return "黑"
             case .white:
                 return "白"
+            case .beige:
+                return "米"
             case .grey:
                 return "灰"
             case .gold:
@@ -454,6 +552,43 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "銀"
             case .multi_color:
                 return "彩色"
+            }
+        }
+        
+        public func getSerial() -> String {
+            switch self {
+            case .red:
+                return "1" // 紅
+            case .orange:
+                return "2" // 橘
+            case .yellow:
+                return "3" // 黃
+            case .green:
+                return "4" // 綠
+            case .blue:
+                return "5" // 藍
+            case .purple:
+                return "6" // 紫
+            case .pink:
+                return "7" // 粉
+            case .peach:
+                return "8" // 桃
+            case .brown:
+                return "9" // 大地
+            case .black:
+                return "A" // 黑
+            case .white:
+                return "B" // 白
+            case .beige:
+                return "C" // 米
+            case .grey:
+                return "D" // 灰
+            case .gold:
+                return "E" // 金
+            case .silvery:
+                return "F" // 銀
+            case .multi_color:
+                return "G" // 彩色
             }
         }
         
@@ -473,14 +608,16 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "#6547AA"
             case .pink:
                 return "#f681b5"
-//            case .peach:
-//                return "#bb4780"
+            case .peach:
+                return "#bb4780"
             case .brown:
                 return "#7E4E20"
             case .black:
                 return "#000000"
             case .white:
                 return "#FEFEFE"
+            case .beige:
+                return "#E3DABC"
             case .grey:
                 return "#706f6f"
             case .gold:
@@ -510,7 +647,8 @@ public struct TypeAPIModel: Codable, Hashable {
         case plant // 植物
         case animal // 動物
         case festival // 節慶限定
-
+        case pop // 普普風
+        
         public static func getKey() -> String {
             "design_type"
         }
@@ -547,6 +685,45 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "動物"
             case .festival:
                 return "節慶限定"
+            case .pop:
+                return "普普風"
+            }
+        }
+        
+        public func getSerial() -> String {
+            switch self {
+            case .plain:
+                return "1" // 素色
+            case .gradation:
+                return "2" // 漸層
+            case .block:
+                return "3" // 色塊
+            case .geometry:
+                return "4" // 幾何
+            case .stripe:
+                return "5" // 條紋
+            case .dot:
+                return "6" // 點點
+            case .plaid:
+                return "7" // 格紋
+            case .paisley:
+                return "8" // 變形蟲
+            case .totem:
+                return "9" // 圖騰
+            case .graffiti:
+                return "A" // 塗鴉
+            case .painting:
+                return "B" // 油畫
+            case .watercolor:
+                return "C" // 水彩
+            case .plant:
+                return "D" // 植物
+            case .animal:
+                return "E" // 動物
+            case .festival:
+                return "F" // 節慶限定
+            case .pop:
+                return "G" // 普普風
             }
         }
     }
@@ -594,6 +771,37 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "建立日期"
             case .updatedAt:
                 return "最後更新日期"
+            }
+        }
+    }
+    
+    /// 倉庫位置
+    public enum Location: String, Codable, CaseIterable {
+        case chifeng // 赤峰店
+        case chifengStorage // 赤峰倉庫
+        case taipeiHome // 台北家
+        case tainan // 台南店
+        case daxi // 大溪
+        case aunt // 阿姨家
+        
+        public static func getKey() -> String {
+            "location_type"
+        }
+        
+        public func getName() -> String {
+            switch self {
+            case .chifeng:
+                return "赤峰店"
+            case .chifengStorage:
+                return "赤峰倉庫"
+            case .taipeiHome:
+                return "台北家"
+            case .tainan:
+                return "台南店"
+            case .daxi:
+                return "大溪"
+            case .aunt:
+                return "阿姨家"
             }
         }
     }

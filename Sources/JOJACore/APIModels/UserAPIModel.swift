@@ -8,17 +8,33 @@ public struct PermissionOptions: OptionSet, Codable, Hashable {
 
     public let rawValue: Int
     
-    public static let transaction = PermissionOptions(rawValue: 1 << 0)
+    public static let transaction = PermissionOptions(rawValue: 1 << 0) // 1
     // candidate
-    public static let deleteCandidate = PermissionOptions(rawValue: 1 << 1)
+    public static let deleteCandidate = PermissionOptions(rawValue: 1 << 1) // 2
     // member
-    public static let createMember = PermissionOptions(rawValue: 1 << 2)
-    public static let editMember = PermissionOptions(rawValue: 1 << 3)
-    public static let deleteMember = PermissionOptions(rawValue: 1 << 4)
+    public static let createMember = PermissionOptions(rawValue: 1 << 2) // 4
+    public static let editMember = PermissionOptions(rawValue: 1 << 3) // 8
+    public static let deleteMember = PermissionOptions(rawValue: 1 << 4) // 16
     // trade
-    public static let createTrade = PermissionOptions(rawValue: 1 << 5)
-    public static let deleteTrade = PermissionOptions(rawValue: 1 << 6)
+    public static let createTrade = PermissionOptions(rawValue: 1 << 5) // 32
+    public static let deleteTrade = PermissionOptions(rawValue: 1 << 6) // 64
+    // fabric
+    public static let readFabric = PermissionOptions(rawValue: 1 << 7) // 128
+    public static let createFabric = PermissionOptions(rawValue: 1 << 8) // 256
+    public static let editFabric = PermissionOptions(rawValue: 1 << 9) // 512
+    public static let deleteFabric = PermissionOptions(rawValue: 1 << 10) // 1024
+    // tag
+    public static let createTag = PermissionOptions(rawValue: 1 << 8) // 256
+    public static let editTag = PermissionOptions(rawValue: 1 << 9) // 512
+    public static let deleteTag = PermissionOptions(rawValue: 1 << 10) // 1024
 }
+
+//128
+//
+//127
+//
+//45
+
 
 public struct UserAPIModel: Codable, Hashable {
     
