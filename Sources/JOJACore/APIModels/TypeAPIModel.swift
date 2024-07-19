@@ -728,53 +728,6 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    /// 搜尋類型
-    public enum SearchType: String, Codable, CaseIterable {
-        case name // 姓名
-        case phone // 電話
-        case birthday // 生日
-        case from // 從哪裡知道
-        case address // 地址
-        case email // email
-        case note // 備註
-        case amount // 消費金額
-        case isVip // 是否為vip
-        case createdAt // 建立日期
-        case updatedAt // 最後更新日期
-        
-        
-        public static func getKey() -> String {
-            "search_type"
-        }
-        
-        public func getName() -> String {
-            switch self {
-            case .name:
-                return "姓名"
-            case .phone:
-                return "電話"
-            case .birthday:
-                return "生日"
-            case .from:
-                return "從哪裡知道"
-            case .address:
-                return "地址"
-            case .email:
-                return "email"
-            case .note:
-                return "備註"
-            case .amount:
-                return "消費金額"
-            case .isVip:
-                return "是否為vip"
-            case .createdAt:
-                return "建立日期"
-            case .updatedAt:
-                return "最後更新日期"
-            }
-        }
-    }
-    
     /// 倉庫位置
     public enum Location: String, Codable, CaseIterable {
         case chifeng // 赤峰店
