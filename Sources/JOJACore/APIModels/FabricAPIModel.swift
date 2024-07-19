@@ -170,3 +170,27 @@ extension FabricAPIModel {
         }
     }
 }
+
+extension FabricAPIModel {
+    public struct ListData: Codable, Hashable {
+        public let id: UUID
+        public let name: String?
+        public let sn: String
+        public let component: Component
+        public let imageUrl: String?
+        
+        public init(
+            id: UUID,
+            name: String?,
+            sn: String,
+            component: Component,
+            imageUrl: String?
+        ) {
+            self.id = id
+            self.name = name
+            self.sn = sn
+            self.component = component
+            self.imageUrl = imageUrl
+        }
+    }
+}
