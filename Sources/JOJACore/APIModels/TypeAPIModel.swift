@@ -72,6 +72,7 @@ public struct TypeAPIModel: Codable, Hashable {
         case marco // MARCO
         case vingt_six // Vingt Six
         case design_3_14 // 3.14
+        case yuguand // 隅光
         case febbi // Febbi
         case in_allyes // 巷弄
         case yr_wonder_land // 海獸花園
@@ -112,6 +113,8 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "Vingt Six"
             case .design_3_14:
                 return "3.14"
+            case .yuguand:
+                return "隅光"
             case .febbi:
                 return "Febbi"
             case .in_allyes:
