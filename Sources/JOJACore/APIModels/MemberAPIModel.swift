@@ -13,6 +13,7 @@ public struct MemberAPIModel: Codable, Hashable {
     public let note: String?
     public let amount: Int
     public let isVip: Bool
+    public let fillAt: Date?
     public let createdAt: Date?
     public let updatedAt: Date?
     public let trades: [TradeAPIModel]?
@@ -28,6 +29,7 @@ public struct MemberAPIModel: Codable, Hashable {
         note: String?,
         amount: Int,
         isVip: Bool,
+        fillAt: Date?,
         createdAt: Date?,
         updatedAt: Date?,
         trades: [TradeAPIModel]?
@@ -42,6 +44,7 @@ public struct MemberAPIModel: Codable, Hashable {
         self.note = note
         self.amount = amount
         self.isVip = isVip
+        self.fillAt = fillAt
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.trades = trades
@@ -59,6 +62,7 @@ extension MemberAPIModel {
         public let email: String?
         public let note: String?
         public let isVip: Bool
+        public let fillAt: Date?
         
         public init(
             id: UUID?,
@@ -69,8 +73,8 @@ extension MemberAPIModel {
             address: String?,
             email: String?,
             note: String?,
-            isVip: Bool
-            
+            isVip: Bool,
+            fillAt: Date?
         ) {
             self.id = id
             self.name = name
@@ -81,6 +85,7 @@ extension MemberAPIModel {
             self.email = email
             self.note = note
             self.isVip = isVip
+            self.fillAt = fillAt
         }
     }
 }
@@ -97,6 +102,7 @@ extension MemberAPIModel {
         public let note: String?
         public let amount: Int
         public let isVip: Bool
+        public let fillAt: Date?
         public let createdAt: Date?
         public let updatedAt: Date?
         public let trades: [TradeAPIModel.SimpleTrade]?
@@ -112,6 +118,7 @@ extension MemberAPIModel {
             note: String?,
             amount: Int,
             isVip: Bool,
+            fillAt: Date?,
             createdAt: Date?,
             updatedAt: Date?,
             trades: [TradeAPIModel.SimpleTrade]?
@@ -126,6 +133,7 @@ extension MemberAPIModel {
             self.note = note
             self.amount = amount
             self.isVip = isVip
+            self.fillAt = fillAt
             self.createdAt = createdAt
             self.updatedAt = updatedAt
             self.trades = trades
