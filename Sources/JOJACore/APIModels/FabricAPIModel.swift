@@ -124,6 +124,22 @@ extension FabricAPIModel {
         }
     }
     
+    public struct StorageRequest: Codable, Hashable {
+        public let price: Int
+        public let buy: Int
+        public let location: TypeAPIModel.Location
+        
+        public init(
+            price: Int,
+            buy: Int,
+            location: TypeAPIModel.Location
+        ) {
+            self.price = price
+            self.buy = buy
+            self.location = location
+        }
+    }
+    
     public struct TagRequest: Codable, Hashable {
         public let tags: [String]
         
