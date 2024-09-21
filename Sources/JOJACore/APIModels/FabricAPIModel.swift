@@ -86,6 +86,22 @@ extension FabricAPIModel {
         }
     }
     
+    public struct UpdateRequest: Codable, Hashable {
+        public let name: String?
+        public let description: String?
+        public let note: String?
+        
+        public init(
+            name: String?,
+            description: String?,
+            note: String?
+        ) {
+            self.name = name
+            self.description = description
+            self.note = note
+        }
+    }
+    
     public struct Component: Codable, Hashable {
         public let material: TypeAPIModel.Material
         public let cottonMaterial: TypeAPIModel.CottonMaterial?
