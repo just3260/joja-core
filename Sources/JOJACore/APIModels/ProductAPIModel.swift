@@ -52,6 +52,7 @@ extension ProductAPIModel {
 //        public let design: TypeAPIModel.Design
         public let amount: Int
         public let count: Int
+        public let discount: Int?
         public let note: String?
         
         public init(
@@ -62,6 +63,7 @@ extension ProductAPIModel {
 //            design: TypeAPIModel.Design,
             amount: Int,
             count: Int,
+            discount: Int?,
             note: String?
         ) {
             self.brand = brand
@@ -71,6 +73,7 @@ extension ProductAPIModel {
 //            self.design = design
             self.amount = amount
             self.count = count
+            self.discount = discount
             self.note = note
         }
     }
