@@ -32,17 +32,20 @@ public struct TradeAPIModel: Codable, Hashable {
 
 extension TradeAPIModel {
     public struct Request: Codable, Hashable {
+        public let id: UUID?
         public let products: [ProductAPIModel.Request]
         public let discount: Int?
         public let note: String?
         public let buyerID: UUID
         
         public init(
+            id: UUID?,
             products: [ProductAPIModel.Request],
             discount: Int?,
             note: String?,
             buyerID: UUID
         ) {
+            self.id = id
             self.products = products
             self.discount = discount
             self.note = note
