@@ -60,81 +60,85 @@ public struct TypeAPIModel: Codable, Hashable {
     
     /// 品牌
     public enum Brand: String, Codable, CaseIterable {
-        case joja // JOJA
-        case yuu // YUU YUU LAB
-        case feat_yuu // JOJA x YUU
-        case how_fan // 好煩小姐
-        case feat_howfan // JOJA好煩
-        case feat_y_art // JOJA x Y ART
-        case feat_childhood // JOJA x CHILDHOOD
-        case japan_socks // 日本襪
-        case josie_personal // Josie私物
-        case marco // MARCO
-        case vingt_six // Vingt Six
-        case design_3_14 // 3.14
-        case yuguand // 隅光
-        case febbi // Febbi
-        case in_allyes // 巷弄
-        case yr_wonder_land // 海獸花園
-        case n_trail // N’trail
-        case paper // 紙造可能
-        case st_light // 陌光
-        case shishi // 實實
-        case mount // 山牌
-        case giants_tiedye // 巨人染
+        case joja = "JOJA"
+        case yuu = "YUU YUU LAB"
+        case feat_yuu = "JOJA x YUU"
+        case how_fan = "好煩小姐"
+        case feat_howfan = "JOJA好煩"
+        case feat_y_art = "JOJA x Y ART"
+        case feat_childhood = "JOJA x CHILDHOOD"
+        case japan_socks = "日本襪"
+        case josie_personal = "Josie私物"
+        case marco = "MARCO"
+        case vingt_six = "Vingt Six"
+        case design_3_14 = "3.14"
+        case yuguand = "隅光"
+        case febbi = "Febbi"
+        case in_allyes = "巷弄"
+        case yr_wonder_land = "海獸花園"
+        case n_trail = "N’trail"
+        case paper = "紙造可能"
+        case st_light = "陌光"
+        case shishi = "實實"
+        case mount = "山牌"
+        case giants_tiedye = "巨人染"
         
         public static func getKey() -> String {
             "brand_type"
         }
         
-        public func getName() -> String {
-            switch self {
-            case .joja:
-                return "JOJA"
-            case .yuu:
-                return "YUU YUU LAB"
-            case .feat_yuu:
-                return "JOJA x YUU"
-            case .how_fan:
-                return "好煩小姐"
-            case .feat_howfan:
-                return "JOJA好煩"
-            case .feat_y_art:
-                return "JOJA x Y ART"
-            case .feat_childhood:
-                return "JOJA x CHILDHOOD"
-            case .japan_socks:
-                return "日本襪"
-            case .josie_personal:
-                return "Josie私物"
-            case .marco:
-                return "MARCO"
-            case .vingt_six:
-                return "Vingt Six"
-            case .design_3_14:
-                return "3.14"
-            case .yuguand:
-                return "隅光"
-            case .febbi:
-                return "Febbi"
-            case .in_allyes:
-                return "巷弄"
-            case .yr_wonder_land:
-                return "海獸花園"
-            case .n_trail:
-                return "N’trail"
-            case .paper:
-                return "紙造可能"
-            case .st_light:
-                return "陌光"
-            case .shishi:
-                return "實實"
-            case .mount:
-                return "山牌"
-            case .giants_tiedye:
-                return "巨人染"
-            }
+        public static func getBrand(from rawValue: String) -> Brand? {
+            return Brand(rawValue: rawValue)
         }
+        
+//        public func getName() -> String {
+//            switch self {
+//            case .joja:
+//                return "JOJA"
+//            case .yuu:
+//                return "YUU YUU LAB"
+//            case .feat_yuu:
+//                return "JOJA x YUU"
+//            case .how_fan:
+//                return "好煩小姐"
+//            case .feat_howfan:
+//                return "JOJA好煩"
+//            case .feat_y_art:
+//                return "JOJA x Y ART"
+//            case .feat_childhood:
+//                return "JOJA x CHILDHOOD"
+//            case .japan_socks:
+//                return "日本襪"
+//            case .josie_personal:
+//                return "Josie私物"
+//            case .marco:
+//                return "MARCO"
+//            case .vingt_six:
+//                return "Vingt Six"
+//            case .design_3_14:
+//                return "3.14"
+//            case .yuguand:
+//                return "隅光"
+//            case .febbi:
+//                return "Febbi"
+//            case .in_allyes:
+//                return "巷弄"
+//            case .yr_wonder_land:
+//                return "海獸花園"
+//            case .n_trail:
+//                return "N’trail"
+//            case .paper:
+//                return "紙造可能"
+//            case .st_light:
+//                return "陌光"
+//            case .shishi:
+//                return "實實"
+//            case .mount:
+//                return "山牌"
+//            case .giants_tiedye:
+//                return "巨人染"
+//            }
+//        }
     }
     
     /// 員工
