@@ -142,17 +142,17 @@ extension FabricAPIModel {
     
     public struct StorageUpdatedRequest: Codable, Hashable {
         public let source: TypeAPIModel.Location
-        public let amount: Int
         public let destination: TypeAPIModel.Location
+        public let amount: Int
         
         public init(
             source: TypeAPIModel.Location,
-            amount: Int,
-            destination: TypeAPIModel.Location
+            destination: TypeAPIModel.Location,
+            amount: Int
         ) {
             self.source = source
-            self.amount = amount
             self.destination = destination
+            self.amount = amount
         }
     }
     

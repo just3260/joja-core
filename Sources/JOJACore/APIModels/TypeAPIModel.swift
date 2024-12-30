@@ -1,4 +1,3 @@
-
 import Foundation
 
 public struct TypeAPIModel: Codable, Hashable {
@@ -54,6 +53,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "寶藏巖國際藝術村"
             case .consignmentShop:
                 return "寄賣店"
+            }
+        }
+        
+        public static func find(from name: String) -> WhereToKnow? {
+            return WhereToKnow.allCases.first { type in
+                type.getName() == name
             }
         }
     }
@@ -186,6 +191,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "巨人染"
             }
         }
+        
+        public static func find(from name: String) -> Brand? {
+            return Brand.allCases.first { type in
+                type.getName() == name
+            }
+        }
     }
     
     /// 員工
@@ -227,6 +238,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "阿心"
             case .andrew:
                 return "Andrew"
+            }
+        }
+        
+        public static func find(from name: String) -> Employee? {
+            return Employee.allCases.first { type in
+                type.getName() == name
             }
         }
     }
@@ -282,6 +299,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "振興券"
             case .coupons:
                 return "折價券"
+            }
+        }
+        
+        public static func find(from name: String) -> Transaction? {
+            return Transaction.allCases.first { type in
+                type.getName() == name
             }
         }
     }
@@ -366,6 +389,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "其他"
             }
         }
+        
+        public static func find(from name: String) -> Goods? {
+            return Goods.allCases.first { type in
+                type.getName() == name
+            }
+        }
     }
     
     /// 寄賣品項
@@ -401,6 +430,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "戒指"
             case .other:
                 return "其他"
+            }
+        }
+        
+        public static func find(from name: String) -> OtherGoods? {
+            return OtherGoods.allCases.first { type in
+                type.getName() == name
             }
         }
     }
@@ -464,6 +499,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "8" // 雪紡紗
             case .silk:
                 return "9" // 絲
+            }
+        }
+        
+        public static func find(from name: String) -> Material? {
+            return Material.allCases.first { type in
+                type.getName() == name
             }
         }
     }
@@ -534,6 +575,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "A" // 厚酒袋布
             }
         }
+        
+        public static func find(from name: String) -> CottonMaterial? {
+            return CottonMaterial.allCases.first { type in
+                type.getName() == name
+            }
+        }
     }
     
     /// 布料年代
@@ -560,6 +607,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "N" // 新布
             case .old:
                 return "O" // 老布
+            }
+        }
+        
+        public static func find(from name: String) -> Age? {
+            return Age.allCases.first { type in
+                type.getName() == name
             }
         }
     }
@@ -697,6 +750,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "#000000"
             }
         }
+        
+        public static func find(from name: String) -> Color? {
+            return Color.allCases.first { type in
+                type.getName() == name
+            }
+        }
     }
     
     /// 花色
@@ -795,6 +854,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "G" // 普普風
             }
         }
+        
+        public static func find(from name: String) -> Design? {
+            return Design.allCases.first { type in
+                type.getName() == name
+            }
+        }
     }
     
     /// 倉庫位置
@@ -827,6 +892,12 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "阿姨家"
             case .process:
                 return "製作中"
+            }
+        }
+        
+        public static func find(from name: String) -> Location? {
+            return Location.allCases.first { type in
+                type.getName() == name
             }
         }
     }
