@@ -868,8 +868,10 @@ public struct TypeAPIModel: Codable, Hashable {
         case chifengStorage // 赤峰倉庫
         case taipeiHome // 台北家
         case tainan // 台南店
+        case tainanStorage // 台南倉庫
         case daxi // 大溪
         case aunt // 阿姨家
+        case storeasy // 收多易
         case process // 製作中
         
         public static func getKey() -> String {
@@ -878,20 +880,24 @@ public struct TypeAPIModel: Codable, Hashable {
         
         public func getName() -> String {
             switch self {
-            case .chifeng:
-                return "赤峰店"
-            case .chifengStorage:
-                return "赤峰倉庫"
-            case .taipeiHome:
-                return "台北家"
-            case .tainan:
-                return "台南店"
-            case .daxi:
-                return "大溪"
-            case .aunt:
-                return "阿姨家"
-            case .process:
-                return "製作中"
+                case .chifeng:
+                    return "赤峰店"
+                case .chifengStorage:
+                    return "赤峰倉庫"
+                case .taipeiHome:
+                    return "台北家"
+                case .tainan:
+                    return "台南店"
+                case .tainanStorage:
+                    return "台南倉庫"
+                case .daxi:
+                    return "大溪"
+                case .aunt:
+                    return "阿姨家"
+                case .storeasy:
+                    return "收多易"
+                case .process:
+                    return "製作中"
             }
         }
         
