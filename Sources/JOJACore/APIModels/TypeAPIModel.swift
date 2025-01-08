@@ -309,31 +309,11 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    /// 品項
+    /// 商品類別
     public enum Goods: String, Codable, CaseIterable {
-        case beret // 貝蕾
-        case newsboy // 報童
-        case bucket_hat // 漁夫
-        case sun // 太陽
-        case flower // 花形
-        case lady // 淑女
-        case flat_small // 小平頂
-        case flat_big // 大平頂
-        case scarf_short // 短領巾
-        case scarf_long // 長領巾
-        case square_small // 小方巾
-        case square_big // 大方巾
-        case headbands_narrow // 窄髮帶
-        case headbands_wide // 寬髮帶
-        case clip_earrings // 釦耳環
-        case clip_ring // 釦戒指
-        case ring // 素戒
-        case pin // 別針
-        case bucket_Bag // 水桶包
-        case tote_bag // 托特包
-        case bag_frame // 口金包
-        case skirt // 裙
-        case other // 其他
+        case jojaFabric // JOJA 布料商品
+        case jojaOther // JOJA 其他商品
+        case consignment // JOJA 其他商品
         
         public static func getKey() -> String {
             "goods_type"
@@ -341,52 +321,23 @@ public struct TypeAPIModel: Codable, Hashable {
         
         public func getName() -> String {
             switch self {
-            case .beret:
-                return "貝蕾"
-            case .newsboy:
-                return "報童"
-            case .bucket_hat:
-                return "漁夫"
-            case .sun:
-                return "太陽"
-            case .flower:
-                return "花形"
-            case .lady:
-                return "淑女"
-            case .flat_small:
-                return "小平頂"
-            case .flat_big:
-                return "大平頂"
-            case .scarf_short:
-                return "短領巾"
-            case .scarf_long:
-                return "長領巾"
-            case .square_small:
-                return "小方巾"
-            case .square_big:
-                return "大方巾"
-            case .headbands_narrow:
-                return "窄髮帶"
-            case .headbands_wide:
-                return "寬髮帶"
-            case .clip_earrings:
-                return "釦耳環"
-            case .clip_ring:
-                return "釦戒指"
-            case .ring:
-                return "素戒"
-            case .pin:
-                return "別針"
-            case .bucket_Bag:
-                return "水桶包"
-            case .tote_bag:
-                return "托特包"
-            case .bag_frame:
-                return "口金包"
-            case .skirt:
-                return "裙"
-            case .other:
-                return "其他"
+                case .jojaFabric:
+                    return "JOJA 布料商品"
+                case .jojaOther:
+                    return "JOJA 其他商品"
+                case .consignment:
+                    return "寄賣商品"
+            }
+        }
+        
+        public func getGoods<T: CaseIterable & RawRepresentable>(type: T.Type) -> T.Type {
+            switch self {
+                case .jojaFabric:
+                    return JojaFabricGoods.self as! T.Type
+                case .jojaOther:
+                    return JojaOtherGoods.self as! T.Type
+                case .consignment:
+                    return OtherBrandGoods.self as! T.Type
             }
         }
         
@@ -397,8 +348,103 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
+    /// Joja fabric 品項
+    public enum JojaFabricGoods: String, Codable, CaseIterable {
+        case beret // 貝蕾
+        case newsboy // 報童
+        case bucket_hat // 漁夫
+        case sun // 太陽
+        case flower // 花形
+        case lady // 淑女
+        case flat // 平頂
+        case scarf // 領巾
+        case square // 方巾
+        case headbands // 髮帶
+        case bucket_Bag // 水桶包
+        case tote_bag // 托特包
+        case skirt // 裙
+        
+        public static func getKey() -> String {
+            "joja_fabric_goods_type"
+        }
+        
+        public func getName() -> String {
+            switch self {
+                case .beret:
+                    return "貝蕾"
+                case .newsboy:
+                    return "報童"
+                case .bucket_hat:
+                    return "漁夫"
+                case .sun:
+                    return "太陽"
+                case .flower:
+                    return "花形"
+                case .lady:
+                    return "淑女"
+                case .flat:
+                    return "平頂"
+                case .scarf:
+                    return "領巾"
+                case .square:
+                    return "方巾"
+                case .headbands:
+                    return "髮帶"
+                case .bucket_Bag:
+                    return "水桶包"
+                case .tote_bag:
+                    return "托特包"
+                case .skirt:
+                    return "裙"
+            }
+        }
+        
+        public static func find(from name: String) -> JojaFabricGoods? {
+            return JojaFabricGoods.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
+    
+    /// Joja 其他品項
+    public enum JojaOtherGoods: String, Codable, CaseIterable {
+        case clip_earrings // 釦耳環
+        case clip_ring // 釦戒指
+        case ring // 素戒
+        case pin // 別針
+        case bag_frame // 口金包
+        case other // 其他
+        
+        public static func getKey() -> String {
+            "joja_other_goods_type"
+        }
+        
+        public func getName() -> String {
+            switch self {
+                case .clip_earrings:
+                    return "釦耳環"
+                case .clip_ring:
+                    return "釦戒指"
+                case .ring:
+                    return "素戒"
+                case .pin:
+                    return "別針"
+                case .bag_frame:
+                    return "口金包"
+                case .other:
+                    return "其他"
+            }
+        }
+        
+        public static func find(from name: String) -> JojaOtherGoods? {
+            return JojaOtherGoods.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
+    
     /// 寄賣品項
-    public enum OtherGoods: String, Codable, CaseIterable {
+    public enum OtherBrandGoods: String, Codable, CaseIterable {
         case clip_earrings // 夾式耳環
         case pin_earrings // 針式耳環
         case mask_chain // 口罩鍊
@@ -409,7 +455,7 @@ public struct TypeAPIModel: Codable, Hashable {
         case other // 其他
         
         public static func getKey() -> String {
-            "other_goods_type"
+            "other_brand_goods_type"
         }
         
         public func getName() -> String {
@@ -433,8 +479,8 @@ public struct TypeAPIModel: Codable, Hashable {
             }
         }
         
-        public static func find(from name: String) -> OtherGoods? {
-            return OtherGoods.allCases.first { type in
+        public static func find(from name: String) -> OtherBrandGoods? {
+            return OtherBrandGoods.allCases.first { type in
                 type.getName() == name
             }
         }
