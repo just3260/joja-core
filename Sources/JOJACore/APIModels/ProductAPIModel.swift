@@ -3,23 +3,9 @@ import Foundation
 
 public struct ProductAPIModel: Codable, Hashable {
     
-    public enum Size: Int, Codable, Hashable {
-        case freeSize
-        case extraSmall
-        case small
-        case medium
-        case large
-        case short
-        case long
-        case narrow
-        case wide
-    }
-    
     public let id: UUID
     public let fabricId: UUID?
-    public let brand: TypeAPIModel.Brand
-    public let goods: TypeAPIModel.Goods
-    public let size: Size
+    public let style: Style
     public let price: Int
 //    public let count: Int // 不確定是否需要，目前傾向同一品項用不同 id 區分
     public let storage: TypeAPIModel.Location
@@ -31,9 +17,7 @@ public struct ProductAPIModel: Codable, Hashable {
     public init(
         id: UUID,
         fabricId: UUID?,
-        brand: TypeAPIModel.Brand,
-        goods: TypeAPIModel.Goods,
-        size: Size,
+        style: Style,
         price: Int,
 //        count: Int,
         storage: TypeAPIModel.Location,
@@ -44,9 +28,7 @@ public struct ProductAPIModel: Codable, Hashable {
     ) {
         self.id = id
         self.fabricId = fabricId
-        self.brand = brand
-        self.goods = goods
-        self.size = size
+        self.style = style
         self.price = price
 //        self.count = count
         self.storage = storage
@@ -61,9 +43,7 @@ extension ProductAPIModel {
     public struct Request: Codable, Hashable {
         
         public let fabricId: UUID?
-        public let brand: TypeAPIModel.Brand
-        public let goods: TypeAPIModel.Goods
-        public let size: Size
+        public let style: Style
         public let price: Int
         public let storage: TypeAPIModel.Location
         public let discount: Int?
@@ -71,22 +51,43 @@ extension ProductAPIModel {
         
         public init(
             fabricId: UUID?,
-            brand: TypeAPIModel.Brand,
-            goods: TypeAPIModel.Goods,
-            size: Size,
+            style: Style,
             price: Int,
             storage: TypeAPIModel.Location,
             discount: Int?,
             note: String?
         ) {
             self.fabricId = fabricId
-            self.brand = brand
-            self.goods = goods
-            self.size = size
+            self.style = style
             self.price = price
             self.storage = storage
             self.discount = discount
             self.note = note
+        }
+    }
+    
+    public struct Style: Codable, Hashable {
+        public let brand: TypeAPIModel.Brand
+        public let type: TypeAPIModel.ProductType
+        public let jojaFabric: TypeAPIModel.JojaFabricGoods?
+        public let jojaOther: TypeAPIModel.JojaOtherGoods?
+        public let otherGoods: TypeAPIModel.OtherBrandGoods?
+        public let size: TypeAPIModel.Size
+        
+        public init(
+            brand: TypeAPIModel.Brand,
+            type: TypeAPIModel.ProductType,
+            jojaFabric: TypeAPIModel.JojaFabricGoods?,
+            jojaOther: TypeAPIModel.JojaOtherGoods?,
+            otherGoods: TypeAPIModel.OtherBrandGoods?,
+            size: TypeAPIModel.Size
+        ) {
+            self.brand = brand
+            self.type = type
+            self.jojaFabric = jojaFabric
+            self.jojaOther = jojaOther
+            self.otherGoods = otherGoods
+            self.size = size
         }
     }
 }
@@ -96,9 +97,7 @@ extension ProductAPIModel {
         
         public let id: UUID
         public let fabricId: UUID?
-        public let brand: TypeAPIModel.Brand
-        public let goods: TypeAPIModel.Goods
-        public let size: Size
+        public let style: Style
         public let price: Int
         public let storage: TypeAPIModel.Location
         public let note: String?
@@ -109,9 +108,7 @@ extension ProductAPIModel {
         public init(
             id: UUID,
             fabricId: UUID?,
-            brand: TypeAPIModel.Brand,
-            goods: TypeAPIModel.Goods,
-            size: Size,
+            style: Style,
             price: Int,
             storage: TypeAPIModel.Location,
             note: String?,
@@ -121,15 +118,31 @@ extension ProductAPIModel {
         ) {
             self.id = id
             self.fabricId = fabricId
-            self.brand = brand
-            self.goods = goods
-            self.size = size
+            self.style = style
             self.price = price
             self.storage = storage
             self.note = note
             self.tradeID = tradeID
             self.createdAt = createdAt
             self.updatedAt = updatedAt
+        }
+    }
+}
+
+extension ProductAPIModel {
+    public struct ListData: Codable, Hashable {
+        public let id: UUID
+        public let style: Style
+        public let price: Int
+        
+        public init(
+            id: UUID,
+            style: Style,
+            price: Int
+        ) {
+            self.id = id
+            self.style = style
+            self.price = price
         }
     }
 }

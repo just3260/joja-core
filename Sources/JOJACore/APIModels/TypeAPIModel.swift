@@ -309,46 +309,47 @@ public struct TypeAPIModel: Codable, Hashable {
         }
     }
     
-    /// 商品類別
-    public enum Goods: String, Codable, CaseIterable {
+    /// 商品類型
+    public enum ProductType: String, Codable, CaseIterable {
         case jojaFabric // JOJA 布料商品
         case jojaOther // JOJA 其他商品
-        case consignment // JOJA 其他商品
-        
+        case otherBrand // 寄賣商品
+
         public static func getKey() -> String {
-            "goods_type"
+            "product_type"
         }
-        
+
         public func getName() -> String {
             switch self {
                 case .jojaFabric:
                     return "JOJA 布料商品"
                 case .jojaOther:
                     return "JOJA 其他商品"
-                case .consignment:
+                case .otherBrand:
                     return "寄賣商品"
             }
         }
-        
-        public func getGoods<T: CaseIterable & RawRepresentable>(type: T.Type) -> T.Type {
+
+        /// 取得商品子類型
+        public func getSubType<T: CaseIterable & RawRepresentable>() -> T.Type {
             switch self {
                 case .jojaFabric:
                     return JojaFabricGoods.self as! T.Type
                 case .jojaOther:
                     return JojaOtherGoods.self as! T.Type
-                case .consignment:
+                case .otherBrand:
                     return OtherBrandGoods.self as! T.Type
             }
         }
-        
-        public static func find(from name: String) -> Goods? {
-            return Goods.allCases.first { type in
+
+        public static func find(from name: String) -> ProductType? {
+            return ProductType.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
-    /// Joja fabric 品項
+
+    /// JOJA 布料商品品項
     public enum JojaFabricGoods: String, Codable, CaseIterable {
         case beret // 貝蕾
         case newsboy // 報童
@@ -363,11 +364,11 @@ public struct TypeAPIModel: Codable, Hashable {
         case bucket_Bag // 水桶包
         case tote_bag // 托特包
         case skirt // 裙
-        
+
         public static func getKey() -> String {
             "joja_fabric_goods_type"
         }
-        
+
         public func getName() -> String {
             switch self {
                 case .beret:
@@ -398,15 +399,15 @@ public struct TypeAPIModel: Codable, Hashable {
                     return "裙"
             }
         }
-        
+
         public static func find(from name: String) -> JojaFabricGoods? {
             return JojaFabricGoods.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
-    /// Joja 其他品項
+
+    /// JOJA 其他商品品項
     public enum JojaOtherGoods: String, Codable, CaseIterable {
         case clip_earrings // 釦耳環
         case clip_ring // 釦戒指
@@ -414,11 +415,11 @@ public struct TypeAPIModel: Codable, Hashable {
         case pin // 別針
         case bag_frame // 口金包
         case other // 其他
-        
+
         public static func getKey() -> String {
             "joja_other_goods_type"
         }
-        
+
         public func getName() -> String {
             switch self {
                 case .clip_earrings:
@@ -435,15 +436,15 @@ public struct TypeAPIModel: Codable, Hashable {
                     return "其他"
             }
         }
-        
+
         public static func find(from name: String) -> JojaOtherGoods? {
             return JojaOtherGoods.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
-    /// 寄賣品項
+
+    /// 合作品牌商品品項
     public enum OtherBrandGoods: String, Codable, CaseIterable {
         case clip_earrings // 夾式耳環
         case pin_earrings // 針式耳環
@@ -453,11 +454,11 @@ public struct TypeAPIModel: Codable, Hashable {
         case pin // 別針
         case ring // 戒指
         case other // 其他
-        
+
         public static func getKey() -> String {
             "other_brand_goods_type"
         }
-        
+
         public func getName() -> String {
             switch self {
             case .clip_earrings:
@@ -478,14 +479,14 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "其他"
             }
         }
-        
+
         public static func find(from name: String) -> OtherBrandGoods? {
             return OtherBrandGoods.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
+
     /// 材質
     public enum Material: String, Codable, CaseIterable {
         case cotton // 棉布
@@ -497,11 +498,11 @@ public struct TypeAPIModel: Codable, Hashable {
         case synthetic_fiber // 合成纖維
         case chiffon // 雪紡紗
         case silk // 絲
-        
+
         public static func getKey() -> String {
             "material_type"
         }
-        
+
         public func getName() -> String {
             switch self {
             case .cotton:
@@ -524,7 +525,7 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "絲"
             }
         }
-        
+
         public func getSerial() -> String {
             switch self {
             case .cotton:
@@ -547,14 +548,14 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "9" // 絲
             }
         }
-        
+
         public static func find(from name: String) -> Material? {
             return Material.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
+
     /// 棉布材質
     public enum CottonMaterial: String, Codable, CaseIterable {
         case thin_bubble // 薄泡泡綿紗
@@ -567,11 +568,11 @@ public struct TypeAPIModel: Codable, Hashable {
         case calico // 印花棉布
         case thin_canvas // 薄酒袋布
         case thick_canvas // 厚酒袋布
-        
+
         public static func getKey() -> String {
             "cotton_material_type"
         }
-        
+
         public func getName() -> String {
             switch self {
             case .thin_bubble:
@@ -596,7 +597,7 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "厚酒袋布"
             }
         }
-        
+
         public func getSerial() -> String {
             switch self {
             case .thin_bubble:
@@ -621,23 +622,23 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "A" // 厚酒袋布
             }
         }
-        
+
         public static func find(from name: String) -> CottonMaterial? {
             return CottonMaterial.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
+
     /// 布料年代
     public enum Age: String, Codable, CaseIterable {
         case new // 新布
         case old // 老布
-        
+
         public static func getKey() -> String {
             "age_type"
         }
-        
+
         public func getName() -> String {
             switch self {
             case .new:
@@ -646,7 +647,7 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "老布"
             }
         }
-        
+
         public func getSerial() -> String {
             switch self {
             case .new:
@@ -655,14 +656,14 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "O" // 老布
             }
         }
-        
+
         public static func find(from name: String) -> Age? {
             return Age.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
+
     /// 顏色
     public enum Color: String, Codable, CaseIterable {
         case red // 紅色
@@ -681,11 +682,11 @@ public struct TypeAPIModel: Codable, Hashable {
         case gold // 金色
         case silvery // 銀色
         case multi_color // 彩色
-        
+
         public static func getKey() -> String {
             "color_type"
         }
-        
+
         public func getName() -> String {
             switch self {
             case .red:
@@ -722,7 +723,7 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "彩色"
             }
         }
-        
+
         public func getSerial() -> String {
             switch self {
             case .red:
@@ -759,7 +760,7 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "G" // 彩色
             }
         }
-        
+
         public func getHexColor() -> String {
             switch self {
             case .red:
@@ -796,14 +797,14 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "#000000"
             }
         }
-        
+
         public static func find(from name: String) -> Color? {
             return Color.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
+
     /// 花色
     public enum Design: String, Codable, CaseIterable {
         case plain // 素色
@@ -822,11 +823,11 @@ public struct TypeAPIModel: Codable, Hashable {
         case animal // 動物
         case festival // 節慶限定
         case pop // 普普風
-        
+
         public static func getKey() -> String {
             "design_type"
         }
-        
+
         public func getName() -> String {
             switch self {
             case .plain:
@@ -863,7 +864,7 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "普普風"
             }
         }
-        
+
         public func getSerial() -> String {
             switch self {
             case .plain:
@@ -900,14 +901,14 @@ public struct TypeAPIModel: Codable, Hashable {
                 return "G" // 普普風
             }
         }
-        
+
         public static func find(from name: String) -> Design? {
             return Design.allCases.first { type in
                 type.getName() == name
             }
         }
     }
-    
+
     /// 倉庫位置
     public enum Location: String, Codable, CaseIterable {
         case chifeng // 赤峰店
@@ -919,11 +920,11 @@ public struct TypeAPIModel: Codable, Hashable {
         case aunt // 阿姨家
         case storeasy // 收多易
         case process // 製作中
-        
+
         public static func getKey() -> String {
             "location_type"
         }
-        
+
         public func getName() -> String {
             switch self {
                 case .chifeng:
@@ -946,11 +947,28 @@ public struct TypeAPIModel: Codable, Hashable {
                     return "製作中"
             }
         }
-        
+
         public static func find(from name: String) -> Location? {
             return Location.allCases.first { type in
                 type.getName() == name
             }
+        }
+    }
+
+    /// 尺寸
+    public enum Size: String, Codable, CaseIterable {
+        case freeSize
+        case extraSmall
+        case small
+        case medium
+        case large
+        case short
+        case long
+        case narrow
+        case wide
+
+        public static func getKey() -> String {
+            "size_type"
         }
     }
 }

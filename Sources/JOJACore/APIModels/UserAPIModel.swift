@@ -18,22 +18,18 @@ public struct PermissionOptions: OptionSet, Codable, Hashable {
     // trade
     public static let createTrade = PermissionOptions(rawValue: 1 << 5) // 32
     public static let deleteTrade = PermissionOptions(rawValue: 1 << 6) // 64
-    // fabric
-    public static let readFabric = PermissionOptions(rawValue: 1 << 7) // 128
-    public static let createFabric = PermissionOptions(rawValue: 1 << 8) // 256
-    public static let editFabric = PermissionOptions(rawValue: 1 << 9) // 512
-    public static let deleteFabric = PermissionOptions(rawValue: 1 << 10) // 1024
+    // product
+    public static let readProduct = PermissionOptions(rawValue: 1 << 7) // 128
+    public static let createProduct = PermissionOptions(rawValue: 1 << 8) // 256
+    public static let editProduct = PermissionOptions(rawValue: 1 << 9) // 512
+    public static let deleteProduct = PermissionOptions(rawValue: 1 << 10) // 1024
     // tag
     public static let createTag = PermissionOptions(rawValue: 1 << 8) // 256
     public static let editTag = PermissionOptions(rawValue: 1 << 9) // 512
     public static let deleteTag = PermissionOptions(rawValue: 1 << 10) // 1024
 }
 
-//128
-//
-//127
-//
-//45
+
 
 
 public struct UserAPIModel: Codable, Hashable {

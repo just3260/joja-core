@@ -15,6 +15,7 @@ public struct FabricAPIModel: Codable, Hashable {
     public let description: String?
     public let note: String?
     public let imageUrl: [String]
+    public let products: [ProductAPIModel]
     public let createdAt: Date?
     public let updatedAt: Date?
     public let log: String?
@@ -32,6 +33,7 @@ public struct FabricAPIModel: Codable, Hashable {
         description: String?,
         note: String?,
         imageUrl: [String],
+        products: [ProductAPIModel],
         createdAt: Date?,
         updatedAt: Date?,
         log: String?
@@ -48,6 +50,7 @@ public struct FabricAPIModel: Codable, Hashable {
         self.description = description
         self.note = note
         self.imageUrl = imageUrl
+        self.products = products
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.log = log
@@ -179,6 +182,7 @@ extension FabricAPIModel {
         public let description: String?
         public let note: String?
         public let imageUrl: [String]
+        public let products: [ProductAPIModel.ListData]
         public let createdAt: Date?
         public let updatedAt: Date?
         public let log: String?
@@ -196,6 +200,7 @@ extension FabricAPIModel {
             description: String?,
             note: String?,
             imageUrl: [String],
+            products: [ProductAPIModel.ListData],
             createdAt: Date?,
             updatedAt: Date?,
             log: String?
@@ -212,6 +217,7 @@ extension FabricAPIModel {
             self.description = description
             self.note = note
             self.imageUrl = imageUrl
+            self.products = products
             self.createdAt = createdAt
             self.updatedAt = updatedAt
             self.log = log
