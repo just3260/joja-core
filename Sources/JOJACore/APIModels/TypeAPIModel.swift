@@ -357,7 +357,8 @@ public struct TypeAPIModel: Codable, Hashable {
         case sun // 太陽
         case flower // 花形
         case lady // 淑女
-        case flat // 平頂
+        case flat // 小平頂
+        case bigFlat // 大平頂
         case scarf // 領巾
         case square // 方巾
         case headbands // 髮帶
@@ -384,7 +385,9 @@ public struct TypeAPIModel: Codable, Hashable {
                 case .lady:
                     return "淑女"
                 case .flat:
-                    return "平頂"
+                    return "小平頂"
+                case .bigFlat:
+                    return "大平頂"
                 case .scarf:
                     return "領巾"
                 case .square:
@@ -974,23 +977,23 @@ public struct TypeAPIModel: Codable, Hashable {
         public func getName() -> String {
             switch self {
                 case .freeSize:
-                    return "free"
+                    return "F"
                 case .extraSmall:
-                    return "xs"
+                    return "XS"
                 case .small:
-                    return "s"
+                    return "S"
                 case .medium:
-                    return "m"
+                    return "M"
                 case .large:
-                    return "l"
+                    return "L"
                 case .short:
-                    return "short"
+                    return "Short"
                 case .long:
-                    return "long"
+                    return "Long"
                 case .narrow:
-                    return "narrow"
+                    return "Narrow"
                 case .wide:
-                    return "wide"
+                    return "Wide"
             }
         }
     }
