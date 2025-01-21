@@ -970,5 +970,28 @@ public struct TypeAPIModel: Codable, Hashable {
         public static func getKey() -> String {
             "size_type"
         }
+        
+        public func getName() -> String {
+            switch self {
+                case .freeSize:
+                    return "free"
+                case .extraSmall:
+                    return "xs"
+                case .small:
+                    return "s"
+                case .medium:
+                    return "m"
+                case .large:
+                    return "l"
+                case .short:
+                    return "short"
+                case .long:
+                    return "long"
+                case .narrow:
+                    return "narrow"
+                case .wide:
+                    return "wide"
+            }
+        }
     }
 }
