@@ -923,6 +923,7 @@ public struct TypeAPIModel: Codable, Hashable {
         case aunt // 阿姨家
         case storeasy // 收多易
         case process // 製作中
+        case finish // 製作完成
 
         public static func getKey() -> String {
             "location_type"
@@ -948,6 +949,8 @@ public struct TypeAPIModel: Codable, Hashable {
                     return "收多易"
                 case .process:
                     return "製作中"
+                case .finish:
+                    return "製作完成"
             }
         }
 
