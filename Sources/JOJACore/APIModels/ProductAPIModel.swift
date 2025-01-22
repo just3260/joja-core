@@ -64,6 +64,20 @@ extension ProductAPIModel {
             self.discount = discount
             self.note = note
         }
+        
+        public init(
+            fabricId: UUID?,
+            jojaFabric: TypeAPIModel.JojaFabricGoods,
+            size: TypeAPIModel.Size,
+            price: Int
+        ) {
+            self.fabricId = fabricId
+            self.style = Style(jojaFabric: jojaFabric, size: size)
+            self.price = price
+            self.storage = .finish
+            self.discount = nil
+            self.note = nil
+        }
     }
     
     public struct Style: Codable, Hashable {
@@ -87,6 +101,18 @@ extension ProductAPIModel {
             self.jojaFabric = jojaFabric
             self.jojaOther = jojaOther
             self.otherGoods = otherGoods
+            self.size = size
+        }
+        
+        public init(
+            jojaFabric: TypeAPIModel.JojaFabricGoods,
+            size: TypeAPIModel.Size
+        ) {
+            self.brand = .joja
+            self.type = .jojaFabric
+            self.jojaFabric = jojaFabric
+            self.jojaOther = nil
+            self.otherGoods = nil
             self.size = size
         }
     }
