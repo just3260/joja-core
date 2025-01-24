@@ -1,9 +1,16 @@
+
 import Foundation
+
+public protocol TypeCommon: Codable, CaseIterable, Hashable {
+    static func getKey() -> String
+    func getName() -> String
+    static func find(from name: String) -> Self?
+}
 
 public struct TypeAPIModel: Codable, Hashable {
     
     /// 從哪裡知道 JOJA 的？
-    public enum WhereToKnow: String, Codable, CaseIterable {
+    public enum WhereToKnow: String, TypeCommon {
         case taipei // JOJA台北赤峰
         case tainan // JOJA台南店
         case fb // Facebook
@@ -64,7 +71,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
     
     /// 品牌
-    public enum Brand: String, Codable, CaseIterable {
+    public enum Brand: String, TypeCommon {
         case joja
         case yuu
         case feat_yuu
@@ -200,7 +207,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
     
     /// 員工
-    public enum Employee: String, Codable, CaseIterable {
+    public enum Employee: String, TypeCommon {
         case josie // Josie
         case jn // 黃潔恩
         case yuu // 陳郁
@@ -249,7 +256,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
     
     /// 交易方式
-    public enum Transaction: String, Codable, CaseIterable {
+    public enum Transaction: String, TypeCommon {
         case cash // 現金
         case remittance // 匯款
         case jkos_pay // 街口支付
@@ -310,7 +317,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
     
     /// 商品類型
-    public enum ProductType: String, Codable, CaseIterable {
+    public enum ProductType: String, TypeCommon {
         case jojaFabric // JOJA 布料商品
         case jojaOther // JOJA 其他商品
         case otherBrand // 寄賣商品
@@ -350,7 +357,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// JOJA 布料商品品項
-    public enum JojaFabricGoods: String, Codable, CaseIterable {
+    public enum JojaFabricGoods: String, TypeCommon {
         case beret // 貝蕾
         case newsboy // 報童
         case bucket_hat // 漁夫
@@ -411,7 +418,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// JOJA 其他商品品項
-    public enum JojaOtherGoods: String, Codable, CaseIterable {
+    public enum JojaOtherGoods: String, TypeCommon {
         case clip_earrings // 釦耳環
         case clip_ring // 釦戒指
         case ring // 素戒
@@ -448,7 +455,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// 合作品牌商品品項
-    public enum OtherBrandGoods: String, Codable, CaseIterable {
+    public enum OtherBrandGoods: String, TypeCommon {
         case clip_earrings // 夾式耳環
         case pin_earrings // 針式耳環
         case mask_chain // 口罩鍊
@@ -491,7 +498,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// 材質
-    public enum Material: String, Codable, CaseIterable {
+    public enum Material: String, TypeCommon {
         case cotton // 棉布
         case linen // 麻
         case denim // 牛仔布
@@ -560,7 +567,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// 棉布材質
-    public enum CottonMaterial: String, Codable, CaseIterable {
+    public enum CottonMaterial: String, TypeCommon {
         case thin_bubble // 薄泡泡綿紗
         case thick_bubble // 厚泡泡綿紗
         case wash // 中水洗棉
@@ -634,7 +641,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// 布料年代
-    public enum Age: String, Codable, CaseIterable {
+    public enum Age: String, TypeCommon {
         case new // 新布
         case old // 老布
 
@@ -668,7 +675,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// 顏色
-    public enum Color: String, Codable, CaseIterable {
+    public enum Color: String, TypeCommon {
         case red // 紅色
         case orange // 橘色
         case yellow // 黃色
@@ -809,7 +816,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// 花色
-    public enum Design: String, Codable, CaseIterable {
+    public enum Design: String, TypeCommon {
         case plain // 素色
         case gradation // 漸層
         case block // 色塊
@@ -913,7 +920,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// 倉庫位置
-    public enum Location: String, Codable, CaseIterable {
+    public enum Location: String, TypeCommon {
         case chifeng // 赤峰店
         case chifengStorage // 赤峰倉庫
         case taipeiHome // 台北家
@@ -962,7 +969,7 @@ public struct TypeAPIModel: Codable, Hashable {
     }
 
     /// 尺寸
-    public enum Size: String, Codable, CaseIterable {
+    public enum Size: String, TypeCommon {
         case freeSize
         case extraSmall
         case small
@@ -997,6 +1004,12 @@ public struct TypeAPIModel: Codable, Hashable {
                     return "Narrow"
                 case .wide:
                     return "Wide"
+            }
+        }
+        
+        public static func find(from name: String) -> TypeAPIModel.Size? {
+            return Size.allCases.first { type in
+                type.getName() == name
             }
         }
     }
