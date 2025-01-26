@@ -5,6 +5,9 @@ public struct ProductAPIModel: Codable, Hashable {
     
     public let id: UUID
     public let fabricId: UUID?
+    public let name: String?
+    public let sn: String
+    public let component: FabricAPIModel.Component
     public let style: Style
     public let price: Int
 //    public let count: Int // 不確定是否需要，目前傾向同一品項用不同 id 區分
@@ -13,10 +16,14 @@ public struct ProductAPIModel: Codable, Hashable {
     public let tradeID: UUID?
     public let createdAt: Date?
     public let updatedAt: Date?
+    public let log: String?
     
     public init(
         id: UUID,
         fabricId: UUID?,
+        name: String?,
+        sn: String,
+        component: FabricAPIModel.Component,
         style: Style,
         price: Int,
 //        count: Int,
@@ -24,10 +31,14 @@ public struct ProductAPIModel: Codable, Hashable {
         note: String?,
         tradeID: UUID?,
         createdAt: Date?,
-        updatedAt: Date?
+        updatedAt: Date?,
+        log: String?
     ) {
         self.id = id
         self.fabricId = fabricId
+        self.name = name
+        self.sn = sn
+        self.component = component
         self.style = style
         self.price = price
 //        self.count = count
@@ -36,6 +47,7 @@ public struct ProductAPIModel: Codable, Hashable {
         self.tradeID = tradeID
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.log = log
     }
 }
 
@@ -123,6 +135,9 @@ extension ProductAPIModel {
         
         public let id: UUID
         public let fabricId: UUID?
+        public let name: String?
+        public let sn: String
+        public let component: FabricAPIModel.Component
         public let style: Style
         public let price: Int
         public let storage: TypeAPIModel.Location
@@ -130,20 +145,28 @@ extension ProductAPIModel {
         public let tradeID: UUID?
         public let createdAt: Date?
         public let updatedAt: Date?
+        public let log: String?
         
         public init(
             id: UUID,
             fabricId: UUID?,
+            name: String?,
+            sn: String,
+            component: FabricAPIModel.Component,
             style: Style,
             price: Int,
             storage: TypeAPIModel.Location,
             note: String?,
             tradeID: UUID?,
             createdAt: Date?,
-            updatedAt: Date?
+            updatedAt: Date?,
+            log: String?
         ) {
             self.id = id
             self.fabricId = fabricId
+            self.name = name
+            self.sn = sn
+            self.component = component
             self.style = style
             self.price = price
             self.storage = storage
@@ -151,6 +174,7 @@ extension ProductAPIModel {
             self.tradeID = tradeID
             self.createdAt = createdAt
             self.updatedAt = updatedAt
+            self.log = log
         }
     }
 }
@@ -158,15 +182,21 @@ extension ProductAPIModel {
 extension ProductAPIModel {
     public struct ListData: Codable, Hashable {
         public let id: UUID
+        public let name: String?
+        public let sn: String
         public let style: Style
         public let price: Int
         
         public init(
             id: UUID,
+            name: String?,
+            sn: String,
             style: Style,
             price: Int
         ) {
             self.id = id
+            self.name = name
+            self.sn = sn
             self.style = style
             self.price = price
         }

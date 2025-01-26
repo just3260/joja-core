@@ -409,6 +409,41 @@ public struct TypeAPIModel: Codable, Hashable {
                     return "裙"
             }
         }
+        
+        public func getSerial() -> String {
+            switch self {
+                case .beret:
+                    return "B" // 貝蕾
+                case .newsboy:
+                    return "N" // 報童
+                case .bucket_hat:
+                    return "F" // 漁夫
+                case .sun:
+                    return "S" // 太陽
+                case .flower:
+                    return "T" // 花形
+                case .lady:
+                    return "L" // 淑女
+                case .flat:
+                    return "W" // 小平頂
+                case .bigFlat:
+                    return "V" // 大平頂
+//                case .scarf:
+//                    return "" // 領巾
+//                case .square:
+//                    return "" // 方巾
+//                case .headbands:
+//                    return "" // 髮帶
+//                case .bucket_Bag:
+//                    return "" // 水桶包
+//                case .tote_bag:
+//                    return "" // 托特包
+//                case .skirt:
+//                    return "" // 裙
+                default:
+                    return "N/A"
+            }
+        }
 
         public static func find(from name: String) -> JojaFabricGoods? {
             return JojaFabricGoods.allCases.first { type in
