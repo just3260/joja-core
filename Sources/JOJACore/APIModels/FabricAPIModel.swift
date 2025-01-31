@@ -8,6 +8,7 @@ public struct FabricAPIModel: Codable, Hashable {
     public let component: Component
     public let sn: String
     public let price: Int
+    public let pricing: Int?
 //    public let buy: Int
     public let stock: Int
     public let storage: [String: Int]
@@ -26,6 +27,7 @@ public struct FabricAPIModel: Codable, Hashable {
         component: Component,
         sn: String,
         price: Int,
+        pricing: Int?,
 //        buy: Int,
         stock: Int,
         storage: [String: Int],
@@ -43,6 +45,7 @@ public struct FabricAPIModel: Codable, Hashable {
         self.component = component
         self.sn = sn
         self.price = price
+        self.pricing = pricing
 //        self.buy = buy
         self.stock = stock
         self.storage = storage
@@ -62,6 +65,7 @@ extension FabricAPIModel {
         public let name: String?
         public let component: Component
         public let price: Int
+        public let pricing: Int?
         public let buy: Int
         public let location: TypeAPIModel.Location
 //        public let tags: [String]
@@ -72,6 +76,7 @@ extension FabricAPIModel {
             name: String?,
             component: Component,
             price: Int,
+            pricing: Int?,
             buy: Int,
             location: TypeAPIModel.Location,
 //            tags: [String],
@@ -81,6 +86,7 @@ extension FabricAPIModel {
             self.name = name
             self.component = component
             self.price = price
+            self.pricing = pricing
             self.buy = buy
             self.location = location
 //            self.tags = tags
@@ -91,15 +97,18 @@ extension FabricAPIModel {
     
     public struct UpdateRequest: Codable, Hashable {
         public let name: String?
+        public let pricing: Int?
         public let description: String?
         public let note: String?
         
         public init(
             name: String?,
+            pricing: Int?,
             description: String?,
             note: String?
         ) {
             self.name = name
+            self.pricing = pricing
             self.description = description
             self.note = note
         }
@@ -175,6 +184,7 @@ extension FabricAPIModel {
         public let component: Component
         public let sn: String
         public let price: Int
+        public let pricing: Int?
 //        public let buy: Int
         public let stock: Int
         public let storage: [String: Int]
@@ -193,6 +203,7 @@ extension FabricAPIModel {
             component: Component,
             sn: String,
             price: Int,
+            pricing: Int?,
 //            buy: Int,
             stock: Int,
             storage: [String: Int],
@@ -210,6 +221,7 @@ extension FabricAPIModel {
             self.component = component
             self.sn = sn
             self.price = price
+            self.pricing = pricing
 //            self.buy = buy
             self.stock = stock
             self.storage = storage
