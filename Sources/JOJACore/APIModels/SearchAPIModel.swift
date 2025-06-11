@@ -7,9 +7,9 @@
 
 import Foundation
 
-public protocol Searchable: Codable, Hashable {}
+public protocol Searchable: Codable, Hashable, Sendable {}
 
-public struct SearchType: Codable, Hashable {
+public struct SearchType: Codable, Hashable, Sendable {
     /// Member 搜尋類型
     public enum Member: String, Searchable, CaseIterable {
         case name // 姓名
@@ -173,7 +173,7 @@ public struct SearchType: Codable, Hashable {
     }
 }
 
-public struct SearchAPIModel<T>: Codable, Hashable where T: Searchable {
+public struct SearchAPIModel<T>: Codable, Hashable, Sendable where T: Searchable {
     public let key: String
     public let type: [T]
     public let matchAll: Bool

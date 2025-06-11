@@ -1,7 +1,6 @@
-
 import Foundation
 
-public struct CandidateAPIModel: Codable, Hashable {
+public struct CandidateAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
     public let name: String
@@ -37,7 +36,7 @@ public struct CandidateAPIModel: Codable, Hashable {
 }
 
 extension CandidateAPIModel {
-    public struct Request: Codable, Hashable {
+    public struct Request: Codable, Hashable, Sendable {
         public let name: String
         public let phone: String
         public let birthday: String?
@@ -67,7 +66,7 @@ extension CandidateAPIModel {
 }
 
 extension CandidateAPIModel {
-    public struct Response: Codable, Hashable {
+    public struct Response: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String
         public let phone: String
@@ -103,7 +102,7 @@ extension CandidateAPIModel {
 }
 
 extension CandidateAPIModel {
-    public struct ListData: Codable, Hashable {
+    public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String
         public let phone: String

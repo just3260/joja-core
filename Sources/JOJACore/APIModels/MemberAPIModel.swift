@@ -1,7 +1,6 @@
-
 import Foundation
 
-public struct MemberAPIModel: Codable, Hashable {
+public struct MemberAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
     public let name: String
@@ -52,7 +51,7 @@ public struct MemberAPIModel: Codable, Hashable {
 }
 
 extension MemberAPIModel {
-    public struct Request: Codable, Hashable {
+    public struct Request: Codable, Hashable, Sendable {
         public let id: UUID?    // 從 candidate 帶來的 id
         public let name: String
         public let phone: String
@@ -91,7 +90,7 @@ extension MemberAPIModel {
 }
 
 extension MemberAPIModel {
-    public struct Response: Codable, Hashable {
+    public struct Response: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String
         public let phone: String
@@ -142,7 +141,7 @@ extension MemberAPIModel {
 }
 
 extension MemberAPIModel {
-    public struct ListData: Codable, Hashable {
+    public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String
         public let phone: String

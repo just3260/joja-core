@@ -1,7 +1,6 @@
-
 import Foundation
 
-public struct FabricAPIModel: Codable, Hashable {
+public struct FabricAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
     public let name: String?
@@ -61,7 +60,7 @@ public struct FabricAPIModel: Codable, Hashable {
 }
 
 extension FabricAPIModel {
-    public struct Request: Codable, Hashable {
+    public struct Request: Codable, Hashable, Sendable {
         public let name: String?
         public let component: Component
         public let price: Int
@@ -95,7 +94,7 @@ extension FabricAPIModel {
         }
     }
     
-    public struct UpdateRequest: Codable, Hashable {
+    public struct UpdateRequest: Codable, Hashable, Sendable {
         public let name: String?
         public let pricing: Int?
         public let description: String?
@@ -114,7 +113,7 @@ extension FabricAPIModel {
         }
     }
     
-    public struct Component: Codable, Hashable {
+    public struct Component: Codable, Hashable, Sendable {
         public let material: TypeAPIModel.Material
         public let cottonMaterial: TypeAPIModel.CottonMaterial?
         public let age: TypeAPIModel.Age
@@ -136,7 +135,7 @@ extension FabricAPIModel {
         }
     }
     
-    public struct StorageRequest: Codable, Hashable {
+    public struct StorageRequest: Codable, Hashable, Sendable {
         public let price: Int
         public let buy: Int
         public let location: TypeAPIModel.Location
@@ -152,7 +151,7 @@ extension FabricAPIModel {
         }
     }
     
-    public struct StorageUpdatedRequest: Codable, Hashable {
+    public struct StorageUpdatedRequest: Codable, Hashable, Sendable {
         public let source: TypeAPIModel.Location
         public let destination: TypeAPIModel.Location?
         public let amount: Int
@@ -168,7 +167,7 @@ extension FabricAPIModel {
         }
     }
     
-    public struct TagRequest: Codable, Hashable {
+    public struct TagRequest: Codable, Hashable, Sendable {
         public let tags: [String]
         
         public init(
@@ -178,7 +177,7 @@ extension FabricAPIModel {
         }
     }
     
-    public struct Response: Codable, Hashable {
+    public struct Response: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String?
         public let component: Component
@@ -238,7 +237,7 @@ extension FabricAPIModel {
 }
 
 extension FabricAPIModel {
-    public struct ListData: Codable, Hashable {
+    public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String?
         public let sn: String

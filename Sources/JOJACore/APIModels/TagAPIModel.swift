@@ -1,7 +1,6 @@
-
 import Foundation
 
-public struct TagAPIModel: Codable, Hashable {
+public struct TagAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
     public let name: String
@@ -19,7 +18,7 @@ public struct TagAPIModel: Codable, Hashable {
 }
 
 extension TagAPIModel {
-    public struct Request: Codable, Hashable {
+    public struct Request: Codable, Hashable, Sendable {
         public let name: String
         public let description: String?
         
@@ -34,7 +33,7 @@ extension TagAPIModel {
 }
 
 extension TagAPIModel {
-    public struct Response: Codable, Hashable {
+    public struct Response: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String
         public let description: String?

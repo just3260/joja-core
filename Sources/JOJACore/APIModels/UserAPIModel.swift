@@ -1,7 +1,6 @@
-
 import Foundation
 
-public struct PermissionOptions: OptionSet, Codable, Hashable {
+public struct PermissionOptions: OptionSet, Codable, Hashable, Sendable {
     public init(rawValue: Int) {
         self.rawValue = rawValue
     }
@@ -29,10 +28,7 @@ public struct PermissionOptions: OptionSet, Codable, Hashable {
     public static let deleteTag = PermissionOptions(rawValue: 1 << 10) // 1024
 }
 
-
-
-
-public struct UserAPIModel: Codable, Hashable {
+public struct UserAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
     public let username: String
@@ -56,7 +52,7 @@ public struct UserAPIModel: Codable, Hashable {
 }
 
 extension UserAPIModel {
-    public struct Create: Codable, Hashable {
+    public struct Create: Codable, Hashable, Sendable {
         
         public let username: String
         public let email: String
@@ -77,7 +73,7 @@ extension UserAPIModel {
 }
 
 extension UserAPIModel {
-    public struct Public: Codable, Hashable {
+    public struct Public: Codable, Hashable, Sendable {
         public let id: UUID
         public let username: String
         public let email: String

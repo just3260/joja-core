@@ -1,7 +1,6 @@
-
 import Foundation
 
-public struct TradeAPIModel: Codable, Hashable {
+public struct TradeAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
     public let products: [ProductAPIModel]
@@ -31,7 +30,7 @@ public struct TradeAPIModel: Codable, Hashable {
 }
 
 extension TradeAPIModel {
-    public struct Request: Codable, Hashable {
+    public struct Request: Codable, Hashable, Sendable {
         public let id: UUID?
         public let products: [ProductAPIModel.Request]
         public let discount: Int?
@@ -53,7 +52,7 @@ extension TradeAPIModel {
         }
     }
     
-    public struct Response: Codable, Hashable {
+    public struct Response: Codable, Hashable, Sendable {
         public let id: UUID
         public let products: [ProductAPIModel.Response]
         public let amount: Int
@@ -81,7 +80,7 @@ extension TradeAPIModel {
         }
     }
     
-    public struct SimpleTrade: Codable, Hashable {
+    public struct SimpleTrade: Codable, Hashable, Sendable {
         public let id: UUID
         public let amount: Int
         public let note: String?

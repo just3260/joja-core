@@ -1,13 +1,12 @@
-
 import Foundation
 
-public protocol TypeCommon: Codable, CaseIterable, Hashable {
+public protocol TypeCommon: Codable, CaseIterable, Hashable, Sendable {
     static func getKey() -> String
     func getName() -> String
     static func find(from name: String) -> Self?
 }
 
-public struct TypeAPIModel: Codable, Hashable {
+public struct TypeAPIModel: Codable, Hashable, Sendable {
     
     /// 從哪裡知道 JOJA 的？
     public enum WhereToKnow: String, TypeCommon {
@@ -133,7 +132,7 @@ public struct TypeAPIModel: Codable, Hashable {
                     return .in_allyes
                 case "海獸花園":
                     return .yr_wonder_land
-                case "N’trail":
+                case "N'trail":
                     return .n_trail
                 case "紙造可能":
                     return .paper
@@ -185,7 +184,7 @@ public struct TypeAPIModel: Codable, Hashable {
             case .yr_wonder_land:
                 return "海獸花園"
             case .n_trail:
-                return "N’trail"
+                return "N'trail"
             case .paper:
                 return "紙造可能"
             case .st_light:
@@ -208,7 +207,7 @@ public struct TypeAPIModel: Codable, Hashable {
     
     /// 員工
     public enum Employee: String, TypeCommon {
-        case josie // Josie
+        case josie // Josie
         case jn // 黃潔恩
         case yuu // 陳郁
         case yi_fan // 李宜凡
@@ -337,15 +336,27 @@ public struct TypeAPIModel: Codable, Hashable {
             }
         }
 
-        /// 取得商品子類型
-        public func getSubType<T: CaseIterable & RawRepresentable>() -> T.Type {
+        /// 取得商品子類型的名稱列表（更安全的實作）
+        public func getSubTypeNames() -> [String] {
             switch self {
                 case .jojaFabric:
-                    return JojaFabricGoods.self as! T.Type
+                    return JojaFabricGoods.allCases.map { $0.getName() }
                 case .jojaOther:
-                    return JojaOtherGoods.self as! T.Type
+                    return JojaOtherGoods.allCases.map { $0.getName() }
                 case .otherBrand:
-                    return OtherBrandGoods.self as! T.Type
+                    return OtherBrandGoods.allCases.map { $0.getName() }
+            }
+        }
+
+        /// 根據名稱找到對應的子類型
+        public func findSubType(from name: String) -> (any TypeCommon)? {
+            switch self {
+                case .jojaFabric:
+                    return JojaFabricGoods.find(from: name)
+                case .jojaOther:
+                    return JojaOtherGoods.find(from: name)
+                case .otherBrand:
+                    return OtherBrandGoods.find(from: name)
             }
         }
 
@@ -1042,7 +1053,7 @@ public struct TypeAPIModel: Codable, Hashable {
             }
         }
         
-        public static func find(from name: String) -> TypeAPIModel.Size? {
+        public static func find(from name: String) -> Size? {
             return Size.allCases.first { type in
                 type.getName() == name
             }

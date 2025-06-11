@@ -1,7 +1,6 @@
-
 import Foundation
 
-public struct StorageAPIModel: Codable, Hashable {
+public struct StorageAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
     public let name: String
@@ -22,7 +21,7 @@ public struct StorageAPIModel: Codable, Hashable {
 }
 
 extension StorageAPIModel {
-    public struct Request: Codable, Hashable {
+    public struct Request: Codable, Hashable, Sendable {
 //        public let name: String
         public var location: TypeAPIModel.Location
         public let description: String?
@@ -40,7 +39,7 @@ extension StorageAPIModel {
 }
 
 extension StorageAPIModel {
-    public struct Response: Codable, Hashable {
+    public struct Response: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String
         public var location: TypeAPIModel.Location

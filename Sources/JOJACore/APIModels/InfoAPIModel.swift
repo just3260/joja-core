@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct InfoAPIModel: Codable, Hashable {
+public struct InfoAPIModel: Codable, Hashable, Sendable {
     public let version: String
     
     public init(version: String) {

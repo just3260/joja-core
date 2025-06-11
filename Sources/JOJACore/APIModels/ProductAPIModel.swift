@@ -1,7 +1,6 @@
-
 import Foundation
 
-public struct ProductAPIModel: Codable, Hashable {
+public struct ProductAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
     public let fabricId: UUID?
@@ -52,7 +51,7 @@ public struct ProductAPIModel: Codable, Hashable {
 }
 
 extension ProductAPIModel {
-    public struct Request: Codable, Hashable {
+    public struct Request: Codable, Hashable, Sendable {
         
         public let fabricId: UUID?
         public let style: Style
@@ -92,7 +91,7 @@ extension ProductAPIModel {
         }
     }
     
-    public struct Style: Codable, Hashable {
+    public struct Style: Codable, Hashable, Sendable {
         public let brand: TypeAPIModel.Brand
         public let type: TypeAPIModel.ProductType
         public let jojaFabric: TypeAPIModel.JojaFabricGoods?
@@ -131,7 +130,7 @@ extension ProductAPIModel {
 }
 
 extension ProductAPIModel {
-    public struct Response: Codable, Hashable {
+    public struct Response: Codable, Hashable, Sendable {
         
         public let id: UUID
         public let fabricId: UUID?
@@ -180,7 +179,7 @@ extension ProductAPIModel {
 }
 
 extension ProductAPIModel {
-    public struct ListData: Codable, Hashable {
+    public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String?
         public let sn: String
