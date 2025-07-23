@@ -28,6 +28,14 @@ public struct PermissionOptions: OptionSet, Codable, Hashable, Sendable {
     public static let deleteTag = PermissionOptions(rawValue: 1 << 10) // 1024
 }
 
+public struct StatisticsAPIModel: Codable, Hashable, Sendable {
+    public let candidateCount: Int
+    
+    public init(candidateCount: Int = 0) {
+        self.candidateCount = candidateCount
+    }
+}
+
 public struct UserAPIModel: Codable, Hashable, Sendable {
     
     public let id: UUID
@@ -36,16 +44,18 @@ public struct UserAPIModel: Codable, Hashable, Sendable {
     public let isAdmin: Bool
     public let permissions: PermissionOptions
     public let password: String
+    public let statistics: StatisticsAPIModel
     public let createdAt: Date
     public let updatedAt: Date
     
-    public init(id: UUID, username: String, email: String, password: String, isAdmin: Bool, permissions: PermissionOptions, createdAt: Date, updatedAt: Date) {
+    public init(id: UUID, username: String, email: String, password: String, isAdmin: Bool, permissions: PermissionOptions, statistics: StatisticsAPIModel, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.username = username
         self.email = email
         self.password = password
         self.isAdmin = isAdmin
         self.permissions = permissions
+        self.statistics = statistics
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
@@ -79,15 +89,17 @@ extension UserAPIModel {
         public let email: String
         public let isAdmin: Bool
         public let permissions: PermissionOptions
+        public let statistics: StatisticsAPIModel
         public let createdAt: Date
         public let updatedAt: Date
         
-        public init(id: UUID, username: String, email: String, isAdmin: Bool, permissions: PermissionOptions, createdAt: Date, updatedAt: Date) {
+        public init(id: UUID, username: String, email: String, isAdmin: Bool, permissions: PermissionOptions, statistics: StatisticsAPIModel, createdAt: Date, updatedAt: Date) {
             self.id = id
             self.username = username
             self.email = email
             self.isAdmin = isAdmin
             self.permissions = permissions
+            self.statistics = statistics
             self.createdAt = createdAt
             self.updatedAt = updatedAt
         }
