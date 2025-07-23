@@ -30,9 +30,15 @@ public struct PermissionOptions: OptionSet, Codable, Hashable, Sendable {
 
 public struct StatisticsAPIModel: Codable, Hashable, Sendable {
     public let candidateCount: Int
+    public let todayTransactions: Int
+    public let todayRevenue: Int
+    public let monthRevenue: Int
     
-    public init(candidateCount: Int = 0) {
+    public init(candidateCount: Int = 0, todayTransactions: Int = 0, todayRevenue: Int = 0, monthRevenue: Int = 0) {
         self.candidateCount = candidateCount
+        self.todayTransactions = todayTransactions
+        self.todayRevenue = todayRevenue
+        self.monthRevenue = monthRevenue
     }
 }
 
