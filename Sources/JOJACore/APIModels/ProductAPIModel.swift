@@ -126,6 +126,15 @@ extension ProductAPIModel {
             self.otherGoods = nil
             self.size = size
         }
+        
+        public static let sample: ProductAPIModel.Style = .init(
+            brand: .joja,
+            type: .jojaFabric,
+            jojaFabric: .beret,
+            jojaOther: nil,
+            otherGoods: nil,
+            size: .medium
+        )
     }
 }
 
@@ -175,6 +184,22 @@ extension ProductAPIModel {
             self.updatedAt = updatedAt
             self.log = log
         }
+        
+        public static let sample: ProductAPIModel.Response = .init(
+            id: UUID(),
+            fabricId: UUID(),
+            name: "貝蕾帽",
+            sn: "sn-101",
+            component: .sample,
+            style: .sample,
+            price: 1880,
+            storage: .chifeng,
+            note: "備註資料",
+            tradeID: UUID(),
+            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
+            updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
+            log: "log記錄"
+        )
     }
 }
 
@@ -198,6 +223,38 @@ extension ProductAPIModel {
             self.sn = sn
             self.style = style
             self.price = price
+        }
+        
+        public static let sample: ProductAPIModel.ListData = .init(
+            id: UUID(),
+            name: "貝蕾帽",
+            sn: "sn-101",
+            style: .sample,
+            price: 1880
+        )
+        
+        public static func sampleList(page: Int = 1, count: Int = 10) -> [ProductAPIModel.ListData] {
+            return (1...count).map { index in
+                ProductAPIModel.ListData(
+                    id: UUID(),
+                    name: "貝蕾帽-\(index)",
+                    sn: "sn-101-\(index)",
+                    style: .sample,
+                    price: 1880
+                )
+            }
+        }
+        
+        public static func sampleSearchResults(count: Int = 5) -> [ProductAPIModel.ListData] {
+            return (1...count).map { index in
+                ProductAPIModel.ListData(
+                    id: UUID(),
+                    name: "貝蕾帽-\(index)",
+                    sn: "sn-101-\(index)",
+                    style: .sample,
+                    price: 1880
+                )
+            }
         }
     }
 }

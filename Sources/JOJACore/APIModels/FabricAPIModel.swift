@@ -133,6 +133,14 @@ extension FabricAPIModel {
             self.design = design
             self.color = color
         }
+        
+        public static let sample: FabricAPIModel.Component = .init(
+            material: .cotton,
+            cottonMaterial: .japan_plain,
+            age: .new,
+            design: .animal,
+            color: .brown
+        )
     }
     
     public struct StorageRequest: Codable, Hashable, Sendable {
@@ -233,6 +241,25 @@ extension FabricAPIModel {
             self.updatedAt = updatedAt
             self.log = log
         }
+        
+        public static let sample: FabricAPIModel.Response = .init(
+            id: UUID(),
+            name: "日本印花棉布",
+            component: .sample,
+            sn: "sn-101",
+            price: 360,
+            pricing: 1880,
+            stock: 6,
+            storage: [:],
+            tags: [],
+            description: "棉布",
+            note: "備註資料",
+            imageUrl: [],
+            products: [ProductAPIModel.ListData.sample],
+            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
+            updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
+            log: "log記錄"
+        )
     }
 }
 
@@ -256,6 +283,38 @@ extension FabricAPIModel {
             self.sn = sn
             self.component = component
             self.imageUrl = imageUrl
+        }
+        
+        public static let sample: FabricAPIModel.ListData = .init(
+            id: UUID(),
+            name: "日本棉布",
+            sn: "sn-101",
+            component: .sample,
+            imageUrl: "japan.print.com"
+        )
+        
+        public static func sampleList(page: Int = 1, count: Int = 10) -> [FabricAPIModel.ListData] {
+            return (1...count).map { index in
+                FabricAPIModel.ListData(
+                    id: UUID(),
+                    name: "日本棉布",
+                    sn: "sn-101-\(index)",
+                    component: .sample,
+                    imageUrl: "japan.print.\(index).com"
+                )
+            }
+        }
+        
+        public static func sampleSearchResults(count: Int = 5) -> [FabricAPIModel.ListData] {
+            return (1...count).map { index in
+                FabricAPIModel.ListData(
+                    id: UUID(),
+                    name: "日本棉布",
+                    sn: "sn-101-\(index)",
+                    component: .sample,
+                    imageUrl: "japan.print.\(index).com"
+                )
+            }
         }
     }
 }

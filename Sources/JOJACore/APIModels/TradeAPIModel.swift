@@ -89,7 +89,7 @@ extension TradeAPIModel {
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
         )
         
-        static func sampleList(memberId: UUID, count: Int = 3) -> [TradeAPIModel.Response] {
+        public static func sampleList(memberId: UUID, count: Int = 3) -> [TradeAPIModel.Response] {
             return (1...count).map { index in
                 TradeAPIModel.Response(
                     id: UUID(),

@@ -191,7 +191,7 @@ extension MemberAPIModel {
             createdAt: Calendar.current.date(byAdding: .year, value: -2, to: Date()) ?? Date()
         )
         
-        static func sampleList(page: Int = 1, count: Int = 10) -> [MemberAPIModel.ListData] {
+        public static func sampleList(page: Int = 1, count: Int = 10) -> [MemberAPIModel.ListData] {
             return (1...count).map { index in
                 MemberAPIModel.ListData(
                     id: UUID(),
@@ -204,7 +204,7 @@ extension MemberAPIModel {
             }
         }
         
-        static func sampleSearchResults(count: Int = 5) -> [MemberAPIModel.ListData] {
+        public static func sampleSearchResults(count: Int = 5) -> [MemberAPIModel.ListData] {
             return (1...count).map { index in
                 MemberAPIModel.ListData(
                     id: UUID(),
