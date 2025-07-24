@@ -14,7 +14,7 @@ public struct InfoAPIModel: Codable, Hashable, Sendable {
         self.version = version
     }
     
-    static let sample: InfoAPIModel = .init(
+    public static let sample: InfoAPIModel = .init(
         version: "1.2.0"
     )
 }

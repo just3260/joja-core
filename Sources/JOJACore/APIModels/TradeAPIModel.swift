@@ -79,7 +79,7 @@ extension TradeAPIModel {
             self.createdAt = createdAt
         }
         
-        static let sample: TradeAPIModel.Response = .init(
+        public static let sample: TradeAPIModel.Response = .init(
             id: UUID(),
             products: [],
             amount: 16800,

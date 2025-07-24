@@ -138,7 +138,7 @@ extension MemberAPIModel {
             self.trades = trades
         }
         
-        static let sample: MemberAPIModel.Response = .init(
+        public static let sample: MemberAPIModel.Response = .init(
             id: UUID(),
             name: "王大明",
             phone: "0987654321",
@@ -182,7 +182,7 @@ extension MemberAPIModel {
             self.createdAt = createdAt
         }
         
-        static let sample: MemberAPIModel.ListData = .init(
+        public static let sample: MemberAPIModel.ListData = .init(
             id: UUID(),
             name: "王大明",
             phone: "0987654321",

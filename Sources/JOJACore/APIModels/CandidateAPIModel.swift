@@ -99,7 +99,7 @@ extension CandidateAPIModel {
             self.createdAt = createdAt
         }
         
-        static let sample: CandidateAPIModel.Response = .init(
+        public static let sample: CandidateAPIModel.Response = .init(
             id: UUID(),
             name: "張小明",
             phone: "0912345678",
@@ -132,14 +132,14 @@ extension CandidateAPIModel {
             self.createdAt = createdAt
         }
         
-        static let sample: CandidateAPIModel.ListData = .init(
+        public static let sample: CandidateAPIModel.ListData = .init(
             id: UUID(),
             name: "王大明",
             phone: "0912345678",
             createdAt: Calendar.current.date(byAdding: .day, value: -7, to: Date())
         )
         
-        static func sampleList(page: Int = 1, count: Int = 10) -> [CandidateAPIModel.ListData] {
+        public static func sampleList(page: Int = 1, count: Int = 10) -> [CandidateAPIModel.ListData] {
             return (1...count).map { index in
                 CandidateAPIModel.ListData(
                     id: UUID(),
