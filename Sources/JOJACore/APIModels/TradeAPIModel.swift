@@ -78,6 +78,30 @@ extension TradeAPIModel {
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
+        
+        static let sample: TradeAPIModel.Response = .init(
+            id: UUID(),
+            products: [],
+            amount: 16800,
+            note: "Mock 交易記錄",
+            description: "假資料",
+            buyerID: UUID(),
+            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+        )
+        
+        static func sampleList(memberId: UUID, count: Int = 3) -> [TradeAPIModel.Response] {
+            return (1...count).map { index in
+                TradeAPIModel.Response(
+                    id: UUID(),
+                    products: [],
+                    amount: 1680 * index,
+                    note: "Mock 交易記錄 \(index)",
+                    description: "假資料 \(index)",
+                    buyerID: UUID(),
+                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
+                )
+            }
+        }
     }
     
     public struct SimpleTrade: Codable, Hashable, Sendable {

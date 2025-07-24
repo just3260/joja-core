@@ -40,6 +40,13 @@ public struct StatisticsAPIModel: Codable, Hashable, Sendable {
         self.todayRevenue = todayRevenue
         self.monthRevenue = monthRevenue
     }
+    
+    static let sample: StatisticsAPIModel = .init(
+        candidateCount: 3,
+        todayTransactions: 12,
+        todayRevenue: 16800,
+        monthRevenue: 350000
+    )
 }
 
 public struct UserAPIModel: Codable, Hashable, Sendable {
@@ -109,5 +116,16 @@ extension UserAPIModel {
             self.createdAt = createdAt
             self.updatedAt = updatedAt
         }
+        
+        static let sample: UserAPIModel.Public = .init(
+            id: UUID(),
+            username: "test_user",
+            email: "test@example.com",
+            isAdmin: false,
+            permissions: PermissionOptions(rawValue: 37),
+            statistics: .sample,
+            createdAt: Date(),
+            updatedAt: Date()
+        )
     }
 }

@@ -98,6 +98,18 @@ extension CandidateAPIModel {
             self.note = note
             self.createdAt = createdAt
         }
+        
+        static let sample: CandidateAPIModel.Response = .init(
+            id: UUID(),
+            name: "張小明",
+            phone: "0912345678",
+            birthday: Calendar.current.date(byAdding: .year, value: -25, to: Date()),
+            from: .tainan,
+            address: "台北市中正區重慶南路一段122號",
+            email: "zhang@example.com",
+            note: "透過朋友介紹認識，對高品質帽子有興趣",
+            createdAt: Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+        )
     }
 }
 
@@ -118,6 +130,24 @@ extension CandidateAPIModel {
             self.name = name
             self.phone = phone
             self.createdAt = createdAt
+        }
+        
+        static let sample: CandidateAPIModel.ListData = .init(
+            id: UUID(),
+            name: "王大明",
+            phone: "0912345678",
+            createdAt: Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        )
+        
+        static func sampleList(page: Int = 1, count: Int = 10) -> [CandidateAPIModel.ListData] {
+            return (1...count).map { index in
+                CandidateAPIModel.ListData(
+                    id: UUID(),
+                    name: "候選會員 \(index + (page - 1) * count)",
+                    phone: "09\(String(format: "%08d", index + 12345678))",
+                    createdAt: Calendar.current.date(byAdding: .day, value: -index, to: Date())
+                )
+            }
         }
     }
 }
