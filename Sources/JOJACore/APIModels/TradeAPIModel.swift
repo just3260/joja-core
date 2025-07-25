@@ -127,5 +127,14 @@ extension TradeAPIModel {
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
+        
+        public static let sample: TradeAPIModel.SimpleTrade = .init(
+            id: UUID(),
+            amount: 16800,
+            note: "Mock 交易記錄",
+            description: "假資料",
+            buyerID: UUID(),
+            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+        )
     }
 }

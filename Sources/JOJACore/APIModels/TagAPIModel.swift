@@ -47,5 +47,11 @@ extension TagAPIModel {
             self.name = name
             self.description = description
         }
+        
+        public static let sample: TagAPIModel.Response = .init(
+            id: UUID(),
+            name: "sample",
+            description: "測試用 tag"
+        )
     }
 }
