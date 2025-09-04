@@ -93,6 +93,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case shishi
         case mount
         case giants_tiedye
+        case jing_adore
+        case ju_shian
         
         public static func getKey() -> String {
             "brand_type"
@@ -144,6 +146,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return .mount
                 case "巨人染":
                     return .giants_tiedye
+                case "晶晶傾心":
+                    return .jing_adore
+                case "珠暇":
+                    return .ju_shian
                 default:
                     return nil
             }
@@ -195,6 +201,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "山牌"
                 case .giants_tiedye:
                     return "巨人染"
+                case .jing_adore:
+                    return "晶晶傾心"
+                case .ju_shian:
+                    return "珠暇"
             }
         }
         
