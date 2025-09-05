@@ -94,6 +94,8 @@ public struct TypeAPIModel: Codable, Hashable {
         case shishi
         case mount
         case giants_tiedye
+        case jing_adore
+        case ju_shian
         
         public static func getKey() -> String {
             "brand_type"
@@ -145,6 +147,10 @@ public struct TypeAPIModel: Codable, Hashable {
                     return .mount
                 case "巨人染":
                     return .giants_tiedye
+                case "晶晶傾心":
+                    return .jing_adore
+                case "珠暇":
+                    return .ju_shian
                 default:
                     return nil
             }
@@ -152,50 +158,54 @@ public struct TypeAPIModel: Codable, Hashable {
         
         public func getName() -> String {
             switch self {
-            case .joja:
-                return "JOJA"
-            case .yuu:
-                return "YUU YUU LAB"
-            case .feat_yuu:
-                return "JOJA x YUU"
-            case .how_fan:
-                return "好煩小姐"
-            case .feat_howfan:
-                return "JOJA好煩"
-            case .feat_y_art:
-                return "JOJA x Y ART"
-            case .feat_childhood:
-                return "JOJA x CHILDHOOD"
-            case .japan_socks:
-                return "日本襪"
-            case .josie_personal:
-                return "Josie私物"
-            case .marco:
-                return "MARCO"
-            case .vingt_six:
-                return "Vingt Six"
-            case .design_3_14:
-                return "3.14"
-            case .yuguand:
-                return "隅光"
-            case .febbi:
-                return "Febbi"
-            case .in_allyes:
-                return "巷弄"
-            case .yr_wonder_land:
-                return "海獸花園"
-            case .n_trail:
-                return "N’trail"
-            case .paper:
-                return "紙造可能"
-            case .st_light:
-                return "陌光"
-            case .shishi:
-                return "實實"
-            case .mount:
-                return "山牌"
-            case .giants_tiedye:
-                return "巨人染"
+                case .joja:
+                    return "JOJA"
+                case .yuu:
+                    return "YUU YUU LAB"
+                case .feat_yuu:
+                    return "JOJA x YUU"
+                case .how_fan:
+                    return "好煩小姐"
+                case .feat_howfan:
+                    return "JOJA好煩"
+                case .feat_y_art:
+                    return "JOJA x Y ART"
+                case .feat_childhood:
+                    return "JOJA x CHILDHOOD"
+                case .japan_socks:
+                    return "日本襪"
+                case .josie_personal:
+                    return "Josie私物"
+                case .marco:
+                    return "MARCO"
+                case .vingt_six:
+                    return "Vingt Six"
+                case .design_3_14:
+                    return "3.14"
+                case .yuguand:
+                    return "隅光"
+                case .febbi:
+                    return "Febbi"
+                case .in_allyes:
+                    return "巷弄"
+                case .yr_wonder_land:
+                    return "海獸花園"
+                case .n_trail:
+                    return "N’trail"
+                case .paper:
+                    return "紙造可能"
+                case .st_light:
+                    return "陌光"
+                case .shishi:
+                    return "實實"
+                case .mount:
+                    return "山牌"
+                case .giants_tiedye:
+                    return "巨人染"
+                case .jing_adore:
+                    return "晶晶傾心"
+                case .ju_shian:
+                    return "珠暇"
             }
         }
         
