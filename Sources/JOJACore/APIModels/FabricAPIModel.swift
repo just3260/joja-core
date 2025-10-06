@@ -5,7 +5,7 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
     public let id: UUID
     public let name: String?
     public let component: Component
-    public let sn: String
+    public let sku: String
     public let price: Int
     public let pricing: Int?
 //    public let buy: Int
@@ -24,7 +24,7 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
         id: UUID,
         name: String?,
         component: Component,
-        sn: String,
+        sku: String,
         price: Int,
         pricing: Int?,
 //        buy: Int,
@@ -42,7 +42,7 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
         self.id = id
         self.name = name
         self.component = component
-        self.sn = sn
+        self.sku = sku
         self.price = price
         self.pricing = pricing
 //        self.buy = buy
@@ -63,6 +63,7 @@ extension FabricAPIModel {
     public struct Request: Codable, Hashable, Sendable {
         public let name: String?
         public let component: Component
+        public let sku: String
         public let price: Int
         public let pricing: Int?
         public let buy: Int
@@ -74,6 +75,7 @@ extension FabricAPIModel {
         public init(
             name: String?,
             component: Component,
+            sku: String,
             price: Int,
             pricing: Int?,
             buy: Int,
@@ -84,6 +86,7 @@ extension FabricAPIModel {
         ) {
             self.name = name
             self.component = component
+            self.sku = sku
             self.price = price
             self.pricing = pricing
             self.buy = buy
@@ -189,7 +192,7 @@ extension FabricAPIModel {
         public let id: UUID
         public let name: String?
         public let component: Component
-        public let sn: String
+        public let sku: String
         public let price: Int
         public let pricing: Int?
 //        public let buy: Int
@@ -208,7 +211,7 @@ extension FabricAPIModel {
             id: UUID,
             name: String?,
             component: Component,
-            sn: String,
+            sku: String,
             price: Int,
             pricing: Int?,
 //            buy: Int,
@@ -226,7 +229,7 @@ extension FabricAPIModel {
             self.id = id
             self.name = name
             self.component = component
-            self.sn = sn
+            self.sku = sku
             self.price = price
             self.pricing = pricing
 //            self.buy = buy
@@ -246,7 +249,7 @@ extension FabricAPIModel {
             id: UUID(),
             name: "日本印花棉布",
             component: .sample,
-            sn: "sn-101",
+            sku: "sn-101",
             price: 360,
             pricing: 1880,
             stock: 6,
@@ -267,20 +270,20 @@ extension FabricAPIModel {
     public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String?
-        public let sn: String
+        public let sku: String
         public let component: Component
         public let imageUrl: String?
         
         public init(
             id: UUID,
             name: String?,
-            sn: String,
+            sku: String,
             component: Component,
             imageUrl: String?
         ) {
             self.id = id
             self.name = name
-            self.sn = sn
+            self.sku = sku
             self.component = component
             self.imageUrl = imageUrl
         }
@@ -288,7 +291,7 @@ extension FabricAPIModel {
         public static let sample: FabricAPIModel.ListData = .init(
             id: UUID(),
             name: "日本棉布",
-            sn: "sn-101",
+            sku: "sn-101",
             component: .sample,
             imageUrl: "japan.print.com"
         )
@@ -298,7 +301,7 @@ extension FabricAPIModel {
                 FabricAPIModel.ListData(
                     id: UUID(),
                     name: "日本棉布",
-                    sn: "sn-101-\(index)",
+                    sku: "sn-101-\(index)",
                     component: .sample,
                     imageUrl: "japan.print.\(index).com"
                 )
@@ -310,7 +313,7 @@ extension FabricAPIModel {
                 FabricAPIModel.ListData(
                     id: UUID(),
                     name: "日本棉布",
-                    sn: "sn-101-\(index)",
+                    sku: "sn-101-\(index)",
                     component: .sample,
                     imageUrl: "japan.print.\(index).com"
                 )

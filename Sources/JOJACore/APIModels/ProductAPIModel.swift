@@ -5,7 +5,7 @@ public struct ProductAPIModel: Codable, Hashable, Sendable {
     public let id: UUID
     public let fabricId: UUID?
     public let name: String?
-    public let sn: String
+    public let sku: String
     public let component: FabricAPIModel.Component
     public let style: Style
     public let price: Int
@@ -21,7 +21,7 @@ public struct ProductAPIModel: Codable, Hashable, Sendable {
         id: UUID,
         fabricId: UUID?,
         name: String?,
-        sn: String,
+        sku: String,
         component: FabricAPIModel.Component,
         style: Style,
         price: Int,
@@ -36,7 +36,7 @@ public struct ProductAPIModel: Codable, Hashable, Sendable {
         self.id = id
         self.fabricId = fabricId
         self.name = name
-        self.sn = sn
+        self.sku = sku
         self.component = component
         self.style = style
         self.price = price
@@ -144,7 +144,7 @@ extension ProductAPIModel {
         public let id: UUID
         public let fabricId: UUID?
         public let name: String?
-        public let sn: String
+        public let sku: String
         public let component: FabricAPIModel.Component
         public let style: Style
         public let price: Int
@@ -159,7 +159,7 @@ extension ProductAPIModel {
             id: UUID,
             fabricId: UUID?,
             name: String?,
-            sn: String,
+            sku: String,
             component: FabricAPIModel.Component,
             style: Style,
             price: Int,
@@ -173,7 +173,7 @@ extension ProductAPIModel {
             self.id = id
             self.fabricId = fabricId
             self.name = name
-            self.sn = sn
+            self.sku = sku
             self.component = component
             self.style = style
             self.price = price
@@ -189,7 +189,7 @@ extension ProductAPIModel {
             id: UUID(),
             fabricId: UUID(),
             name: "貝蕾帽",
-            sn: "sn-101",
+            sku: "sn-101",
             component: .sample,
             style: .sample,
             price: 1880,
@@ -207,20 +207,20 @@ extension ProductAPIModel {
     public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let name: String?
-        public let sn: String
+        public let sku: String
         public let style: Style
         public let price: Int
         
         public init(
             id: UUID,
             name: String?,
-            sn: String,
+            sku: String,
             style: Style,
             price: Int
         ) {
             self.id = id
             self.name = name
-            self.sn = sn
+            self.sku = sku
             self.style = style
             self.price = price
         }
@@ -228,7 +228,7 @@ extension ProductAPIModel {
         public static let sample: ProductAPIModel.ListData = .init(
             id: UUID(),
             name: "貝蕾帽",
-            sn: "sn-101",
+            sku: "sn-101",
             style: .sample,
             price: 1880
         )
@@ -238,7 +238,7 @@ extension ProductAPIModel {
                 ProductAPIModel.ListData(
                     id: UUID(),
                     name: "貝蕾帽-\(index)",
-                    sn: "sn-101-\(index)",
+                    sku: "sn-101-\(index)",
                     style: .sample,
                     price: 1880
                 )
@@ -250,7 +250,7 @@ extension ProductAPIModel {
                 ProductAPIModel.ListData(
                     id: UUID(),
                     name: "貝蕾帽-\(index)",
-                    sn: "sn-101-\(index)",
+                    sku: "sn-101-\(index)",
                     style: .sample,
                     price: 1880
                 )
