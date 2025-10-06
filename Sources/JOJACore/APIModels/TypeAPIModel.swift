@@ -595,6 +595,31 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func getNames() -> [String] {
+            switch self {
+                case .cotton:
+                    return ["棉布", "棉"]
+                case .linen:
+                    return ["麻"]
+                case .denim:
+                    return ["牛仔布", "牛仔"]
+                case .suit:
+                    return ["西裝料"]
+                case .velvet:
+                    return ["絨布"]
+                case .wool:
+                    return ["毛料"]
+                case .synthetic_fiber:
+                    return ["合成纖維"]
+                case .chiffon:
+                    return ["雪紡紗"]
+                case .silk:
+                    return ["絲"]
+                case .rayon:
+                    return ["嫘縈"]
+            }
+        }
+        
         public func getSerial() -> String {
             switch self {
                 case .cotton:
@@ -622,7 +647,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         
         public static func find(from name: String) -> Material? {
             return Material.allCases.first { type in
-                type.getName() == name
+                type.getNames().contains(name)
             }
         }
     }
@@ -672,6 +697,33 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func getNames() -> [String] {
+            switch self {
+                case .thin_bubble:
+                    return ["薄泡泡棉紗"]
+                case .thick_bubble:
+                    return ["厚泡泡棉紗"]
+                case .wash:
+                    return ["中水洗棉"]
+                case .wrinkle_wash:
+                    return ["皺皺水洗棉"]
+                case .grey:
+                    return ["胚布原色雜點水洗棉"]
+                case .japan_plain:
+                    return ["日本素色棉紗"]
+                case .japan_print:
+                    return ["日本印花棉紗"]
+                case .calico:
+                    return ["印花棉布"]
+                case .thin_canvas:
+                    return ["薄酒袋布"]
+                case .thick_canvas:
+                    return ["厚酒袋布"]
+                case .batik:
+                    return ["美國蠟染布"]
+            }
+        }
+        
         public func getSerial() -> String {
             switch self {
                 case .thin_bubble:
@@ -701,7 +753,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         
         public static func find(from name: String) -> CottonMaterial? {
             return CottonMaterial.allCases.first { type in
-                type.getName() == name
+                type.getNames().contains(name)
             }
         }
     }
@@ -724,6 +776,15 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func getNames() -> [String] {
+            switch self {
+                case .new:
+                    return ["新布", "新"]
+                case .old:
+                    return ["老布", "老"]
+            }
+        }
+        
         public func getSerial() -> String {
             switch self {
                 case .new:
@@ -735,7 +796,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         
         public static func find(from name: String) -> Age? {
             return Age.allCases.first { type in
-                type.getName() == name
+                type.getNames().contains(name)
             }
         }
     }
@@ -800,6 +861,45 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "銀"
                 case .multi_color:
                     return "彩色"
+            }
+        }
+        
+        public func getNames() -> [String] {
+            switch self {
+                case .red:
+                    return ["紅"]
+                case .orange:
+                    return ["橘"]
+                case .yellow:
+                    return ["黃"]
+                case .green:
+                    return ["綠"]
+                case .cyan:
+                    return ["藍綠"]
+                case .blue:
+                    return ["藍"]
+                case .purple:
+                    return ["紫"]
+                case .pink:
+                    return ["粉"]
+                case .peach:
+                    return ["桃"]
+                case .brown:
+                    return ["大地", "大地色"]
+                case .black:
+                    return ["黑"]
+                case .white:
+                    return ["白"]
+                case .beige:
+                    return ["米"]
+                case .grey:
+                    return ["灰"]
+                case .gold:
+                    return ["金"]
+                case .silvery:
+                    return ["銀"]
+                case .multi_color:
+                    return ["彩色", "彩"]
             }
         }
         
@@ -883,7 +983,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         
         public static func find(from name: String) -> Color? {
             return Color.allCases.first { type in
-                type.getName() == name
+                type.getName().contains(name)
             }
         }
     }
@@ -948,6 +1048,43 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func getNames() -> [String] {
+            switch self {
+                case .plain:
+                    return ["素色"]
+                case .gradation:
+                    return ["漸層"]
+                case .block:
+                    return ["色塊"]
+                case .geometry:
+                    return ["幾何"]
+                case .stripe:
+                    return ["條紋"]
+                case .dot:
+                    return ["點點"]
+                case .plaid:
+                    return ["格紋"]
+                case .paisley:
+                    return ["變形蟲"]
+                case .totem:
+                    return ["圖騰"]
+                case .graffiti:
+                    return ["塗鴉"]
+                case .painting:
+                    return ["油畫"]
+                case .watercolor:
+                    return ["水彩"]
+                case .plant:
+                    return ["植物"]
+                case .animal:
+                    return ["動物"]
+                case .festival:
+                    return ["節慶限定"]
+                case .pop:
+                    return ["普普風"]
+            }
+        }
+        
         public func getSerial() -> String {
             switch self {
                 case .plain:
@@ -987,7 +1124,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         
         public static func find(from name: String) -> Design? {
             return Design.allCases.first { type in
-                type.getName() == name
+                type.getName().contains(name)
             }
         }
     }
