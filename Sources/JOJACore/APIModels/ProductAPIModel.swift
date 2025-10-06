@@ -6,7 +6,7 @@ public struct ProductAPIModel: Codable, Hashable {
     public let id: UUID
     public let fabricId: UUID?
     public let name: String?
-    public let sn: String
+    public let sku: String
     public let component: FabricAPIModel.Component
     public let style: Style
     public let price: Int
@@ -22,7 +22,7 @@ public struct ProductAPIModel: Codable, Hashable {
         id: UUID,
         fabricId: UUID?,
         name: String?,
-        sn: String,
+        sku: String,
         component: FabricAPIModel.Component,
         style: Style,
         price: Int,
@@ -37,7 +37,7 @@ public struct ProductAPIModel: Codable, Hashable {
         self.id = id
         self.fabricId = fabricId
         self.name = name
-        self.sn = sn
+        self.sku = sku
         self.component = component
         self.style = style
         self.price = price
@@ -136,7 +136,7 @@ extension ProductAPIModel {
         public let id: UUID
         public let fabricId: UUID?
         public let name: String?
-        public let sn: String
+        public let sku: String
         public let component: FabricAPIModel.Component
         public let style: Style
         public let price: Int
@@ -151,7 +151,7 @@ extension ProductAPIModel {
             id: UUID,
             fabricId: UUID?,
             name: String?,
-            sn: String,
+            sku: String,
             component: FabricAPIModel.Component,
             style: Style,
             price: Int,
@@ -165,7 +165,7 @@ extension ProductAPIModel {
             self.id = id
             self.fabricId = fabricId
             self.name = name
-            self.sn = sn
+            self.sku = sku
             self.component = component
             self.style = style
             self.price = price
@@ -183,20 +183,20 @@ extension ProductAPIModel {
     public struct ListData: Codable, Hashable {
         public let id: UUID
         public let name: String?
-        public let sn: String
+        public let sku: String
         public let style: Style
         public let price: Int
         
         public init(
             id: UUID,
             name: String?,
-            sn: String,
+            sku: String,
             style: Style,
             price: Int
         ) {
             self.id = id
             self.name = name
-            self.sn = sn
+            self.sku = sku
             self.style = style
             self.price = price
         }

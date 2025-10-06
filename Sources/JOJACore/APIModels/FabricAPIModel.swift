@@ -6,7 +6,7 @@ public struct FabricAPIModel: Codable, Hashable {
     public let id: UUID
     public let name: String?
     public let component: Component
-    public let sn: String
+    public let sku: String
     public let price: Int
     public let pricing: Int?
 //    public let buy: Int
@@ -25,7 +25,7 @@ public struct FabricAPIModel: Codable, Hashable {
         id: UUID,
         name: String?,
         component: Component,
-        sn: String,
+        sku: String,
         price: Int,
         pricing: Int?,
 //        buy: Int,
@@ -43,7 +43,7 @@ public struct FabricAPIModel: Codable, Hashable {
         self.id = id
         self.name = name
         self.component = component
-        self.sn = sn
+        self.sku = sku
         self.price = price
         self.pricing = pricing
 //        self.buy = buy
@@ -64,6 +64,7 @@ extension FabricAPIModel {
     public struct Request: Codable, Hashable {
         public let name: String?
         public let component: Component
+        public let sku: String
         public let price: Int
         public let pricing: Int?
         public let buy: Int
@@ -71,20 +72,24 @@ extension FabricAPIModel {
 //        public let tags: [String]
         public let description: String?
         public let note: String?
+        public let imageUrl: [String]?
         
         public init(
             name: String?,
             component: Component,
+            sku: String,
             price: Int,
             pricing: Int?,
             buy: Int,
             location: TypeAPIModel.Location,
 //            tags: [String],
             description: String?,
-            note: String?
+            note: String?,
+            imageUrl: [String]?
         ) {
             self.name = name
             self.component = component
+            self.sku = sku
             self.price = price
             self.pricing = pricing
             self.buy = buy
@@ -92,6 +97,7 @@ extension FabricAPIModel {
 //            self.tags = tags
             self.description = description
             self.note = note
+            self.imageUrl = imageUrl
         }
     }
     
@@ -182,7 +188,7 @@ extension FabricAPIModel {
         public let id: UUID
         public let name: String?
         public let component: Component
-        public let sn: String
+        public let sku: String
         public let price: Int
         public let pricing: Int?
 //        public let buy: Int
@@ -201,7 +207,7 @@ extension FabricAPIModel {
             id: UUID,
             name: String?,
             component: Component,
-            sn: String,
+            sku: String,
             price: Int,
             pricing: Int?,
 //            buy: Int,
@@ -219,7 +225,7 @@ extension FabricAPIModel {
             self.id = id
             self.name = name
             self.component = component
-            self.sn = sn
+            self.sku = sku
             self.price = price
             self.pricing = pricing
 //            self.buy = buy
@@ -241,20 +247,20 @@ extension FabricAPIModel {
     public struct ListData: Codable, Hashable {
         public let id: UUID
         public let name: String?
-        public let sn: String
+        public let sku: String
         public let component: Component
         public let imageUrl: String?
         
         public init(
             id: UUID,
             name: String?,
-            sn: String,
+            sku: String,
             component: Component,
             imageUrl: String?
         ) {
             self.id = id
             self.name = name
-            self.sn = sn
+            self.sku = sku
             self.component = component
             self.imageUrl = imageUrl
         }
