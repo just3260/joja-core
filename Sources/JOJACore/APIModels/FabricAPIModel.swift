@@ -120,19 +120,19 @@ extension FabricAPIModel {
         }
     }
     
-    public struct Component: Codable, Hashable {
-        public let material: TypeAPIModel.Material
-        public let cottonMaterial: TypeAPIModel.CottonMaterial?
-        public let age: TypeAPIModel.Age
-        public let design: TypeAPIModel.Design
-        public let color: TypeAPIModel.Color
+    public struct Component: Codable, Hashable, Sendable {
+        public let material: [TypeAPIModel.Material]
+        public let cottonMaterial: [TypeAPIModel.CottonMaterial]?
+        public let age: [TypeAPIModel.Age]
+        public let design: [TypeAPIModel.Design]
+        public let color: [TypeAPIModel.Color]
         
         public init(
-            material: TypeAPIModel.Material,
-            cottonMaterial: TypeAPIModel.CottonMaterial?,
-            age: TypeAPIModel.Age,
-            design: TypeAPIModel.Design,
-            color: TypeAPIModel.Color
+            material: [TypeAPIModel.Material],
+            cottonMaterial: [TypeAPIModel.CottonMaterial]?,
+            age: [TypeAPIModel.Age],
+            design: [TypeAPIModel.Design],
+            color: [TypeAPIModel.Color]
         ) {
             self.material = material
             self.cottonMaterial = cottonMaterial
