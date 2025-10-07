@@ -71,6 +71,7 @@ extension FabricAPIModel {
 //        public let tags: [String]
         public let description: String?
         public let note: String?
+        public let imageUrl: [String]?
         
         public init(
             name: String?,
@@ -82,7 +83,8 @@ extension FabricAPIModel {
             location: TypeAPIModel.Location,
 //            tags: [String],
             description: String?,
-            note: String?
+            note: String?,
+            imageUrl: [String]?
         ) {
             self.name = name
             self.component = component
@@ -94,6 +96,7 @@ extension FabricAPIModel {
 //            self.tags = tags
             self.description = description
             self.note = note
+            self.imageUrl = imageUrl
         }
     }
     
