@@ -1,7 +1,7 @@
 
 import Foundation
 
-public protocol TypeCommon: Codable, CaseIterable, Hashable {
+public protocol TypeCommon: Codable, CaseIterable, Hashable, Sendable {
     static func getKey() -> String
     func getName() -> String
     static func find(from name: String) -> Self?
