@@ -807,8 +807,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case orange // 橘色
         case yellow // 黃色
         case green // 綠色
-        case cyan // 藍綠色
         case blue // 藍色
+        case cyan // 藍綠色
         case purple // 紫色
         case pink // 粉色
         case peach // 桃色
@@ -835,10 +835,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "黃"
                 case .green:
                     return "綠"
-                case .cyan:
-                    return "藍綠"
                 case .blue:
                     return "藍"
+                case .cyan:
+                    return "藍綠"
                 case .purple:
                     return "紫"
                 case .pink:
@@ -874,10 +874,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return ["黃"]
                 case .green:
                     return ["綠"]
-                case .cyan:
-                    return ["藍綠"]
                 case .blue:
                     return ["藍"]
+                case .cyan:
+                    return ["藍綠"]
                 case .purple:
                     return ["紫"]
                 case .pink:
@@ -913,10 +913,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "3" // 黃
                 case .green:
                     return "4" // 綠
-                case .cyan:
-                    return "5" // 藍綠
                 case .blue:
-                    return "6" // 藍
+                    return "5" // 藍
+                case .cyan:
+                    return "6" // 藍綠
                 case .purple:
                     return "7" // 紫
                 case .pink:
@@ -952,10 +952,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "#ffd100"
                 case .green:
                     return "#578e24"
-                case .cyan:
-                    return "#1AA1B0"
                 case .blue:
                     return "#25449d"
+                case .cyan:
+                    return "#1AA1B0"
                 case .purple:
                     return "#6547AA"
                 case .pink:
