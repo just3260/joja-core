@@ -580,6 +580,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case chiffon // 雪紡紗
         case silk // 絲
         case rayon // 嫘縈
+        case splicing // 拼接款
         
         public static func getKey() -> String {
             "material_type"
@@ -607,6 +608,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "絲"
                 case .rayon:
                     return "嫘縈"
+                case .splicing:
+                    return "拼接款"
             }
         }
         
@@ -632,6 +635,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return ["絲"]
                 case .rayon:
                     return ["嫘縈"]
+                case .splicing:
+                    return ["拼接款"]
             }
         }
         
@@ -657,6 +662,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "9" // 絲
                 case .rayon:
                     return "A" // 嫘縈
+                case .splicing:
+                    return "B" // 拼接款
             }
         }
         
