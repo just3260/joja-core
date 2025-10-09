@@ -730,7 +730,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                 case .wrinkle_wash:
                     return ["皺皺水洗棉"]
                 case .grey:
-                    return ["胚布原色雜點水洗棉"]
+                    return ["胚布原色雜點水洗棉", "原胚水洗棉"]
                 case .japan_plain:
                     return ["日本素色棉紗"]
                 case .japan_print:
