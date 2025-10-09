@@ -274,6 +274,7 @@ extension FabricAPIModel {
         public let id: UUID
         public let name: String?
         public let sku: String
+        public let stock: Int
         public let component: Component
         public let imageUrl: String?
         
@@ -281,12 +282,14 @@ extension FabricAPIModel {
             id: UUID,
             name: String?,
             sku: String,
+            stock: Int,
             component: Component,
             imageUrl: String?
         ) {
             self.id = id
             self.name = name
             self.sku = sku
+            self.stock = stock
             self.component = component
             self.imageUrl = imageUrl
         }
@@ -295,6 +298,7 @@ extension FabricAPIModel {
             id: UUID(),
             name: "日本棉布",
             sku: "sn-101",
+            stock: 3,
             component: .sample,
             imageUrl: "japan.print.com"
         )
@@ -305,6 +309,7 @@ extension FabricAPIModel {
                     id: UUID(),
                     name: "日本棉布",
                     sku: "sn-101-\(index)",
+                    stock: 2,
                     component: .sample,
                     imageUrl: "japan.print.\(index).com"
                 )
@@ -317,6 +322,7 @@ extension FabricAPIModel {
                     id: UUID(),
                     name: "日本棉布",
                     sku: "sn-101-\(index)",
+                    stock: 2,
                     component: .sample,
                     imageUrl: "japan.print.\(index).com"
                 )

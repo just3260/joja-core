@@ -64,7 +64,7 @@ public struct SearchType: Codable, Hashable, Sendable {
         case age // 布料年代
         case design // 花色
         case color // 顏色
-        case sn // 布料編號
+        case sku // 布料編號
         case storage // 存放位置
         case tag // tag
         case note // 備註
@@ -89,7 +89,7 @@ public struct SearchType: Codable, Hashable, Sendable {
                 return "花色"
             case .color:
                 return "顏色"
-            case .sn:
+            case .sku:
                 return "布料編號"
             case .storage:
                 return "存放位置"
@@ -119,7 +119,7 @@ public struct SearchType: Codable, Hashable, Sendable {
         case age // 布料年代
         case design // 花色
         case color // 顏色
-        case sn // 商品編號
+        case sku // 商品編號
         case storage // 存放位置
         case tag // tag
         case note // 備註
@@ -156,7 +156,7 @@ public struct SearchType: Codable, Hashable, Sendable {
                     return "花色"
                 case .color:
                     return "顏色"
-                case .sn:
+                case .sku:
                     return "布料編號"
                 case .storage:
                     return "存放位置"
