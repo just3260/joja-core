@@ -9,8 +9,8 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
     public let price: Int
     public let pricing: Int?
 //    public let buy: Int
-    public let stock: Int
-    public let storage: [String: Int]
+    public let stock: Double
+    public let storage: [String: Double]
     public let tags: [String]
     public let description: String?
     public let note: String?
@@ -28,8 +28,8 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
         price: Int,
         pricing: Int?,
 //        buy: Int,
-        stock: Int,
-        storage: [String: Int],
+        stock: Double,
+        storage: [String: Double],
         tags: [String],
         description: String?,
         note: String?,
@@ -66,7 +66,7 @@ extension FabricAPIModel {
         public let sku: String
         public let price: Int
         public let pricing: Int?
-        public let buy: Int
+        public let buy: Double
         public let location: TypeAPIModel.Location
 //        public let tags: [String]
         public let description: String?
@@ -79,7 +79,7 @@ extension FabricAPIModel {
             sku: String,
             price: Int,
             pricing: Int?,
-            buy: Int,
+            buy: Double,
             location: TypeAPIModel.Location,
 //            tags: [String],
             description: String?,
@@ -151,12 +151,12 @@ extension FabricAPIModel {
     
     public struct StorageRequest: Codable, Hashable, Sendable {
         public let price: Int
-        public let buy: Int
+        public let buy: Double
         public let location: TypeAPIModel.Location
         
         public init(
             price: Int,
-            buy: Int,
+            buy: Double,
             location: TypeAPIModel.Location
         ) {
             self.price = price
@@ -168,12 +168,12 @@ extension FabricAPIModel {
     public struct StorageUpdatedRequest: Codable, Hashable, Sendable {
         public let source: TypeAPIModel.Location
         public let destination: TypeAPIModel.Location?
-        public let amount: Int
+        public let amount: Double
         
         public init(
             source: TypeAPIModel.Location,
             destination: TypeAPIModel.Location?,
-            amount: Int
+            amount: Double
         ) {
             self.source = source
             self.destination = destination
@@ -199,8 +199,8 @@ extension FabricAPIModel {
         public let price: Int
         public let pricing: Int?
 //        public let buy: Int
-        public let stock: Int
-        public let storage: [String: Int]
+        public let stock: Double
+        public let storage: [String: Double]
         public let tags: [String]
         public let description: String?
         public let note: String?
@@ -218,8 +218,8 @@ extension FabricAPIModel {
             price: Int,
             pricing: Int?,
 //            buy: Int,
-            stock: Int,
-            storage: [String: Int],
+            stock: Double,
+            storage: [String: Double],
             tags: [String],
             description: String?,
             note: String?,
@@ -274,7 +274,7 @@ extension FabricAPIModel {
         public let id: UUID
         public let name: String?
         public let sku: String
-        public let stock: Int
+        public let stock: Double
         public let component: Component
         public let imageUrl: String?
         
@@ -282,7 +282,7 @@ extension FabricAPIModel {
             id: UUID,
             name: String?,
             sku: String,
-            stock: Int,
+            stock: Double,
             component: Component,
             imageUrl: String?
         ) {

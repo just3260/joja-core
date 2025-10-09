@@ -95,6 +95,9 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case giants_tiedye
         case jing_adore
         case ju_shian
+        case temp1
+        case temp2
+        case temp3
         
         public static func getKey() -> String {
             "brand_type"
@@ -150,6 +153,12 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return .jing_adore
                 case "珠暇":
                     return .ju_shian
+                case "品牌-A":
+                    return .temp1
+                case "品牌-B":
+                    return .temp2
+                case "品牌-C":
+                    return .temp3
                 default:
                     return nil
             }
@@ -205,6 +214,12 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "晶晶傾心"
                 case .ju_shian:
                     return "珠暇"
+                case .temp1:
+                    return "品牌-A"
+                case .temp2:
+                    return "品牌-B"
+                case .temp3:
+                    return "品牌-C"
             }
         }
         
@@ -1141,6 +1156,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case storeasy // 收多易
         case process // 製作中
         case finish // 製作完成
+        case unknown // 未知..
         
         public static func getKey() -> String {
             "location_type"
@@ -1168,6 +1184,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "製作中"
                 case .finish:
                     return "製作完成"
+                case .unknown:
+                    return "未知"
             }
         }
         
