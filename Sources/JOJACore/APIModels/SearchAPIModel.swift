@@ -56,6 +56,28 @@ public struct SearchType: Codable, Hashable, Sendable {
         }
     }
     
+    public struct ComponentFilters: Codable, Hashable, Sendable {
+        public let materials: [TypeAPIModel.Material]?
+        public let cottonMaterials: [TypeAPIModel.CottonMaterial]?
+        public let ages: [TypeAPIModel.Age]?
+        public let designs: [TypeAPIModel.Design]?
+        public let colors: [TypeAPIModel.Color]?
+
+        public init(
+            materials: [TypeAPIModel.Material]? = nil,
+            cottonMaterials: [TypeAPIModel.CottonMaterial]? = nil,
+            ages: [TypeAPIModel.Age]? = nil,
+            designs: [TypeAPIModel.Design]? = nil,
+            colors: [TypeAPIModel.Color]? = nil
+        ) {
+            self.materials = materials
+            self.cottonMaterials = cottonMaterials
+            self.ages = ages
+            self.designs = designs
+            self.colors = colors
+        }
+    }
+    
     /// Fabric 搜尋類型
     public enum Fabric: String, Searchable, CaseIterable {
         case name // 名稱
@@ -170,6 +192,60 @@ public struct SearchType: Codable, Hashable, Sendable {
                     return "最後更新日期"
             }
         }
+    }
+}
+
+public struct FabricSearchRequest: Searchable {
+    public enum KeywordField: String, Codable, Hashable, CaseIterable {
+        case name
+        case sku
+        case description
+        case note
+
+        public var displayName: String {
+            switch self {
+                case .name: return "名稱"
+                case .sku: return "布料編號"
+                case .description: return "描述"
+                case .note: return "備註"
+            }
+        }
+    }
+    /// 關鍵字搜尋欄位，支援多選
+    public let keywordFields: [KeywordField]?
+    /// 材質/年份/顏色/花色...進階條件
+    public let componentFilters: SearchType.ComponentFilters?
+    /// 多倉庫位置篩選
+    public let storageLocations: [TypeAPIModel.Location]?
+    /// 標籤多選
+    public let tags: [String]?
+    /// 建立日期範圍
+    public let createdAtRange: ClosedRange<Date>?
+    /// 更新日期範圍
+    public let updatedAtRange: ClosedRange<Date>?
+    /// 價格區間
+    public let priceRange: ClosedRange<Int>?
+    /// 庫存區間
+    public let stockRange: ClosedRange<Double>?
+
+    public init(
+        keywordFields: [KeywordField]? = nil,
+        componentFilters: SearchType.ComponentFilters? = nil,
+        storageLocations: [TypeAPIModel.Location]? = nil,
+        tags: [String]? = nil,
+        createdAtRange: ClosedRange<Date>? = nil,
+        updatedAtRange: ClosedRange<Date>? = nil,
+        priceRange: ClosedRange<Int>? = nil,
+        stockRange: ClosedRange<Double>? = nil
+    ) {
+        self.keywordFields = keywordFields
+        self.componentFilters = componentFilters
+        self.storageLocations = storageLocations
+        self.tags = tags
+        self.createdAtRange = createdAtRange
+        self.updatedAtRange = updatedAtRange
+        self.priceRange = priceRange
+        self.stockRange = stockRange
     }
 }
 
