@@ -3,6 +3,7 @@ import Foundation
 public protocol TypeCommon: Codable, CaseIterable, Hashable, Sendable {
     static func getKey() -> String
     func getName() -> String
+    func displayName() -> String
     static func find(from name: String) -> Self?
 }
 
@@ -30,6 +31,39 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
         
         public func getName() -> String {
+            switch self {
+                case .taipei:
+                    return "JOJA台北赤峰"
+                case .tainan:
+                    return "JOJA台南店"
+                case .fb:
+                    return "Facebook"
+                case .ig:
+                    return "Instagram"
+                case .market:
+                    return "市集"
+                case .search:
+                    return "網路搜尋"
+                case .friend:
+                    return "親友介紹"
+                case .pinkoi:
+                    return "Pinkoi"
+                case .eslite:
+                    return "誠品"
+                case .qsquare:
+                    return "京站"
+                case .jccac:
+                    return "JCCAC - 香港賽馬協會"
+                case .goyoung:
+                    return "古漾"
+                case .treasureHill:
+                    return "寶藏巖國際藝術村"
+                case .consignmentShop:
+                    return "寄賣店"
+            }
+        }
+        
+        public func displayName() -> String {
             switch self {
                 case .taipei:
                     return "JOJA台北赤峰"
@@ -223,6 +257,65 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func displayName() -> String {
+            switch self {
+                case .joja:
+                    return "JOJA"
+                case .yuu:
+                    return "YUU YUU LAB"
+                case .feat_yuu:
+                    return "JOJA x YUU"
+                case .how_fan:
+                    return "好煩小姐"
+                case .feat_howfan:
+                    return "JOJA好煩"
+                case .feat_y_art:
+                    return "JOJA x Y ART"
+                case .feat_childhood:
+                    return "JOJA x CHILDHOOD"
+                case .japan_socks:
+                    return "日本襪"
+                case .josie_personal:
+                    return "Josie私物"
+                case .marco:
+                    return "MARCO"
+                case .vingt_six:
+                    return "Vingt Six"
+                case .design_3_14:
+                    return "3.14"
+                case .yuguand:
+                    return "隅光"
+                case .febbi:
+                    return "Febbi"
+                case .in_allyes:
+                    return "巷弄"
+                case .yr_wonder_land:
+                    return "海獸花園"
+                case .n_trail:
+                    return "N'trail"
+                case .paper:
+                    return "紙造可能"
+                case .st_light:
+                    return "陌光"
+                case .shishi:
+                    return "實實"
+                case .mount:
+                    return "山牌"
+                case .giants_tiedye:
+                    return "巨人染"
+                case .jing_adore:
+                    return "晶晶傾心"
+                case .ju_shian:
+                    return "珠暇"
+                case .temp1:
+                    return "品牌-A"
+                case .temp2:
+                    return "品牌-B"
+                case .temp3:
+                    return "品牌-C"
+            }
+        }
+        
         public static func find(from name: String) -> Brand? {
             return Brand.allCases.first { type in
                 type.getName() == name
@@ -248,6 +341,31 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
         
         public func getName() -> String {
+            switch self {
+                case .josie:
+                    return "Josie"
+                case .jn:
+                    return "黃潔恩"
+                case .yuu:
+                    return "陳郁"
+                case .yi_fan:
+                    return "李宜凡"
+                case .mini:
+                    return "Mini"
+                case .jiajie:
+                    return "家婕"
+                case .tian:
+                    return "內田"
+                case .du:
+                    return "小杜"
+                case .xing:
+                    return "阿心"
+                case .andrew:
+                    return "Andrew"
+            }
+        }
+        
+        public func displayName() -> String {
             switch self {
                 case .josie:
                     return "Josie"
@@ -333,6 +451,39 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func displayName() -> String {
+            switch self {
+                case .cash:
+                    return "現金"
+                case .remittance:
+                    return "匯款"
+                case .jkos_pay:
+                    return "街口支付"
+                case .credit_card:
+                    return "實體信用卡"
+                case .apply_pay:
+                    return "Apple pay"
+                case .google_pay:
+                    return "Google pay"
+                case .line_pay:
+                    return "Line PAY"
+                case .insto:
+                    return "insto 國內"
+                case .insto_foreign:
+                    return "insto 國外"
+                case .ali_pay:
+                    return "支付寶"
+                case .payme:
+                    return "PayMe"
+                case .wechat:
+                    return "微信支付"
+                case .stimulus_voucher:
+                    return "振興券"
+                case .coupons:
+                    return "折價券"
+            }
+        }
+        
         public static func find(from name: String) -> Transaction? {
             return Transaction.allCases.first { type in
                 type.getName() == name
@@ -351,6 +502,17 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
         
         public func getName() -> String {
+            switch self {
+                case .jojaFabric:
+                    return "JOJA 布料商品"
+                case .jojaOther:
+                    return "JOJA 其他商品"
+                case .otherBrand:
+                    return "寄賣商品"
+            }
+        }
+        
+        public func displayName() -> String {
             switch self {
                 case .jojaFabric:
                     return "JOJA 布料商品"
@@ -414,6 +576,39 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
         
         public func getName() -> String {
+            switch self {
+                case .beret:
+                    return "貝蕾"
+                case .newsboy:
+                    return "報童"
+                case .bucket_hat:
+                    return "漁夫"
+                case .sun:
+                    return "太陽"
+                case .flower:
+                    return "花形"
+                case .lady:
+                    return "淑女"
+                case .flat:
+                    return "小平頂"
+                case .bigFlat:
+                    return "大平頂"
+                case .scarf:
+                    return "領巾"
+                case .square:
+                    return "方巾"
+                case .headbands:
+                    return "髮帶"
+                case .bucket_Bag:
+                    return "水桶包"
+                case .tote_bag:
+                    return "托特包"
+                case .skirt:
+                    return "裙"
+            }
+        }
+        
+        public func displayName() -> String {
             switch self {
                 case .beret:
                     return "貝蕾"
@@ -518,6 +713,23 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func displayName() -> String {
+            switch self {
+                case .clip_earrings:
+                    return "釦耳環"
+                case .clip_ring:
+                    return "釦戒指"
+                case .ring:
+                    return "素戒"
+                case .pin:
+                    return "別針"
+                case .bag_frame:
+                    return "口金包"
+                case .other:
+                    return "其他"
+            }
+        }
+        
         public static func find(from name: String) -> JojaOtherGoods? {
             return JojaOtherGoods.allCases.first { type in
                 type.getName() == name
@@ -541,6 +753,27 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
         
         public func getName() -> String {
+            switch self {
+                case .clip_earrings:
+                    return "夾式耳環"
+                case .pin_earrings:
+                    return "針式耳環"
+                case .mask_chain:
+                    return "口罩鍊"
+                case .necklace:
+                    return "項鍊"
+                case .bracelet:
+                    return "手鍊"
+                case .pin:
+                    return "別針"
+                case .ring:
+                    return "戒指"
+                case .other:
+                    return "其他"
+            }
+        }
+        
+        public func displayName() -> String {
             switch self {
                 case .clip_earrings:
                     return "夾式耳環"
@@ -610,6 +843,33 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "嫘縈"
                 case .splicing:
                     return "拼接款"
+            }
+        }
+        
+        public func displayName() -> String {
+            switch self {
+                case .cotton:
+                    return "棉"
+                case .linen:
+                    return "麻"
+                case .denim:
+                    return "牛仔"
+                case .suit:
+                    return "西裝"
+                case .velvet:
+                    return "絨"
+                case .wool:
+                    return "毛"
+                case .synthetic_fiber:
+                    return "合纖"
+                case .chiffon:
+                    return "雪紡"
+                case .silk:
+                    return "絲"
+                case .rayon:
+                    return "嫘縈"
+                case .splicing:
+                    return "拼接"
             }
         }
         
@@ -719,6 +979,33 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func displayName() -> String {
+            switch self {
+                case .thin_bubble:
+                    return "薄泡泡"
+                case .thick_bubble:
+                    return "厚泡泡"
+                case .wash:
+                    return "中水洗"
+                case .wrinkle_wash:
+                    return "皺皺棉"
+                case .grey:
+                    return "胚布"
+                case .japan_plain:
+                    return "🇯🇵素紗"
+                case .japan_print:
+                    return "🇯🇵印花紗"
+                case .calico:
+                    return "印花棉"
+                case .thin_canvas:
+                    return "薄酒袋"
+                case .thick_canvas:
+                    return "厚酒袋"
+                case .batik:
+                    return "🇺🇸蠟染"
+            }
+        }
+        
         public func getNames() -> [String] {
             switch self {
                 case .thin_bubble:
@@ -798,6 +1085,15 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func displayName() -> String {
+            switch self {
+                case .new:
+                    return "新"
+                case .old:
+                    return "老"
+            }
+        }
+        
         public func getNames() -> [String] {
             switch self {
                 case .new:
@@ -848,6 +1144,45 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
         
         public func getName() -> String {
+            switch self {
+                case .red:
+                    return "紅"
+                case .orange:
+                    return "橘"
+                case .yellow:
+                    return "黃"
+                case .green:
+                    return "綠"
+                case .blue:
+                    return "藍"
+                case .cyan:
+                    return "藍綠"
+                case .purple:
+                    return "紫"
+                case .pink:
+                    return "粉"
+                case .peach:
+                    return "桃"
+                case .brown:
+                    return "大地"
+                case .black:
+                    return "黑"
+                case .white:
+                    return "白"
+                case .beige:
+                    return "米"
+                case .grey:
+                    return "灰"
+                case .gold:
+                    return "金"
+                case .silvery:
+                    return "銀"
+                case .multi_color:
+                    return "彩色"
+            }
+        }
+        
+        public func displayName() -> String {
             switch self {
                 case .red:
                     return "紅"
@@ -1070,6 +1405,43 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func displayName() -> String {
+            switch self {
+                case .plain:
+                    return "素色"
+                case .gradation:
+                    return "漸層"
+                case .block:
+                    return "色塊"
+                case .geometry:
+                    return "幾何"
+                case .stripe:
+                    return "條紋"
+                case .dot:
+                    return "點點"
+                case .plaid:
+                    return "格紋"
+                case .paisley:
+                    return "變形蟲"
+                case .totem:
+                    return "圖騰"
+                case .graffiti:
+                    return "塗鴉"
+                case .painting:
+                    return "油畫"
+                case .watercolor:
+                    return "水彩"
+                case .plant:
+                    return "植物"
+                case .animal:
+                    return "動物"
+                case .festival:
+                    return "節慶限定"
+                case .pop:
+                    return "普普風"
+            }
+        }
+        
         public func getNames() -> [String] {
             switch self {
                 case .plain:
@@ -1196,6 +1568,33 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func displayName() -> String {
+            switch self {
+                case .chifeng:
+                    return "赤峰店"
+                case .chifengStorage:
+                    return "赤峰倉庫"
+                case .taipeiHome:
+                    return "台北家"
+                case .tainan:
+                    return "台南店"
+                case .tainanStorage:
+                    return "台南倉庫"
+                case .daxi:
+                    return "大溪"
+                case .aunt:
+                    return "阿姨家"
+                case .storeasy:
+                    return "收多易"
+                case .process:
+                    return "製作中"
+                case .finish:
+                    return "製作完成"
+                case .unknown:
+                    return "未知"
+            }
+        }
+        
         public static func find(from name: String) -> Location? {
             return Location.allCases.first { type in
                 type.getName() == name
@@ -1220,6 +1619,29 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
         
         public func getName() -> String {
+            switch self {
+                case .freeSize:
+                    return "F"
+                case .extraSmall:
+                    return "XS"
+                case .small:
+                    return "S"
+                case .medium:
+                    return "M"
+                case .large:
+                    return "L"
+                case .short:
+                    return "Short"
+                case .long:
+                    return "Long"
+                case .narrow:
+                    return "Narrow"
+                case .wide:
+                    return "Wide"
+            }
+        }
+        
+        public func displayName() -> String {
             switch self {
                 case .freeSize:
                     return "F"
