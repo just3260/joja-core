@@ -63,7 +63,7 @@ extension FabricAPIModel {
     public struct Request: Codable, Hashable, Sendable {
         public let name: String?
         public let component: Component
-        public let sku: String
+        public let sku: String?
         public let price: Int
         public let pricing: Int?
         public let buy: Double
@@ -76,7 +76,7 @@ extension FabricAPIModel {
         public init(
             name: String?,
             component: Component,
-            sku: String,
+            sku: String?,
             price: Int,
             pricing: Int?,
             buy: Double,

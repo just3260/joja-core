@@ -1670,4 +1670,45 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
     }
+    
+    /// 商品狀態
+    public enum InventoryStatus: String, TypeCommon {
+        case available      // 可售
+        case reserved       // 已保留（客製化訂單）
+        case sold          // 已售出
+        case defective     // 瑕疵品
+        case display       // 展示品
+        case processing    // 製作中
+        
+        public static func getKey() -> String {
+            "inventory_status_type"
+        }
+
+        public func getName() -> String {
+            switch self {
+            case .available:
+                return "可售"
+            case .reserved:
+                return "已保留"
+            case .sold:
+                return "已售出"
+            case .defective:
+                return "瑕疵品"
+            case .display:
+                return "展示品"
+            case .processing:
+                return "製作中"
+            }
+        }
+
+        public func displayName() -> String {
+            getName()
+        }
+
+        public static func find(from name: String) -> InventoryStatus? {
+            return InventoryStatus.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
 }
