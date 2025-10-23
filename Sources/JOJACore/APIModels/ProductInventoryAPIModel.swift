@@ -5,7 +5,7 @@ public struct ProductInventoryAPIModel: Codable, Hashable, Sendable {
     public let id: UUID
     public let templateId: UUID
     public let serialNumber: String
-    public let status: InventoryStatus
+    public let status: TypeAPIModel.InventoryStatus
     public let location: TypeAPIModel.Location
     public let actualPrice: Int?
     public let condition: String?
@@ -22,7 +22,7 @@ public struct ProductInventoryAPIModel: Codable, Hashable, Sendable {
         id: UUID,
         templateId: UUID,
         serialNumber: String,
-        status: InventoryStatus,
+        status: TypeAPIModel.InventoryStatus,
         location: TypeAPIModel.Location,
         actualPrice: Int?,
         condition: String?,
@@ -113,13 +113,13 @@ extension ProductInventoryAPIModel {
     }
 
     public struct UpdateRequest: Codable, Hashable, Sendable {
-        public let status: InventoryStatus?
+        public let status: TypeAPIModel.InventoryStatus?
         public let location: TypeAPIModel.Location?
         public let condition: String?
         public let note: String?
 
         public init(
-            status: InventoryStatus?,
+            status: TypeAPIModel.InventoryStatus?,
             location: TypeAPIModel.Location?,
             condition: String?,
             note: String?
@@ -136,7 +136,7 @@ extension ProductInventoryAPIModel {
         public let id: UUID
         public let templateId: UUID
         public let serialNumber: String
-        public let status: InventoryStatus
+        public let status: TypeAPIModel.InventoryStatus
         public let location: TypeAPIModel.Location
         public let actualPrice: Int?
         public let condition: String?
@@ -151,7 +151,7 @@ extension ProductInventoryAPIModel {
             id: UUID,
             templateId: UUID,
             serialNumber: String,
-            status: InventoryStatus,
+            status: TypeAPIModel.InventoryStatus,
             location: TypeAPIModel.Location,
             actualPrice: Int?,
             condition: String?,
@@ -199,7 +199,7 @@ extension ProductInventoryAPIModel {
     public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let serialNumber: String
-        public let status: InventoryStatus
+        public let status: TypeAPIModel.InventoryStatus
         public let location: TypeAPIModel.Location
         public let templateName: String?
         public let templateSku: String
@@ -207,7 +207,7 @@ extension ProductInventoryAPIModel {
         public init(
             id: UUID,
             serialNumber: String,
-            status: InventoryStatus,
+            status: TypeAPIModel.InventoryStatus,
             location: TypeAPIModel.Location,
             templateName: String?,
             templateSku: String
