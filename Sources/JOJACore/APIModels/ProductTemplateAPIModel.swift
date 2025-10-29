@@ -50,23 +50,21 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
 extension ProductTemplateAPIModel {
     public struct Request: Codable, Hashable, Sendable {
 
-        public let sku: String?
+        public let sku: String
         public let name: String?
         public let style: ProductAPIModel.Style
         public let basePrice: Int
         public let fabricId: UUID?
         public let component: FabricAPIModel.Component?
-        public let images: [String]?
         public let description: String?
-
+        
         public init(
-            sku: String?,
+            sku: String,
             name: String?,
             style: ProductAPIModel.Style,
             basePrice: Int,
             fabricId: UUID?,
             component: FabricAPIModel.Component?,
-            images: [String]?,
             description: String?
         ) {
             self.sku = sku
@@ -75,19 +73,17 @@ extension ProductTemplateAPIModel {
             self.basePrice = basePrice
             self.fabricId = fabricId
             self.component = component
-            self.images = images
             self.description = description
         }
 
         /// 便利初始化：布料商品
         public init(
-            sku: String?,
+            sku: String,
             name: String?,
             fabricId: UUID,
             jojaFabric: TypeAPIModel.JojaFabricGoods,
             size: TypeAPIModel.Size,
             basePrice: Int,
-            images: [String]?,
             description: String?
         ) {
             self.sku = sku
@@ -96,13 +92,12 @@ extension ProductTemplateAPIModel {
             self.basePrice = basePrice
             self.fabricId = fabricId
             self.component = nil
-            self.images = images
             self.description = description
         }
 
         /// 便利初始化：非布料商品
         public init(
-            sku: String?,
+            sku: String,
             name: String?,
             brand: TypeAPIModel.Brand,
             type: TypeAPIModel.ProductType,
@@ -111,7 +106,6 @@ extension ProductTemplateAPIModel {
             size: TypeAPIModel.Size,
             component: FabricAPIModel.Component,
             basePrice: Int,
-            images: [String]?,
             description: String?
         ) {
             self.sku = sku
@@ -127,29 +121,7 @@ extension ProductTemplateAPIModel {
             self.basePrice = basePrice
             self.fabricId = nil
             self.component = component
-            self.images = images
             self.description = description
-        }
-
-        /// 驗證請求資料
-        public func validate() throws {
-            switch style.type {
-            case .jojaFabric:
-                guard fabricId != nil else {
-                    throw ValidationError.fabricBasedProductMustHaveFabricId
-                }
-                guard component == nil else {
-                    throw ValidationError.fabricBasedProductShouldNotHaveComponent
-                }
-
-            case .jojaOther, .otherBrand:
-                guard fabricId == nil else {
-                    throw ValidationError.nonFabricProductShouldNotHaveFabricId
-                }
-                guard component != nil else {
-                    throw ValidationError.nonFabricProductMustHaveComponent
-                }
-            }
         }
     }
 
@@ -240,29 +212,23 @@ extension ProductTemplateAPIModel {
     public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let sku: String
-        public let name: String?
         public let style: ProductAPIModel.Style
-        public let basePrice: Int
-        public let imageUrl: String?
+//        public let basePrice: Int
         public let isActive: Bool
         public let inventoryCount: Int
-
+        
         public init(
             id: UUID,
             sku: String,
-            name: String?,
             style: ProductAPIModel.Style,
-            basePrice: Int,
-            imageUrl: String?,
+//            basePrice: Int,
             isActive: Bool,
             inventoryCount: Int
         ) {
             self.id = id
             self.sku = sku
-            self.name = name
             self.style = style
-            self.basePrice = basePrice
-            self.imageUrl = imageUrl
+//            self.basePrice = basePrice
             self.isActive = isActive
             self.inventoryCount = inventoryCount
         }
@@ -270,10 +236,8 @@ extension ProductTemplateAPIModel {
         public static let sample: ProductTemplateAPIModel.ListData = .init(
             id: UUID(),
             sku: "sn-101-B-M",
-            name: "日本印花貝蕾帽",
             style: .sample,
-            basePrice: 1880,
-            imageUrl: "image1.jpg",
+//            basePrice: 1880,
             isActive: true,
             inventoryCount: 3
         )
@@ -283,36 +247,11 @@ extension ProductTemplateAPIModel {
                 ProductTemplateAPIModel.ListData(
                     id: UUID(),
                     sku: "sn-101-B-M-\(index)",
-                    name: "貝蕾帽-\(index)",
                     style: .sample,
-                    basePrice: 1880,
-                    imageUrl: "image\(index).jpg",
+//                    basePrice: 1880,
                     isActive: index % 3 != 0,
                     inventoryCount: index * 2
                 )
-            }
-        }
-    }
-}
-
-// MARK: - Validation Error
-extension ProductTemplateAPIModel {
-    public enum ValidationError: Error, LocalizedError {
-        case fabricBasedProductMustHaveFabricId
-        case fabricBasedProductShouldNotHaveComponent
-        case nonFabricProductShouldNotHaveFabricId
-        case nonFabricProductMustHaveComponent
-
-        public var errorDescription: String? {
-            switch self {
-            case .fabricBasedProductMustHaveFabricId:
-                return "Fabric-based product must have fabricId"
-            case .fabricBasedProductShouldNotHaveComponent:
-                return "Fabric-based product should not have component field"
-            case .nonFabricProductShouldNotHaveFabricId:
-                return "Non-fabric product should not have fabricId"
-            case .nonFabricProductMustHaveComponent:
-                return "Non-fabric product must have component"
             }
         }
     }

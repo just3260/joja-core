@@ -15,7 +15,7 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
     public let description: String?
     public let note: String?
     public let imageUrl: [String]
-    public let products: [ProductAPIModel]
+    public let products: [ProductTemplateAPIModel]
     public let createdAt: Date?
     public let updatedAt: Date?
     public let log: String?
@@ -34,7 +34,7 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
         description: String?,
         note: String?,
         imageUrl: [String],
-        products: [ProductAPIModel],
+        products: [ProductTemplateAPIModel],
         createdAt: Date?,
         updatedAt: Date?,
         log: String?
@@ -205,7 +205,7 @@ extension FabricAPIModel {
         public let description: String?
         public let note: String?
         public let imageUrl: [String]
-        public let products: [ProductAPIModel.ListData]
+        public let products: [ProductTemplateAPIModel.ListData]
         public let createdAt: Date?
         public let updatedAt: Date?
         public let log: String?
@@ -224,7 +224,7 @@ extension FabricAPIModel {
             description: String?,
             note: String?,
             imageUrl: [String],
-            products: [ProductAPIModel.ListData],
+            products: [ProductTemplateAPIModel.ListData],
             createdAt: Date?,
             updatedAt: Date?,
             log: String?
@@ -261,7 +261,7 @@ extension FabricAPIModel {
             description: "棉布",
             note: "備註資料",
             imageUrl: [],
-            products: [ProductAPIModel.ListData.sample],
+            products: [ProductTemplateAPIModel.ListData.sample],
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
             updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
             log: "log記錄"

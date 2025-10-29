@@ -124,7 +124,7 @@ extension TradeAPIModel {
     public struct Response: Codable, Hashable, Sendable {
         public let id: UUID
         // DEPRECATED: 保留向後相容，建議使用 items
-        public let products: [ProductAPIModel.Response]?
+//        public let products: [ProductAPIModel.Response]?
         // NEW: 使用 TradeItem 架構
         public let items: [TradeItemAPIModel.Response]?
         public let amount: Int
@@ -135,7 +135,7 @@ extension TradeAPIModel {
 
         public init(
             id: UUID,
-            products: [ProductAPIModel.Response]?,
+//            products: [ProductAPIModel.Response]?,
             items: [TradeItemAPIModel.Response]?,
             amount: Int,
             note: String?,
@@ -144,7 +144,7 @@ extension TradeAPIModel {
             createdAt: Date?
         ) {
             self.id = id
-            self.products = products
+//            self.products = products
             self.items = items
             self.amount = amount
             self.note = note
@@ -153,6 +153,7 @@ extension TradeAPIModel {
             self.createdAt = createdAt
         }
 
+        /*
         // 向後相容的初始化方法
         @available(*, deprecated, message: "Use init with items parameter instead")
         public init(
@@ -173,6 +174,7 @@ extension TradeAPIModel {
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
+         */
 
         /// 新式初始化：使用 TradeItem
         public init(
@@ -185,7 +187,6 @@ extension TradeAPIModel {
             createdAt: Date?
         ) {
             self.id = id
-            self.products = nil
             self.items = items
             self.amount = amount
             self.note = note

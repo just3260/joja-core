@@ -167,7 +167,6 @@ extension TradeItemAPIModel {
         public let unitPrice: Int
         public let discount: Int?
         public let subtotal: Int
-        public let templateName: String?
         public let templateSku: String
 
         public init(
@@ -177,7 +176,6 @@ extension TradeItemAPIModel {
             unitPrice: Int,
             discount: Int?,
             subtotal: Int,
-            templateName: String?,
             templateSku: String
         ) {
             self.id = id
@@ -186,7 +184,6 @@ extension TradeItemAPIModel {
             self.unitPrice = unitPrice
             self.discount = discount
             self.subtotal = subtotal
-            self.templateName = templateName
             self.templateSku = templateSku
         }
 
@@ -197,7 +194,6 @@ extension TradeItemAPIModel {
             unitPrice: 1880,
             discount: 200,
             subtotal: 1680,
-            templateName: "日本印花貝蕾帽",
             templateSku: "sn-101-B-M"
         )
 
@@ -210,7 +206,6 @@ extension TradeItemAPIModel {
                     unitPrice: 1880,
                     discount: index == 1 ? 200 : nil,
                     subtotal: index == 1 ? 1680 : 1880,
-                    templateName: "日本印花貝蕾帽",
                     templateSku: "sn-101-B-M"
                 )
             }

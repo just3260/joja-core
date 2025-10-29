@@ -1687,7 +1687,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         public func getName() -> String {
             switch self {
             case .available:
-                return "可售"
+                return "販售中"
             case .reserved:
                 return "已保留"
             case .sold:

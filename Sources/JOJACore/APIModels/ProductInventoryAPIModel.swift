@@ -10,7 +10,6 @@ public struct ProductInventoryAPIModel: Codable, Hashable, Sendable {
     public let actualPrice: Int?
     public let condition: String?
     public let note: String?
-    public let manufacturedAt: Date?
     public let createdAt: Date?
     public let updatedAt: Date?
     public let log: String?
@@ -27,7 +26,6 @@ public struct ProductInventoryAPIModel: Codable, Hashable, Sendable {
         actualPrice: Int?,
         condition: String?,
         note: String?,
-        manufacturedAt: Date?,
         createdAt: Date?,
         updatedAt: Date?,
         log: String?,
@@ -41,7 +39,6 @@ public struct ProductInventoryAPIModel: Codable, Hashable, Sendable {
         self.actualPrice = actualPrice
         self.condition = condition
         self.note = note
-        self.manufacturedAt = manufacturedAt
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.log = log
@@ -49,66 +46,27 @@ public struct ProductInventoryAPIModel: Codable, Hashable, Sendable {
     }
 }
 
-// MARK: - Inventory Status
-extension ProductInventoryAPIModel {
-    public enum InventoryStatus: String, Codable, CaseIterable, Hashable, Sendable {
-        case available      // 可售
-        case reserved       // 已保留（客製化訂單）
-        case sold          // 已售出
-        case defective     // 瑕疵品
-        case display       // 展示品
-        case processing    // 製作中
-
-        public var displayName: String {
-            switch self {
-            case .available:
-                return "可售"
-            case .reserved:
-                return "已保留"
-            case .sold:
-                return "已售出"
-            case .defective:
-                return "瑕疵品"
-            case .display:
-                return "展示品"
-            case .processing:
-                return "製作中"
-            }
-        }
-
-        public var canBeSold: Bool {
-            self == .available || self == .display
-        }
-    }
-}
-
 extension ProductInventoryAPIModel {
     public struct Request: Codable, Hashable, Sendable {
 
         public let templateId: UUID
-        public let serialNumber: String?
         public let location: TypeAPIModel.Location
         public let actualPrice: Int?
         public let condition: String?
         public let note: String?
-        public let manufacturedAt: Date?
 
         public init(
             templateId: UUID,
-            serialNumber: String?,
             location: TypeAPIModel.Location,
             actualPrice: Int?,
             condition: String?,
             note: String?,
-            manufacturedAt: Date?
         ) {
             self.templateId = templateId
-            self.serialNumber = serialNumber
             self.location = location
             self.actualPrice = actualPrice
             self.condition = condition
             self.note = note
-            self.manufacturedAt = manufacturedAt
         }
     }
 
@@ -141,7 +99,6 @@ extension ProductInventoryAPIModel {
         public let actualPrice: Int?
         public let condition: String?
         public let note: String?
-        public let manufacturedAt: Date?
         public let createdAt: Date?
         public let updatedAt: Date?
         public let log: String?
@@ -156,7 +113,6 @@ extension ProductInventoryAPIModel {
             actualPrice: Int?,
             condition: String?,
             note: String?,
-            manufacturedAt: Date?,
             createdAt: Date?,
             updatedAt: Date?,
             log: String?,
@@ -170,7 +126,6 @@ extension ProductInventoryAPIModel {
             self.actualPrice = actualPrice
             self.condition = condition
             self.note = note
-            self.manufacturedAt = manufacturedAt
             self.createdAt = createdAt
             self.updatedAt = updatedAt
             self.log = log
@@ -186,7 +141,6 @@ extension ProductInventoryAPIModel {
             actualPrice: 1500,
             condition: "全新",
             note: "第一批製作",
-            manufacturedAt: Calendar.current.date(byAdding: .day, value: -3, to: Date()),
             createdAt: Calendar.current.date(byAdding: .day, value: -3, to: Date()),
             updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
             log: "製作完成",
@@ -201,7 +155,6 @@ extension ProductInventoryAPIModel {
         public let serialNumber: String
         public let status: TypeAPIModel.InventoryStatus
         public let location: TypeAPIModel.Location
-        public let templateName: String?
         public let templateSku: String
 
         public init(
@@ -209,14 +162,12 @@ extension ProductInventoryAPIModel {
             serialNumber: String,
             status: TypeAPIModel.InventoryStatus,
             location: TypeAPIModel.Location,
-            templateName: String?,
             templateSku: String
         ) {
             self.id = id
             self.serialNumber = serialNumber
             self.status = status
             self.location = location
-            self.templateName = templateName
             self.templateSku = templateSku
         }
 
@@ -225,7 +176,6 @@ extension ProductInventoryAPIModel {
             serialNumber: "sn-101-B-M-001",
             status: .available,
             location: .finish,
-            templateName: "日本印花貝蕾帽",
             templateSku: "sn-101-B-M"
         )
 
@@ -236,7 +186,6 @@ extension ProductInventoryAPIModel {
                     serialNumber: "sn-101-B-M-\(String(format: "%03d", index))",
                     status: index % 3 == 0 ? .sold : .available,
                     location: .finish,
-                    templateName: "日本印花貝蕾帽",
                     templateSku: "sn-101-B-M"
                 )
             }
@@ -253,22 +202,19 @@ extension ProductInventoryAPIModel {
         public let location: TypeAPIModel.Location
         public let actualPrice: Int?
         public let note: String?
-        public let manufacturedAt: Date?
 
         public init(
             templateId: UUID,
             quantity: Int,
             location: TypeAPIModel.Location,
             actualPrice: Int?,
-            note: String?,
-            manufacturedAt: Date?
+            note: String?
         ) {
             self.templateId = templateId
             self.quantity = quantity
             self.location = location
             self.actualPrice = actualPrice
             self.note = note
-            self.manufacturedAt = manufacturedAt
         }
 
         public func validate() throws {
