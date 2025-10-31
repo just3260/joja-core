@@ -84,6 +84,7 @@ extension ProductTemplateAPIModel {
             sku: String,
             name: String?,
             fabricId: UUID,
+            component: FabricAPIModel.Component,
             jojaFabric: TypeAPIModel.JojaFabricGoods,
             size: TypeAPIModel.Size,
             basePrice: Int,
@@ -94,7 +95,7 @@ extension ProductTemplateAPIModel {
             self.style = ProductAPIModel.Style(jojaFabric: jojaFabric, size: size)
             self.basePrice = basePrice
             self.fabricId = fabricId
-            self.component = nil
+            self.component = component
             self.description = description
         }
 
