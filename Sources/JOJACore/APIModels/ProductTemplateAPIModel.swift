@@ -270,12 +270,12 @@ extension ProductTemplateAPIModel {
     public struct LocationSummary: Codable, Hashable, Sendable {
         public let location: TypeAPIModel.Location
         public let count: Int
-        public let inventories: [ProductInventoryAPIModel.ListData]
+        public let inventories: [ProductInventoryAPIModel.ListData]?
 
         public init(
             location: TypeAPIModel.Location,
             count: Int,
-            inventories: [ProductInventoryAPIModel.ListData]
+            inventories: [ProductInventoryAPIModel.ListData]? = nil
         ) {
             self.location = location
             self.count = count
@@ -286,6 +286,12 @@ extension ProductTemplateAPIModel {
             location: .chifeng,
             count: 5,
             inventories: [.sample]
+        )
+
+        public static let sampleSimplified: ProductTemplateAPIModel.LocationSummary = .init(
+            location: .chifeng,
+            count: 5,
+            inventories: nil
         )
     }
 

@@ -277,7 +277,7 @@ extension FabricAPIModel {
         public let stock: Double
         public let component: Component
         public let imageUrl: String?
-        
+
         public init(
             id: UUID,
             name: String?,
@@ -293,7 +293,7 @@ extension FabricAPIModel {
             self.component = component
             self.imageUrl = imageUrl
         }
-        
+
         public static let sample: FabricAPIModel.ListData = .init(
             id: UUID(),
             name: "日本棉布",
@@ -302,7 +302,7 @@ extension FabricAPIModel {
             component: .sample,
             imageUrl: "japan.print.com"
         )
-        
+
         public static func sampleList(page: Int = 1, count: Int = 10) -> [FabricAPIModel.ListData] {
             return (1...count).map { index in
                 FabricAPIModel.ListData(
@@ -315,7 +315,7 @@ extension FabricAPIModel {
                 )
             }
         }
-        
+
         public static func sampleSearchResults(count: Int = 5) -> [FabricAPIModel.ListData] {
             return (1...count).map { index in
                 FabricAPIModel.ListData(
@@ -328,5 +328,70 @@ extension FabricAPIModel {
                 )
             }
         }
+    }
+}
+
+// MARK: - Product Locations Response
+extension FabricAPIModel {
+    /// 單個產品模板的位置統計
+    public struct ProductLocationSummary: Codable, Hashable, Sendable {
+        public let templateId: UUID
+        public let templateSku: String
+        public let totalCount: Int
+        public let locations: [ProductTemplateAPIModel.LocationSummary]
+
+        public init(
+            templateId: UUID,
+            templateSku: String,
+            totalCount: Int,
+            locations: [ProductTemplateAPIModel.LocationSummary]
+        ) {
+            self.templateId = templateId
+            self.templateSku = templateSku
+            self.totalCount = totalCount
+            self.locations = locations
+        }
+
+        public static let sample: FabricAPIModel.ProductLocationSummary = .init(
+            templateId: UUID(),
+            templateSku: "sn-101-B-M",
+            totalCount: 15,
+            locations: [.sample]
+        )
+    }
+
+    /// Fabric 下所有產品的位置統計響應
+    public struct ProductLocationsResponse: Codable, Hashable, Sendable {
+        public let fabricId: UUID
+        public let fabricSku: String
+        public let fabricName: String?
+        public let totalProducts: Int
+        public let totalInventories: Int
+        public let products: [ProductLocationSummary]
+
+        public init(
+            fabricId: UUID,
+            fabricSku: String,
+            fabricName: String?,
+            totalProducts: Int,
+            totalInventories: Int,
+            products: [ProductLocationSummary]
+        ) {
+            self.fabricId = fabricId
+            self.fabricSku = fabricSku
+            self.fabricName = fabricName
+            self.totalProducts = totalProducts
+            self.totalInventories = totalInventories
+            self.products = products
+        }
+
+        public static let sample: FabricAPIModel.ProductLocationsResponse = .init(
+            fabricId: UUID(),
+            fabricSku: "sn-101",
+            fabricName: "日本印花棉布",
+            totalProducts: 3,
+            totalInventories: 45,
+            products: [.sample]
+        )
     }
 }
