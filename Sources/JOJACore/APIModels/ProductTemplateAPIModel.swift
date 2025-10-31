@@ -13,6 +13,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
     public let description: String?
     public let isActive: Bool
     public let inventoryCount: Int  // 庫存數量
+    public let inventories: [ProductInventoryAPIModel]
     public let createdAt: Date?
     public let updatedAt: Date?
 
@@ -28,6 +29,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
         description: String?,
         isActive: Bool,
         inventoryCount: Int,
+        inventories: [ProductInventoryAPIModel],
         createdAt: Date?,
         updatedAt: Date?
     ) {
@@ -42,6 +44,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
         self.description = description
         self.isActive = isActive
         self.inventoryCount = inventoryCount
+        self.inventories = inventories
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
@@ -157,6 +160,7 @@ extension ProductTemplateAPIModel {
         public let description: String?
         public let isActive: Bool
         public let inventoryCount: Int
+        public let inventories: [ProductInventoryAPIModel]
         public let createdAt: Date?
         public let updatedAt: Date?
 
@@ -172,6 +176,7 @@ extension ProductTemplateAPIModel {
             description: String?,
             isActive: Bool,
             inventoryCount: Int,
+            inventories: [ProductInventoryAPIModel],
             createdAt: Date?,
             updatedAt: Date?
         ) {
@@ -186,6 +191,7 @@ extension ProductTemplateAPIModel {
             self.description = description
             self.isActive = isActive
             self.inventoryCount = inventoryCount
+            self.inventories = inventories
             self.createdAt = createdAt
             self.updatedAt = updatedAt
         }
@@ -202,6 +208,7 @@ extension ProductTemplateAPIModel {
             description: "使用日本進口布料製作的貝蕾帽",
             isActive: true,
             inventoryCount: 3,
+            inventories: [],
             createdAt: Calendar.current.date(byAdding: .day, value: -7, to: Date()),
             updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date())
         )
@@ -216,7 +223,7 @@ extension ProductTemplateAPIModel {
 //        public let basePrice: Int
         public let isActive: Bool
         public let inventoryCount: Int
-        
+
         public init(
             id: UUID,
             sku: String,
@@ -254,5 +261,58 @@ extension ProductTemplateAPIModel {
                 )
             }
         }
+    }
+}
+
+// MARK: - Inventory Location Summary
+extension ProductTemplateAPIModel {
+    /// 單個位置的庫存統計
+    public struct LocationSummary: Codable, Hashable, Sendable {
+        public let location: TypeAPIModel.Location
+        public let count: Int
+        public let inventories: [ProductInventoryAPIModel.ListData]
+
+        public init(
+            location: TypeAPIModel.Location,
+            count: Int,
+            inventories: [ProductInventoryAPIModel.ListData]
+        ) {
+            self.location = location
+            self.count = count
+            self.inventories = inventories
+        }
+
+        public static let sample: ProductTemplateAPIModel.LocationSummary = .init(
+            location: .chifeng,
+            count: 5,
+            inventories: [.sample]
+        )
+    }
+
+    /// 庫存位置統計響應
+    public struct LocationSummaryResponse: Codable, Hashable, Sendable {
+        public let templateId: UUID
+        public let templateSku: String
+        public let totalCount: Int
+        public let locations: [LocationSummary]
+
+        public init(
+            templateId: UUID,
+            templateSku: String,
+            totalCount: Int,
+            locations: [LocationSummary]
+        ) {
+            self.templateId = templateId
+            self.templateSku = templateSku
+            self.totalCount = totalCount
+            self.locations = locations
+        }
+
+        public static let sample: ProductTemplateAPIModel.LocationSummaryResponse = .init(
+            templateId: UUID(),
+            templateSku: "sn-101-B-M",
+            totalCount: 15,
+            locations: [.sample]
+        )
     }
 }

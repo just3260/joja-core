@@ -102,7 +102,7 @@ extension ProductInventoryAPIModel {
         public let createdAt: Date?
         public let updatedAt: Date?
         public let log: String?
-        public let template: ProductTemplateAPIModel.ListData?
+//        public let template: ProductTemplateAPIModel.ListData?
 
         public init(
             id: UUID,
@@ -116,7 +116,7 @@ extension ProductInventoryAPIModel {
             createdAt: Date?,
             updatedAt: Date?,
             log: String?,
-            template: ProductTemplateAPIModel.ListData?
+//            template: ProductTemplateAPIModel.ListData?
         ) {
             self.id = id
             self.templateId = templateId
@@ -129,7 +129,7 @@ extension ProductInventoryAPIModel {
             self.createdAt = createdAt
             self.updatedAt = updatedAt
             self.log = log
-            self.template = template
+//            self.template = template
         }
 
         public static let sample: ProductInventoryAPIModel.Response = .init(
@@ -144,7 +144,7 @@ extension ProductInventoryAPIModel {
             createdAt: Calendar.current.date(byAdding: .day, value: -3, to: Date()),
             updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
             log: "製作完成",
-            template: .sample
+//            template: .sample
         )
     }
 }
