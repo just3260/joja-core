@@ -1664,6 +1664,21 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
         
+        public func getSerial() -> String {
+            switch self {
+                case .extraSmall:
+                    return "X"
+                case .small:
+                    return "S"
+                case .medium:
+                    return "M"
+                case .large:
+                    return "L"
+                default:
+                    return "F"
+            }
+        }
+        
         public static func find(from name: String) -> Size? {
             return Size.allCases.first { type in
                 type.getName() == name
