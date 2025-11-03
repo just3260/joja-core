@@ -216,22 +216,13 @@ extension ProductInventoryAPIModel {
             self.actualPrice = actualPrice
             self.note = note
         }
-
-        public func validate() throws {
-            guard quantity > 0 && quantity <= 100 else {
-                throw ValidationError.invalidQuantity
-            }
-        }
-    }
-
-    public enum ValidationError: Error, LocalizedError {
-        case invalidQuantity
-
-        public var errorDescription: String? {
-            switch self {
-            case .invalidQuantity:
-                return "Quantity must be between 1 and 100"
-            }
-        }
+        
+        public static let sample: ProductInventoryAPIModel.BatchCreateRequest = .init(
+            templateId: UUID(),
+            quantity: 3,
+            location: .tainan,
+            actualPrice: 1680,
+            note: "測試庫存"
+        )
     }
 }

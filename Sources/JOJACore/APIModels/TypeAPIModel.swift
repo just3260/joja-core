@@ -1571,15 +1571,15 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         public func displayName() -> String {
             switch self {
                 case .chifeng:
-                    return "赤峰店"
+                    return "台北店"
                 case .chifengStorage:
-                    return "赤峰倉庫"
+                    return "台北倉庫"
                 case .taipeiHome:
                     return "台北家"
                 case .tainan:
                     return "台南店"
                 case .tainanStorage:
-                    return "台南倉庫"
+                    return "台南家"
                 case .daxi:
                     return "大溪"
                 case .aunt:

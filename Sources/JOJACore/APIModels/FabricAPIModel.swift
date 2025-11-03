@@ -355,7 +355,7 @@ extension FabricAPIModel {
         public static let sample: FabricAPIModel.ProductLocationSummary = .init(
             templateId: UUID(),
             templateSku: "sn-101-B-M",
-            totalCount: 15,
+            totalCount: 5,
             locations: [.sample]
         )
     }
@@ -391,7 +391,7 @@ extension FabricAPIModel {
             fabricName: "日本印花棉布",
             totalProducts: 3,
             totalInventories: 45,
-            products: [.sample]
+            products: [ProductLocationSummary.sample]
         )
     }
 }

@@ -286,7 +286,13 @@ extension ProductTemplateAPIModel {
         public static let sample: ProductTemplateAPIModel.LocationSummary = .init(
             location: .chifeng,
             count: 5,
-            inventories: [.sample]
+            inventories: ProductInventoryAPIModel.ListData.sampleList(page: 1, count: 5)
+        )
+        
+        public static let sample2: ProductTemplateAPIModel.LocationSummary = .init(
+            location: .tainan,
+            count: 3,
+            inventories: ProductInventoryAPIModel.ListData.sampleList(page: 1, count: 3)
         )
 
         public static let sampleSimplified: ProductTemplateAPIModel.LocationSummary = .init(
@@ -300,17 +306,20 @@ extension ProductTemplateAPIModel {
     public struct LocationSummaryResponse: Codable, Hashable, Sendable {
         public let templateId: UUID
         public let templateSku: String
+        public let templateType: ProductAPIModel.Style
         public let totalCount: Int
         public let locations: [LocationSummary]
 
         public init(
             templateId: UUID,
             templateSku: String,
+            templateType: ProductAPIModel.Style,
             totalCount: Int,
             locations: [LocationSummary]
         ) {
             self.templateId = templateId
             self.templateSku = templateSku
+            self.templateType = templateType
             self.totalCount = totalCount
             self.locations = locations
         }
@@ -318,8 +327,9 @@ extension ProductTemplateAPIModel {
         public static let sample: ProductTemplateAPIModel.LocationSummaryResponse = .init(
             templateId: UUID(),
             templateSku: "sn-101-B-M",
-            totalCount: 15,
-            locations: [.sample]
+            templateType: ProductAPIModel.Style.sample,
+            totalCount: 8,
+            locations: [.sample, .sample2]
         )
     }
 }
