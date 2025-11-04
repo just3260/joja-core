@@ -249,6 +249,40 @@ public struct FabricSearchRequest: Searchable {
     }
 }
 
+public struct TradeSearchRequest: Searchable {
+    public enum KeywordField: String, Codable, Hashable, CaseIterable {
+        case description
+        case note
+
+        public var displayName: String {
+            switch self {
+                case .description: return "描述"
+                case .note: return "備註"
+            }
+        }
+    }
+    /// 關鍵字搜尋欄位，支援多選
+    public let keywordFields: [KeywordField]?
+    /// 買家ID篩選
+    public let buyerIds: [UUID]?
+    /// 金額範圍
+    public let amountRange: ClosedRange<Int>?
+    /// 建立日期範圍
+    public let createdAtRange: ClosedRange<Date>?
+
+    public init(
+        keywordFields: [KeywordField]? = nil,
+        buyerIds: [UUID]? = nil,
+        amountRange: ClosedRange<Int>? = nil,
+        createdAtRange: ClosedRange<Date>? = nil
+    ) {
+        self.keywordFields = keywordFields
+        self.buyerIds = buyerIds
+        self.amountRange = amountRange
+        self.createdAtRange = createdAtRange
+    }
+}
+
 public struct SearchAPIModel<T>: Codable, Hashable, Sendable where T: Searchable {
     public let key: String
     public let type: [T]

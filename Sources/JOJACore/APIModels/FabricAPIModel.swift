@@ -337,17 +337,20 @@ extension FabricAPIModel {
     public struct ProductLocationSummary: Codable, Hashable, Sendable {
         public let templateId: UUID
         public let templateSku: String
+        public let templatePrice: Int
         public let totalCount: Int
         public let locations: [ProductTemplateAPIModel.LocationSummary]
 
         public init(
             templateId: UUID,
             templateSku: String,
+            templatePrice: Int,
             totalCount: Int,
             locations: [ProductTemplateAPIModel.LocationSummary]
         ) {
             self.templateId = templateId
             self.templateSku = templateSku
+            self.templatePrice = templatePrice
             self.totalCount = totalCount
             self.locations = locations
         }
@@ -355,6 +358,7 @@ extension FabricAPIModel {
         public static let sample: FabricAPIModel.ProductLocationSummary = .init(
             templateId: UUID(),
             templateSku: "sn-101-B-M",
+            templatePrice: 1680,
             totalCount: 5,
             locations: [.sample]
         )
