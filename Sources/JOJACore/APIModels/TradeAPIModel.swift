@@ -218,7 +218,7 @@ extension TradeAPIModel {
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
         )
 
-        public static func sampleList(memberId: UUID, count: Int = 3) -> [TradeAPIModel.Response] {
+        public static func sampleList(count: Int = 3) -> [TradeAPIModel.Response] {
             return (1...count).map { index in
                 TradeAPIModel.Response(
                     id: UUID(),
@@ -278,5 +278,18 @@ extension TradeAPIModel {
             buyerID: UUID(),
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
         )
+        
+        public static func sampleList(count: Int = 3) -> [TradeAPIModel.SimpleTrade] {
+            return (1...count).map { index in
+                TradeAPIModel.SimpleTrade(
+                    id: UUID(),
+                    amount: 1680 * index,
+                    note: "Mock 交易記錄 \(index)",
+                    description: "假資料 \(index)",
+                    buyerID: UUID(),
+                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
+                )
+            }
+        }
     }
 }
