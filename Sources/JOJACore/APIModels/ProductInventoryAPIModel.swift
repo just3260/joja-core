@@ -7,7 +7,7 @@ public struct ProductInventoryAPIModel: Codable, Hashable, Sendable {
     public let serialNumber: String
     public let status: TypeAPIModel.InventoryStatus
     public let location: TypeAPIModel.Location
-    public let actualPrice: Int?
+    public let actualPrice: Int
     public let condition: String?
     public let note: String?
     public let createdAt: Date?
@@ -23,7 +23,7 @@ public struct ProductInventoryAPIModel: Codable, Hashable, Sendable {
         serialNumber: String,
         status: TypeAPIModel.InventoryStatus,
         location: TypeAPIModel.Location,
-        actualPrice: Int?,
+        actualPrice: Int,
         condition: String?,
         note: String?,
         createdAt: Date?,
@@ -51,14 +51,14 @@ extension ProductInventoryAPIModel {
 
         public let templateId: UUID
         public let location: TypeAPIModel.Location
-        public let actualPrice: Int?
+        public let actualPrice: Int
         public let condition: String?
         public let note: String?
 
         public init(
             templateId: UUID,
             location: TypeAPIModel.Location,
-            actualPrice: Int?,
+            actualPrice: Int,
             condition: String?,
             note: String?,
         ) {
@@ -96,7 +96,7 @@ extension ProductInventoryAPIModel {
         public let serialNumber: String
         public let status: TypeAPIModel.InventoryStatus
         public let location: TypeAPIModel.Location
-        public let actualPrice: Int?
+        public let actualPrice: Int
         public let condition: String?
         public let note: String?
         public let createdAt: Date?
@@ -110,7 +110,7 @@ extension ProductInventoryAPIModel {
             serialNumber: String,
             status: TypeAPIModel.InventoryStatus,
             location: TypeAPIModel.Location,
-            actualPrice: Int?,
+            actualPrice: Int,
             condition: String?,
             note: String?,
             createdAt: Date?,
@@ -200,14 +200,14 @@ extension ProductInventoryAPIModel {
         public let templateId: UUID
         public let quantity: Int
         public let location: TypeAPIModel.Location
-        public let actualPrice: Int?
+        public let actualPrice: Int
         public let note: String?
 
         public init(
             templateId: UUID,
             quantity: Int,
             location: TypeAPIModel.Location,
-            actualPrice: Int?,
+            actualPrice: Int,
             note: String?
         ) {
             self.templateId = templateId
