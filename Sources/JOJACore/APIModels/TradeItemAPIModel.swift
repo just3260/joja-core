@@ -11,7 +11,6 @@ public struct TradeItemAPIModel: Codable, Hashable, Sendable {
     public let subtotal: Int
     public let note: String?
     public let createdAt: Date?
-
     // 巢狀的庫存資訊（用於詳細檢視）
     public let inventory: ProductInventoryAPIModel.ListData?
 
@@ -162,7 +161,7 @@ extension TradeItemAPIModel {
 extension TradeItemAPIModel {
     public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
-        public let inventorySerialNumber: String
+        public let inventoryId: UUID
         public let quantity: Int
         public let unitPrice: Int
         public let discount: Int?
@@ -171,7 +170,7 @@ extension TradeItemAPIModel {
 
         public init(
             id: UUID,
-            inventorySerialNumber: String,
+            inventoryId: UUID,
             quantity: Int,
             unitPrice: Int,
             discount: Int?,
@@ -179,7 +178,7 @@ extension TradeItemAPIModel {
             templateSku: String
         ) {
             self.id = id
-            self.inventorySerialNumber = inventorySerialNumber
+            self.inventoryId = inventoryId
             self.quantity = quantity
             self.unitPrice = unitPrice
             self.discount = discount
@@ -189,7 +188,7 @@ extension TradeItemAPIModel {
 
         public static let sample: TradeItemAPIModel.ListData = .init(
             id: UUID(),
-            inventorySerialNumber: "sn-101-B-M-001",
+            inventoryId: UUID(),
             quantity: 1,
             unitPrice: 1880,
             discount: 200,
@@ -201,7 +200,7 @@ extension TradeItemAPIModel {
             return (1...count).map { index in
                 TradeItemAPIModel.ListData(
                     id: UUID(),
-                    inventorySerialNumber: "sn-101-B-M-\(String(format: "%03d", index))",
+                    inventoryId: UUID(),
                     quantity: 1,
                     unitPrice: 1880,
                     discount: index == 1 ? 200 : nil,

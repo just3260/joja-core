@@ -57,18 +57,19 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
 
 extension TradeAPIModel {
     public struct Request: Codable, Hashable, Sendable {
-        public let id: UUID?
+//        public let id: UUID?
         // DEPRECATED: 保留向後相容，建議使用 items
         public let products: [ProductAPIModel.Request]?
         // NEW: 使用 TradeItem 架構
         public let items: [TradeItemAPIModel.Request]?
+        // 舊的架構，新架構折扣是否改在 TradeItemAPIModel.Request 底下？
         public let discount: Int?
         public let note: String?
         public let description: String?
         public let buyerID: UUID
 
         public init(
-            id: UUID?,
+//            id: UUID?,
             products: [ProductAPIModel.Request]?,
             items: [TradeItemAPIModel.Request]?,
             discount: Int?,
@@ -76,7 +77,7 @@ extension TradeAPIModel {
             description: String?,
             buyerID: UUID
         ) {
-            self.id = id
+//            self.id = id
             self.products = products
             self.items = items
             self.discount = discount
@@ -88,13 +89,13 @@ extension TradeAPIModel {
         // 向後相容的初始化方法
         @available(*, deprecated, message: "Use init with items parameter instead")
         public init(
-            id: UUID?,
+//            id: UUID?,
             products: [ProductAPIModel.Request],
             discount: Int?,
             note: String?,
             buyerID: UUID
         ) {
-            self.id = id
+//            self.id = id
             self.products = products
             self.items = nil
             self.discount = discount
@@ -105,13 +106,13 @@ extension TradeAPIModel {
 
         /// 新式初始化：使用 TradeItem
         public init(
-            id: UUID?,
+//            id: UUID?,
             items: [TradeItemAPIModel.Request],
             note: String?,
             description: String?,
             buyerID: UUID
         ) {
-            self.id = id
+//            self.id = id
             self.products = nil
             self.items = items
             self.discount = nil
