@@ -10,7 +10,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public let amount: Int
     public let note: String?
     public let description: String?
-    public let buyerID: UUID
+    public let buyerID: UUID?
     public let createdAt: Date?
 
     public init(
@@ -20,7 +20,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         amount: Int,
         note: String?,
         description: String?,
-        buyerID: UUID,
+        buyerID: UUID?,
         createdAt: Date?
     ) {
         self.id = id
@@ -41,7 +41,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         amount: Int,
         note: String?,
         description: String?,
-        buyerID: UUID,
+        buyerID: UUID?,
         createdAt: Date?
     ) {
         self.id = id
@@ -66,7 +66,7 @@ extension TradeAPIModel {
         public let discount: Int?
         public let note: String?
         public let description: String?
-        public let buyerID: UUID
+        public let buyerID: UUID?
 
         public init(
 //            id: UUID?,
@@ -75,7 +75,7 @@ extension TradeAPIModel {
             discount: Int?,
             note: String?,
             description: String?,
-            buyerID: UUID
+            buyerID: UUID?
         ) {
 //            self.id = id
             self.products = products
@@ -93,7 +93,7 @@ extension TradeAPIModel {
             products: [ProductAPIModel.Request],
             discount: Int?,
             note: String?,
-            buyerID: UUID
+            buyerID: UUID?
         ) {
 //            self.id = id
             self.products = products
@@ -110,7 +110,7 @@ extension TradeAPIModel {
             items: [TradeItemAPIModel.Request],
             note: String?,
             description: String?,
-            buyerID: UUID
+            buyerID: UUID?
         ) {
 //            self.id = id
             self.products = nil
@@ -131,7 +131,7 @@ extension TradeAPIModel {
         public let amount: Int
         public let note: String?
         public let description: String?
-        public let buyerID: UUID
+        public let buyerID: UUID?
         public let createdAt: Date?
 
         public init(
@@ -141,7 +141,7 @@ extension TradeAPIModel {
             amount: Int,
             note: String?,
             description: String?,
-            buyerID: UUID,
+            buyerID: UUID?,
             createdAt: Date?
         ) {
             self.id = id
@@ -184,7 +184,7 @@ extension TradeAPIModel {
             amount: Int,
             note: String?,
             description: String?,
-            buyerID: UUID,
+            buyerID: UUID?,
             createdAt: Date?
         ) {
             self.id = id
@@ -252,7 +252,7 @@ extension TradeAPIModel {
         public let amount: Int
         public let note: String?
         public let description: String?
-        public let buyerID: UUID
+        public let buyerID: UUID?
         public let createdAt: Date?
         
         public init(
@@ -260,7 +260,7 @@ extension TradeAPIModel {
             amount: Int,
             note: String?,
             description: String?,
-            buyerID: UUID,
+            buyerID: UUID?,
             createdAt: Date?
         ) {
             self.id = id
