@@ -161,7 +161,7 @@ extension ProductTemplateAPIModel {
         public let description: String?
         public let isActive: Bool
         public let inventoryCount: Int
-        public let inventories: [ProductInventoryAPIModel]
+        public let inventories: [ProductInventoryAPIModel.Response]
         public let createdAt: Date?
         public let updatedAt: Date?
 
@@ -177,7 +177,7 @@ extension ProductTemplateAPIModel {
             description: String?,
             isActive: Bool,
             inventoryCount: Int,
-            inventories: [ProductInventoryAPIModel],
+            inventories: [ProductInventoryAPIModel.Response],
             createdAt: Date?,
             updatedAt: Date?
         ) {
