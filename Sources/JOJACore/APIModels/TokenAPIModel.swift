@@ -5,6 +5,7 @@ public struct TokenAPIModel: Codable, Hashable, Sendable {
     public enum SessionSource: Int, Codable, Hashable, Sendable {
         case signup
         case login
+        case refresh
     }
     
     public let id: UUID
