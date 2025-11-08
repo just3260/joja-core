@@ -6,8 +6,9 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     // DEPRECATED: 保留向後相容，建議使用 items
     public let products: [ProductAPIModel]
     // NEW: 使用 TradeItem 架構
-    public let items: [TradeItemAPIModel]?
+    public let items: [TradeItemAPIModel]
     public let amount: Int
+    public let discount: Int?
     public let note: String?
     public let description: String?
     public let buyerID: UUID?
@@ -16,8 +17,9 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public init(
         id: UUID,
         products: [ProductAPIModel],
-        items: [TradeItemAPIModel]?,
+        items: [TradeItemAPIModel],
         amount: Int,
+        discount: Int?,
         note: String?,
         description: String?,
         buyerID: UUID?,
@@ -27,12 +29,14 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         self.products = products
         self.items = items
         self.amount = amount
+        self.discount = discount
         self.note = note
         self.description = description
         self.buyerID = buyerID
         self.createdAt = createdAt
     }
 
+    /*
     // 向後相容的初始化方法
     @available(*, deprecated, message: "Use init with items parameter instead")
     public init(
@@ -46,76 +50,41 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     ) {
         self.id = id
         self.products = products
-        self.items = nil
+        self.items = []
         self.amount = amount
         self.note = note
         self.description = description
         self.buyerID = buyerID
         self.createdAt = createdAt
     }
+     */
 }
 
 extension TradeAPIModel {
     public struct Request: Codable, Hashable, Sendable {
-//        public let id: UUID?
         // DEPRECATED: 保留向後相容，建議使用 items
         public let products: [ProductAPIModel.Request]?
         // NEW: 使用 TradeItem 架構
-        public let items: [TradeItemAPIModel.Request]?
-        // 舊的架構，新架構折扣是否改在 TradeItemAPIModel.Request 底下？
+        public let items: [TradeItemAPIModel.Request]
+        public let amount: Int
         public let discount: Int?
         public let note: String?
         public let description: String?
         public let buyerID: UUID?
 
         public init(
-//            id: UUID?,
             products: [ProductAPIModel.Request]?,
-            items: [TradeItemAPIModel.Request]?,
-            discount: Int?,
-            note: String?,
-            description: String?,
-            buyerID: UUID?
-        ) {
-//            self.id = id
-            self.products = products
-            self.items = items
-            self.discount = discount
-            self.note = note
-            self.description = description
-            self.buyerID = buyerID
-        }
-
-        // 向後相容的初始化方法
-        @available(*, deprecated, message: "Use init with items parameter instead")
-        public init(
-//            id: UUID?,
-            products: [ProductAPIModel.Request],
-            discount: Int?,
-            note: String?,
-            buyerID: UUID?
-        ) {
-//            self.id = id
-            self.products = products
-            self.items = nil
-            self.discount = discount
-            self.note = note
-            self.description = nil
-            self.buyerID = buyerID
-        }
-
-        /// 新式初始化：使用 TradeItem
-        public init(
-//            id: UUID?,
             items: [TradeItemAPIModel.Request],
+            amount: Int,
+            discount: Int?,
             note: String?,
             description: String?,
             buyerID: UUID?
         ) {
-//            self.id = id
-            self.products = nil
+            self.products = products
             self.items = items
-            self.discount = nil
+            self.amount = amount
+            self.discount = discount
             self.note = note
             self.description = description
             self.buyerID = buyerID
@@ -127,8 +96,9 @@ extension TradeAPIModel {
         // DEPRECATED: 保留向後相容，建議使用 items
 //        public let products: [ProductAPIModel.Response]?
         // NEW: 使用 TradeItem 架構
-        public let items: [TradeItemAPIModel.Response]?
+        public let items: [TradeItemAPIModel.Response]
         public let amount: Int
+        public let discount: Int?
         public let note: String?
         public let description: String?
         public let buyerID: UUID?
@@ -137,8 +107,9 @@ extension TradeAPIModel {
         public init(
             id: UUID,
 //            products: [ProductAPIModel.Response]?,
-            items: [TradeItemAPIModel.Response]?,
+            items: [TradeItemAPIModel.Response],
             amount: Int,
+            discount: Int?,
             note: String?,
             description: String?,
             buyerID: UUID?,
@@ -148,6 +119,7 @@ extension TradeAPIModel {
 //            self.products = products
             self.items = items
             self.amount = amount
+            self.discount = discount
             self.note = note
             self.description = description
             self.buyerID = buyerID
@@ -175,7 +147,7 @@ extension TradeAPIModel {
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
-         */
+
 
         /// 新式初始化：使用 TradeItem
         public init(
@@ -195,6 +167,7 @@ extension TradeAPIModel {
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
+         */
 
         public static let sample: TradeAPIModel.Response = .init(
             id: UUID(),
@@ -213,6 +186,7 @@ extension TradeAPIModel {
                 )
             },
             amount: 3360,
+            discount: nil,
             note: "Mock 交易記錄",
             description: "假資料",
             buyerID: UUID(),
@@ -238,6 +212,7 @@ extension TradeAPIModel {
                         )
                     },
                     amount: 1680 * index,
+                    discount: nil,
                     note: "Mock 交易記錄 \(index)",
                     description: "假資料 \(index)",
                     buyerID: UUID(),
