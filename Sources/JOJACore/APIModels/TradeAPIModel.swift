@@ -11,6 +11,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public let discount: Int?
     public let note: String?
     public let description: String?
+    public let log: String?
     public let buyerID: UUID?
     public let createdAt: Date?
 
@@ -22,6 +23,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         discount: Int?,
         note: String?,
         description: String?,
+        log: String?,
         buyerID: UUID?,
         createdAt: Date?
     ) {
@@ -32,6 +34,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         self.discount = discount
         self.note = note
         self.description = description
+        self.log = log
         self.buyerID = buyerID
         self.createdAt = createdAt
     }
@@ -70,6 +73,7 @@ extension TradeAPIModel {
         public let discount: Int?
         public let note: String?
         public let description: String?
+        public let log: String?
         public let buyerID: UUID?
 
         public init(
@@ -79,6 +83,7 @@ extension TradeAPIModel {
             discount: Int?,
             note: String?,
             description: String?,
+            log: String?,
             buyerID: UUID?
         ) {
             self.products = products
@@ -87,6 +92,7 @@ extension TradeAPIModel {
             self.discount = discount
             self.note = note
             self.description = description
+            self.log = log
             self.buyerID = buyerID
         }
     }
@@ -101,6 +107,7 @@ extension TradeAPIModel {
         public let discount: Int?
         public let note: String?
         public let description: String?
+        public let log: String?
         public let buyerID: UUID?
         public let createdAt: Date?
 
@@ -112,6 +119,7 @@ extension TradeAPIModel {
             discount: Int?,
             note: String?,
             description: String?,
+            log: String?,
             buyerID: UUID?,
             createdAt: Date?
         ) {
@@ -122,6 +130,7 @@ extension TradeAPIModel {
             self.discount = discount
             self.note = note
             self.description = description
+            self.log = log
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
@@ -189,6 +198,7 @@ extension TradeAPIModel {
             discount: nil,
             note: "Mock 交易記錄",
             description: "假資料",
+            log: nil,
             buyerID: UUID(),
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
         )
@@ -215,6 +225,7 @@ extension TradeAPIModel {
                     discount: nil,
                     note: "Mock 交易記錄 \(index)",
                     description: "假資料 \(index)",
+                    log: nil,
                     buyerID: UUID(),
                     createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
                 )
