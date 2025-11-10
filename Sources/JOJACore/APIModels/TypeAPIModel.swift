@@ -490,7 +490,56 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             }
         }
     }
-    
+
+    /// 消費地點
+    public enum SpendingLocation: String, TypeCommon {
+        case taipei // 台北店
+        case tainan // 台南店
+        case ig // IG
+        case website // 官網
+        case market // 市集
+
+        public static func getKey() -> String {
+            "spending_location_type"
+        }
+
+        public func getName() -> String {
+            switch self {
+                case .taipei:
+                    return "台北店"
+                case .tainan:
+                    return "台南店"
+                case .ig:
+                    return "IG"
+                case .website:
+                    return "官網"
+                case .market:
+                    return "市集"
+            }
+        }
+
+        public func displayName() -> String {
+            switch self {
+                case .taipei:
+                    return "台北店"
+                case .tainan:
+                    return "台南店"
+                case .ig:
+                    return "IG"
+                case .website:
+                    return "官網"
+                case .market:
+                    return "市集"
+            }
+        }
+
+        public static func find(from name: String) -> SpendingLocation? {
+            return SpendingLocation.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
+
     /// 商品類型
     public enum ProductType: String, TypeCommon {
         case jojaFabric // JOJA 布料商品

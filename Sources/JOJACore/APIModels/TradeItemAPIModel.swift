@@ -151,10 +151,27 @@ extension TradeItemAPIModel {
             unitPrice: 1880,
             discount: 200,
             subtotal: 1680,
-            note: "折扣後價格",
+            note: "這是備注，折扣 $200",
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
             inventory: .sample
         )
+
+        public static func sampleList(count: Int = 3) -> [TradeItemAPIModel.Response] {
+            return (1...count).map { index in
+                TradeItemAPIModel.Response(
+                    id: UUID(),
+                    tradeId: UUID(),
+                    inventoryId: UUID(),
+                    quantity: 1,
+                    unitPrice: 1880,
+                    discount: index == 1 ? 200 : nil,
+                    subtotal: index == 1 ? 1680 : 1880,
+                    note: "備注：第\(index)個商品 \(index == 1 ? "折扣$200" : "無折扣")",
+                    createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
+                    inventory: .sample
+                )
+            }
+        }
     }
 }
 
@@ -193,7 +210,7 @@ extension TradeItemAPIModel {
             unitPrice: 1880,
             discount: 200,
             subtotal: 1680,
-            templateSku: "sn-101-B-M"
+            templateSku: "B100015M"
         )
 
         public static func sampleList(count: Int = 3) -> [TradeItemAPIModel.ListData] {
@@ -205,7 +222,7 @@ extension TradeItemAPIModel {
                     unitPrice: 1880,
                     discount: index == 1 ? 200 : nil,
                     subtotal: index == 1 ? 1680 : 1880,
-                    templateSku: "sn-101-B-M"
+                    templateSku: "B100015M"
                 )
             }
         }

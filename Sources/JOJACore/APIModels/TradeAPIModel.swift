@@ -9,10 +9,13 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public let items: [TradeItemAPIModel]
     public let amount: Int
     public let discount: Int?
+    public let transactionType: TypeAPIModel.Transaction
+    public let spendingLocation: TypeAPIModel.SpendingLocation
     public let note: String?
     public let description: String?
     public let log: String?
     public let buyerID: UUID?
+    public let buyerName: String?
     public let createdAt: Date?
 
     public init(
@@ -21,10 +24,13 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         items: [TradeItemAPIModel],
         amount: Int,
         discount: Int?,
+        transactionType: TypeAPIModel.Transaction,
+        spendingLocation: TypeAPIModel.SpendingLocation,
         note: String?,
         description: String?,
         log: String?,
         buyerID: UUID?,
+        buyerName: String?,
         createdAt: Date?
     ) {
         self.id = id
@@ -32,10 +38,13 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         self.items = items
         self.amount = amount
         self.discount = discount
+        self.transactionType = transactionType
+        self.spendingLocation = spendingLocation
         self.note = note
         self.description = description
         self.log = log
         self.buyerID = buyerID
+        self.buyerName = buyerName
         self.createdAt = createdAt
     }
 
@@ -71,6 +80,8 @@ extension TradeAPIModel {
         public let items: [TradeItemAPIModel.Request]
         public let amount: Int
         public let discount: Int?
+        public let transactionType: TypeAPIModel.Transaction
+        public let spendingLocation: TypeAPIModel.SpendingLocation
         public let note: String?
         public let description: String?
         public let log: String?
@@ -81,6 +92,8 @@ extension TradeAPIModel {
             items: [TradeItemAPIModel.Request],
             amount: Int,
             discount: Int?,
+            transactionType: TypeAPIModel.Transaction,
+            spendingLocation: TypeAPIModel.SpendingLocation,
             note: String?,
             description: String?,
             log: String?,
@@ -90,6 +103,8 @@ extension TradeAPIModel {
             self.items = items
             self.amount = amount
             self.discount = discount
+            self.transactionType = transactionType
+            self.spendingLocation = spendingLocation
             self.note = note
             self.description = description
             self.log = log
@@ -105,10 +120,13 @@ extension TradeAPIModel {
         public let items: [TradeItemAPIModel.Response]
         public let amount: Int
         public let discount: Int?
+        public let transactionType: TypeAPIModel.Transaction
+        public let spendingLocation: TypeAPIModel.SpendingLocation
         public let note: String?
         public let description: String?
         public let log: String?
         public let buyerID: UUID?
+        public let buyerName: String?
         public let createdAt: Date?
 
         public init(
@@ -117,10 +135,13 @@ extension TradeAPIModel {
             items: [TradeItemAPIModel.Response],
             amount: Int,
             discount: Int?,
+            transactionType: TypeAPIModel.Transaction,
+            spendingLocation: TypeAPIModel.SpendingLocation,
             note: String?,
             description: String?,
             log: String?,
             buyerID: UUID?,
+            buyerName: String?,
             createdAt: Date?
         ) {
             self.id = id
@@ -128,10 +149,13 @@ extension TradeAPIModel {
             self.items = items
             self.amount = amount
             self.discount = discount
+            self.transactionType = transactionType
+            self.spendingLocation = spendingLocation
             self.note = note
             self.description = description
             self.log = log
             self.buyerID = buyerID
+            self.buyerName = buyerName
             self.createdAt = createdAt
         }
 
@@ -180,26 +204,16 @@ extension TradeAPIModel {
 
         public static let sample: TradeAPIModel.Response = .init(
             id: UUID(),
-            items: TradeItemAPIModel.ListData.sampleList(count: 2).map { listData in
-                TradeItemAPIModel.Response(
-                    id: listData.id,
-                    tradeId: UUID(),
-                    inventoryId: UUID(),
-                    quantity: listData.quantity,
-                    unitPrice: listData.unitPrice,
-                    discount: listData.discount,
-                    subtotal: listData.subtotal,
-                    note: nil,
-                    createdAt: Date(),
-                    inventory: .sample
-                )
-            },
+            items: TradeItemAPIModel.Response.sampleList(count: 2),
             amount: 3360,
             discount: nil,
+            transactionType: .apply_pay,
+            spendingLocation: .tainan,
             note: "Mock 交易記錄",
             description: "假資料",
             log: nil,
             buyerID: UUID(),
+            buyerName: "王大明",
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
         )
 
@@ -207,26 +221,16 @@ extension TradeAPIModel {
             return (1...count).map { index in
                 TradeAPIModel.Response(
                     id: UUID(),
-                    items: TradeItemAPIModel.ListData.sampleList(count: 2).map { listData in
-                        TradeItemAPIModel.Response(
-                            id: listData.id,
-                            tradeId: UUID(),
-                            inventoryId: UUID(),
-                            quantity: listData.quantity,
-                            unitPrice: listData.unitPrice,
-                            discount: listData.discount,
-                            subtotal: listData.subtotal,
-                            note: nil,
-                            createdAt: Date(),
-                            inventory: .sample
-                        )
-                    },
+                    items: TradeItemAPIModel.Response.sampleList(count: 3),
                     amount: 1680 * index,
                     discount: nil,
+                    transactionType: .apply_pay,
+                    spendingLocation: .tainan,
                     note: "Mock 交易記錄 \(index)",
                     description: "假資料 \(index)",
                     log: nil,
                     buyerID: UUID(),
+                    buyerName: "王大明",
                     createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
                 )
             }
