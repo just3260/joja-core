@@ -9,8 +9,8 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public let items: [TradeItemAPIModel]
     public let amount: Int
     public let discount: Int?
-    public let transactionType: TypeAPIModel.Transaction
-    public let spendingLocation: TypeAPIModel.SpendingLocation
+    public let transactionType: TypeAPIModel.Transaction?
+    public let spendingLocation: TypeAPIModel.SpendingLocation?
     public let note: String?
     public let description: String?
     public let log: String?
@@ -24,8 +24,8 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         items: [TradeItemAPIModel],
         amount: Int,
         discount: Int?,
-        transactionType: TypeAPIModel.Transaction,
-        spendingLocation: TypeAPIModel.SpendingLocation,
+        transactionType: TypeAPIModel.Transaction?,
+        spendingLocation: TypeAPIModel.SpendingLocation?,
         note: String?,
         description: String?,
         log: String?,
@@ -80,8 +80,8 @@ extension TradeAPIModel {
         public let items: [TradeItemAPIModel.Request]
         public let amount: Int
         public let discount: Int?
-        public let transactionType: TypeAPIModel.Transaction
-        public let spendingLocation: TypeAPIModel.SpendingLocation
+        public let transactionType: TypeAPIModel.Transaction?
+        public let spendingLocation: TypeAPIModel.SpendingLocation?
         public let note: String?
         public let description: String?
         public let log: String?
@@ -92,8 +92,8 @@ extension TradeAPIModel {
             items: [TradeItemAPIModel.Request],
             amount: Int,
             discount: Int?,
-            transactionType: TypeAPIModel.Transaction,
-            spendingLocation: TypeAPIModel.SpendingLocation,
+            transactionType: TypeAPIModel.Transaction?,
+            spendingLocation: TypeAPIModel.SpendingLocation?,
             note: String?,
             description: String?,
             log: String?,
@@ -120,8 +120,8 @@ extension TradeAPIModel {
         public let items: [TradeItemAPIModel.Response]
         public let amount: Int
         public let discount: Int?
-        public let transactionType: TypeAPIModel.Transaction
-        public let spendingLocation: TypeAPIModel.SpendingLocation
+        public let transactionType: TypeAPIModel.Transaction?
+        public let spendingLocation: TypeAPIModel.SpendingLocation?
         public let note: String?
         public let description: String?
         public let log: String?
@@ -135,8 +135,8 @@ extension TradeAPIModel {
             items: [TradeItemAPIModel.Response],
             amount: Int,
             discount: Int?,
-            transactionType: TypeAPIModel.Transaction,
-            spendingLocation: TypeAPIModel.SpendingLocation,
+            transactionType: TypeAPIModel.Transaction?,
+            spendingLocation: TypeAPIModel.SpendingLocation?,
             note: String?,
             description: String?,
             log: String?,
