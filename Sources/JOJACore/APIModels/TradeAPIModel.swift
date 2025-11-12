@@ -240,23 +240,23 @@ extension TradeAPIModel {
     public struct SimpleTrade: Codable, Hashable, Sendable {
         public let id: UUID
         public let amount: Int
-        public let note: String?
-        public let description: String?
+        public let transactionType: TypeAPIModel.Transaction?
+        public let spendingLocation: TypeAPIModel.SpendingLocation?
         public let buyerID: UUID?
         public let createdAt: Date?
         
         public init(
             id: UUID,
             amount: Int,
-            note: String?,
-            description: String?,
+            transactionType: TypeAPIModel.Transaction?,
+            spendingLocation: TypeAPIModel.SpendingLocation?,
             buyerID: UUID?,
             createdAt: Date?
         ) {
             self.id = id
             self.amount = amount
-            self.note = note
-            self.description = description
+            self.transactionType = transactionType
+            self.spendingLocation = spendingLocation
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
@@ -264,8 +264,8 @@ extension TradeAPIModel {
         public static let sample: TradeAPIModel.SimpleTrade = .init(
             id: UUID(),
             amount: 16800,
-            note: "Mock 交易記錄",
-            description: "假資料",
+            transactionType: .cash,
+            spendingLocation: .tainan,
             buyerID: UUID(),
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
         )
@@ -275,8 +275,8 @@ extension TradeAPIModel {
                 TradeAPIModel.SimpleTrade(
                     id: UUID(),
                     amount: 1680 * index,
-                    note: "Mock 交易記錄 \(index)",
-                    description: "假資料 \(index)",
+                    transactionType: .cash,
+                    spendingLocation: .tainan,
                     buyerID: UUID(),
                     createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
                 )
