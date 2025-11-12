@@ -236,15 +236,15 @@ extension TradeAPIModel {
             }
         }
     }
-    
-    public struct SimpleTrade: Codable, Hashable, Sendable {
+
+    public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let amount: Int
         public let transactionType: TypeAPIModel.Transaction?
         public let spendingLocation: TypeAPIModel.SpendingLocation?
         public let buyerID: UUID?
         public let createdAt: Date?
-        
+
         public init(
             id: UUID,
             amount: Int,
@@ -260,12 +260,63 @@ extension TradeAPIModel {
             self.buyerID = buyerID
             self.createdAt = createdAt
         }
-        
-        public static let sample: TradeAPIModel.SimpleTrade = .init(
+
+        public static let sample: TradeAPIModel.ListData = .init(
             id: UUID(),
             amount: 16800,
             transactionType: .cash,
             spendingLocation: .tainan,
+            buyerID: UUID(),
+            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+        )
+
+        public static func sampleList(count: Int = 3) -> [TradeAPIModel.ListData] {
+            return (1...count).map { index in
+                TradeAPIModel.ListData(
+                    id: UUID(),
+                    amount: 1680 * index,
+                    transactionType: .cash,
+                    spendingLocation: .tainan,
+                    buyerID: UUID(),
+                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
+                )
+            }
+        }
+    }
+
+    public struct SimpleTrade: Codable, Hashable, Sendable {
+        public let id: UUID
+        public let amount: Int
+        public let items: [ProductInventoryAPIModel.Response]
+        public let note: String?
+        public let description: String?
+        public let buyerID: UUID?
+        public let createdAt: Date?
+        
+        public init(
+            id: UUID,
+            amount: Int,
+            items: [ProductInventoryAPIModel.Response],
+            note: String?,
+            description: String?,
+            buyerID: UUID?,
+            createdAt: Date?
+        ) {
+            self.id = id
+            self.amount = amount
+            self.items = items
+            self.note = note
+            self.description = description
+            self.buyerID = buyerID
+            self.createdAt = createdAt
+        }
+        
+        public static let sample: TradeAPIModel.SimpleTrade = .init(
+            id: UUID(),
+            amount: 16800,
+            items: [ProductInventoryAPIModel.Response.sample],
+            note: "Mock 交易記錄",
+            description: "假資料",
             buyerID: UUID(),
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
         )
@@ -275,8 +326,9 @@ extension TradeAPIModel {
                 TradeAPIModel.SimpleTrade(
                     id: UUID(),
                     amount: 1680 * index,
-                    transactionType: .cash,
-                    spendingLocation: .tainan,
+                    items: [ProductInventoryAPIModel.Response.sample],
+                    note: "Mock 交易記錄",
+                    description: "假資料",
                     buyerID: UUID(),
                     createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
                 )
