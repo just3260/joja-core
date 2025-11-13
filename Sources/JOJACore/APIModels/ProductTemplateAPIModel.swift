@@ -16,6 +16,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
     public let inventories: [ProductInventoryAPIModel]
     public let createdAt: Date?
     public let updatedAt: Date?
+    public let log: String?
 
     public init(
         id: UUID,
@@ -31,7 +32,8 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
         inventoryCount: Int,
         inventories: [ProductInventoryAPIModel],
         createdAt: Date?,
-        updatedAt: Date?
+        updatedAt: Date?,
+        log: String?
     ) {
         self.id = id
         self.sku = sku
@@ -47,6 +49,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
         self.inventories = inventories
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.log = log
     }
 }
 
@@ -164,6 +167,7 @@ extension ProductTemplateAPIModel {
         public let inventories: [ProductInventoryAPIModel.Response]
         public let createdAt: Date?
         public let updatedAt: Date?
+        public let log: String?
 
         public init(
             id: UUID,
@@ -179,7 +183,8 @@ extension ProductTemplateAPIModel {
             inventoryCount: Int,
             inventories: [ProductInventoryAPIModel.Response],
             createdAt: Date?,
-            updatedAt: Date?
+            updatedAt: Date?,
+            log: String
         ) {
             self.id = id
             self.sku = sku
@@ -195,6 +200,7 @@ extension ProductTemplateAPIModel {
             self.inventories = inventories
             self.createdAt = createdAt
             self.updatedAt = updatedAt
+            self.log = log
         }
 
         public static let sample: ProductTemplateAPIModel.Response = .init(
@@ -211,7 +217,8 @@ extension ProductTemplateAPIModel {
             inventoryCount: 3,
             inventories: [],
             createdAt: Calendar.current.date(byAdding: .day, value: -7, to: Date()),
-            updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date())
+            updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
+            log: "商品模板創建"
         )
     }
 }

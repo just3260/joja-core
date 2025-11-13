@@ -13,10 +13,10 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public let spendingLocation: TypeAPIModel.SpendingLocation?
     public let note: String?
     public let description: String?
-    public let log: String?
     public let buyerID: UUID?
     public let buyerName: String?
     public let createdAt: Date?
+    public let log: String?
 
     public init(
         id: UUID,
@@ -28,10 +28,10 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         spendingLocation: TypeAPIModel.SpendingLocation?,
         note: String?,
         description: String?,
-        log: String?,
         buyerID: UUID?,
         buyerName: String?,
-        createdAt: Date?
+        createdAt: Date?,
+        log: String?
     ) {
         self.id = id
         self.products = products
@@ -42,10 +42,10 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         self.spendingLocation = spendingLocation
         self.note = note
         self.description = description
-        self.log = log
         self.buyerID = buyerID
         self.buyerName = buyerName
         self.createdAt = createdAt
+        self.log = log
     }
 
     /*
@@ -124,10 +124,10 @@ extension TradeAPIModel {
         public let spendingLocation: TypeAPIModel.SpendingLocation?
         public let note: String?
         public let description: String?
-        public let log: String?
         public let buyerID: UUID?
         public let buyerName: String?
         public let createdAt: Date?
+        public let log: String?
 
         public init(
             id: UUID,
@@ -139,10 +139,10 @@ extension TradeAPIModel {
             spendingLocation: TypeAPIModel.SpendingLocation?,
             note: String?,
             description: String?,
-            log: String?,
             buyerID: UUID?,
             buyerName: String?,
-            createdAt: Date?
+            createdAt: Date?,
+            log: String?
         ) {
             self.id = id
 //            self.products = products
@@ -153,10 +153,10 @@ extension TradeAPIModel {
             self.spendingLocation = spendingLocation
             self.note = note
             self.description = description
-            self.log = log
             self.buyerID = buyerID
             self.buyerName = buyerName
             self.createdAt = createdAt
+            self.log = log
         }
 
         /*
@@ -211,10 +211,10 @@ extension TradeAPIModel {
             spendingLocation: .tainan,
             note: "Mock 交易記錄",
             description: "假資料",
-            log: nil,
             buyerID: UUID(),
             buyerName: "王大明",
-            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date(),
+            log: nil,
         )
 
         public static func sampleList(count: Int = 3) -> [TradeAPIModel.Response] {
@@ -228,10 +228,10 @@ extension TradeAPIModel {
                     spendingLocation: .tainan,
                     note: "Mock 交易記錄 \(index)",
                     description: "假資料 \(index)",
-                    log: nil,
                     buyerID: UUID(),
                     buyerName: "王大明",
-                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
+                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date(),
+                    log: nil,
                 )
             }
         }

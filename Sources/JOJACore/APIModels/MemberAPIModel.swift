@@ -16,7 +16,8 @@ public struct MemberAPIModel: Codable, Hashable, Sendable {
     public let createdAt: Date?
     public let updatedAt: Date?
     public let trades: [TradeAPIModel]?
-    
+    public let log: String?
+
     public init(
         id: UUID,
         name: String,
@@ -31,7 +32,8 @@ public struct MemberAPIModel: Codable, Hashable, Sendable {
         fillAt: Date?,
         createdAt: Date?,
         updatedAt: Date?,
-        trades: [TradeAPIModel]?
+        trades: [TradeAPIModel]?,
+        log: String?
     ) {
         self.id = id
         self.name = name
@@ -47,6 +49,7 @@ public struct MemberAPIModel: Codable, Hashable, Sendable {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.trades = trades
+        self.log = log
     }
 }
 
@@ -105,7 +108,8 @@ extension MemberAPIModel {
         public let createdAt: Date?
         public let updatedAt: Date?
         public let trades: [TradeAPIModel.SimpleTrade]?
-        
+        public let log: String?
+
         public init(
             id: UUID,
             name: String,
@@ -120,7 +124,8 @@ extension MemberAPIModel {
             fillAt: Date?,
             createdAt: Date?,
             updatedAt: Date?,
-            trades: [TradeAPIModel.SimpleTrade]?
+            trades: [TradeAPIModel.SimpleTrade]?,
+            log: String?
         ) {
             self.id = id
             self.name = name
@@ -136,6 +141,7 @@ extension MemberAPIModel {
             self.createdAt = createdAt
             self.updatedAt = updatedAt
             self.trades = trades
+            self.log = log
         }
         
         public static let sample: MemberAPIModel.Response = .init(
@@ -152,7 +158,8 @@ extension MemberAPIModel {
             fillAt: Date(),
             createdAt: Calendar.current.date(byAdding: .year, value: -2, to: Date()) ?? Date(),
             updatedAt: Calendar.current.date(byAdding: .day, value: -10, to: Date()),
-            trades: []
+            trades: [],
+            log: "加入會員"
         )
     }
 }
