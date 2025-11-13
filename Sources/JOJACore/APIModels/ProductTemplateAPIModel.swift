@@ -184,7 +184,7 @@ extension ProductTemplateAPIModel {
             inventories: [ProductInventoryAPIModel.Response],
             createdAt: Date?,
             updatedAt: Date?,
-            log: String
+            log: String?
         ) {
             self.id = id
             self.sku = sku
