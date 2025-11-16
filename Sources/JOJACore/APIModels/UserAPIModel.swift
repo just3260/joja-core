@@ -34,18 +34,20 @@ public struct UserAPIModel: Codable, Hashable, Sendable {
     public let username: String
     public let email: String
     public let isAdmin: Bool
+    public let serviceLocation: [TypeAPIModel.SpendingLocation]
     public let permissions: PermissionOptions
     public let password: String
     public let statistics: StatisticsAPIModel
     public let createdAt: Date
     public let updatedAt: Date
     
-    public init(id: UUID, username: String, email: String, password: String, isAdmin: Bool, permissions: PermissionOptions, statistics: StatisticsAPIModel, createdAt: Date, updatedAt: Date) {
+    public init(id: UUID, username: String, email: String, password: String, isAdmin: Bool, serviceLocation: [TypeAPIModel.SpendingLocation], permissions: PermissionOptions, statistics: StatisticsAPIModel, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.username = username
         self.email = email
         self.password = password
         self.isAdmin = isAdmin
+        self.serviceLocation = serviceLocation
         self.permissions = permissions
         self.statistics = statistics
         self.createdAt = createdAt
@@ -80,16 +82,18 @@ extension UserAPIModel {
         public let username: String
         public let email: String
         public let isAdmin: Bool
+        public let serviceLocation: [TypeAPIModel.SpendingLocation]
         public let permissions: PermissionOptions
         public let statistics: StatisticsAPIModel
         public let createdAt: Date
         public let updatedAt: Date
         
-        public init(id: UUID, username: String, email: String, isAdmin: Bool, permissions: PermissionOptions, statistics: StatisticsAPIModel, createdAt: Date, updatedAt: Date) {
+        public init(id: UUID, username: String, email: String, isAdmin: Bool, serviceLocation: [TypeAPIModel.SpendingLocation], permissions: PermissionOptions, statistics: StatisticsAPIModel, createdAt: Date, updatedAt: Date) {
             self.id = id
             self.username = username
             self.email = email
             self.isAdmin = isAdmin
+            self.serviceLocation = serviceLocation
             self.permissions = permissions
             self.statistics = statistics
             self.createdAt = createdAt
@@ -101,6 +105,7 @@ extension UserAPIModel {
             username: "test_user",
             email: "test@example.com",
             isAdmin: false,
+            serviceLocation: [.ig],
             permissions: PermissionOptions(rawValue: 37),
             statistics: .sample,
             createdAt: Date(),
