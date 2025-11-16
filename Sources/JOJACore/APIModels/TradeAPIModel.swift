@@ -14,6 +14,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public let note: String?
     public let description: String?
     public let buyerID: UUID?
+    public let sellerID: UUID?
     public let buyerName: String?
     public let createdAt: Date?
     public let log: String?
@@ -29,6 +30,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         note: String?,
         description: String?,
         buyerID: UUID?,
+        sellerID: UUID?,
         buyerName: String?,
         createdAt: Date?,
         log: String?
@@ -43,6 +45,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         self.note = note
         self.description = description
         self.buyerID = buyerID
+        self.sellerID = sellerID
         self.buyerName = buyerName
         self.createdAt = createdAt
         self.log = log
@@ -86,6 +89,7 @@ extension TradeAPIModel {
         public let description: String?
         public let log: String?
         public let buyerID: UUID?
+        public let sellerID: UUID?
 
         public init(
             products: [ProductAPIModel.Request]?,
@@ -97,7 +101,8 @@ extension TradeAPIModel {
             note: String?,
             description: String?,
             log: String?,
-            buyerID: UUID?
+            buyerID: UUID?,
+            sellerID: UUID?
         ) {
             self.products = products
             self.items = items
@@ -109,6 +114,7 @@ extension TradeAPIModel {
             self.description = description
             self.log = log
             self.buyerID = buyerID
+            self.sellerID = sellerID
         }
     }
     
@@ -125,6 +131,7 @@ extension TradeAPIModel {
         public let note: String?
         public let description: String?
         public let buyerID: UUID?
+        public let sellerID: UUID?
         public let buyerName: String?
         public let createdAt: Date?
         public let log: String?
@@ -140,6 +147,7 @@ extension TradeAPIModel {
             note: String?,
             description: String?,
             buyerID: UUID?,
+            sellerID: UUID?,
             buyerName: String?,
             createdAt: Date?,
             log: String?
@@ -154,6 +162,7 @@ extension TradeAPIModel {
             self.note = note
             self.description = description
             self.buyerID = buyerID
+            self.sellerID = sellerID
             self.buyerName = buyerName
             self.createdAt = createdAt
             self.log = log
@@ -212,6 +221,7 @@ extension TradeAPIModel {
             note: "Mock 交易記錄",
             description: "假資料",
             buyerID: UUID(),
+            sellerID: UUID(),
             buyerName: "王大明",
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date(),
             log: nil,
@@ -229,6 +239,7 @@ extension TradeAPIModel {
                     note: "Mock 交易記錄 \(index)",
                     description: "假資料 \(index)",
                     buyerID: UUID(),
+                    sellerID: UUID(),
                     buyerName: "王大明",
                     createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date(),
                     log: nil,
