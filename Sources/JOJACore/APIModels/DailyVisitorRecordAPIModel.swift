@@ -72,6 +72,40 @@ extension DailyVisitorRecordAPIModel {
     }
 }
 
+// MARK: - VisitorType
+extension DailyVisitorRecordAPIModel {
+    public enum VisitorType: String, Codable, Hashable, Sendable {
+        case regular
+        case passerby
+
+        public var displayName: String {
+            switch self {
+            case .regular: return "熟客"
+            case .passerby: return "過路客"
+            }
+        }
+    }
+}
+
+// MARK: - IncrementRequest
+extension DailyVisitorRecordAPIModel {
+    public struct IncrementRequest: Codable, Hashable, Sendable {
+        public let storeLocation: TypeAPIModel.StoreLocation
+        public let visitorType: VisitorType
+        public let incrementBy: Int?
+
+        public init(
+            storeLocation: TypeAPIModel.StoreLocation,
+            visitorType: VisitorType,
+            incrementBy: Int? = nil
+        ) {
+            self.storeLocation = storeLocation
+            self.visitorType = visitorType
+            self.incrementBy = incrementBy
+        }
+    }
+}
+
 // MARK: - Response
 extension DailyVisitorRecordAPIModel {
     public struct Response: Codable, Hashable, Sendable {
