@@ -1572,6 +1572,40 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
     }
     
+    /// 商店位置
+    public enum StoreLocation: String, TypeCommon {
+        case taipei // 台北店
+        case tainan // 台南店
+
+        public static func getKey() -> String {
+            "store_location_type"
+        }
+
+        public func getName() -> String {
+            switch self {
+                case .taipei:
+                    return "台北店"
+                case .tainan:
+                    return "台南店"
+            }
+        }
+
+        public func displayName() -> String {
+            switch self {
+                case .taipei:
+                    return "台北"
+                case .tainan:
+                    return "台南"
+            }
+        }
+
+        public static func find(from name: String) -> StoreLocation? {
+            return StoreLocation.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
+
     /// 倉庫位置
     public enum Location: String, TypeCommon {
         case chifeng // 赤峰店
