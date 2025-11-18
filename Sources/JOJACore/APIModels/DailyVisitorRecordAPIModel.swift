@@ -39,6 +39,20 @@ public struct DailyVisitorRecordAPIModel: Codable, Hashable, Sendable {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
+
+    public static let sample: DailyVisitorRecordAPIModel = .init(
+        id: UUID(),
+        storeLocation: TypeAPIModel.StoreLocation.taipei,
+        recordDate: Date(),
+        regularCustomerCount: 1,
+        passersbyCount: 3,
+        weather: "晴",
+        specialEvent: "週年慶",
+        note: nil,
+        recordedByUserId: nil,
+        createdAt: Date(),
+        updatedAt: Date()
+    )
 }
 
 // MARK: - Request

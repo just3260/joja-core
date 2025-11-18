@@ -42,17 +42,21 @@ public struct RevenueAPIModel: Codable, Hashable, Sendable {
 public struct StatisticsAPIModel: Codable, Hashable, Sendable {
     public let candidateCount: Int
     public let revenues: [RevenueAPIModel]
+    public let visitorRecord: [DailyVisitorRecordAPIModel]
 
     public init(
         candidateCount: Int = 0,
-        revenues: [RevenueAPIModel]
+        revenues: [RevenueAPIModel],
+        visitorRecord: [DailyVisitorRecordAPIModel]
     ) {
         self.candidateCount = candidateCount
         self.revenues = revenues
+        self.visitorRecord = visitorRecord
     }
 
     public static let sample: StatisticsAPIModel = .init(
         candidateCount: 3,
-        revenues: [RevenueAPIModel.sample]
+        revenues: [RevenueAPIModel.sample],
+        visitorRecord: [DailyVisitorRecordAPIModel.sample]
     )
 }
