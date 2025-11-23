@@ -242,7 +242,7 @@ extension TradeAPIModel {
                     sellerID: UUID(),
                     buyerName: "王大明",
                     createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date(),
-                    log: nil,
+                    log: nil
                 )
             }
         }

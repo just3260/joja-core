@@ -60,7 +60,7 @@ extension ProductInventoryAPIModel {
             location: TypeAPIModel.Location,
             actualPrice: Int,
             condition: String?,
-            note: String?,
+            note: String?
         ) {
             self.templateId = templateId
             self.location = location
@@ -115,7 +115,7 @@ extension ProductInventoryAPIModel {
             note: String?,
             createdAt: Date?,
             updatedAt: Date?,
-            log: String?,
+            log: String?
 //            template: ProductTemplateAPIModel.ListData?
         ) {
             self.id = id
@@ -143,7 +143,7 @@ extension ProductInventoryAPIModel {
             note: "第一批製作",
             createdAt: Calendar.current.date(byAdding: .day, value: -3, to: Date()),
             updatedAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()),
-            log: "製作完成",
+            log: "製作完成"
 //            template: .sample
         )
     }
