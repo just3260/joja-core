@@ -74,7 +74,7 @@ public struct VipCalculator {
         let previousAmount = currentAmount
 
         // Rule 1: 單筆消費達到門檻 (>= 8000) 立即成為 VIP
-        if !wasVip && additionalAmount >= VipRuleConstants.singleTransactionVipThreshold && currentAmount == 0 {
+        if !wasVip && additionalAmount >= VipRuleConstants.singleTransactionVipThreshold && previousAmount <= VipRuleConstants.vipThreshold - VipRuleConstants.singleTransactionVipThreshold {
             let amountOverThreshold = additionalAmount - VipRuleConstants.singleTransactionVipThreshold
             let (effectiveAmount, jojaDiscount) = calculateDiscountedAmount(
                 totalAmount: additionalAmount,
@@ -122,6 +122,20 @@ public struct VipCalculator {
                     previousAmount: previousAmount,
                     newAmount: potentialTotal - jojaDiscount
                 ),
+                effectiveAmount: effectiveAmount,
+                jojaDiscount: jojaDiscount
+            )
+        } else if previousAmount < VipRuleConstants.vipThreshold && additionalAmount >= VipRuleConstants.singleTransactionVipThreshold {
+            let amountOverThreshold = additionalAmount - VipRuleConstants.singleTransactionVipThreshold
+            let (effectiveAmount, jojaDiscount) = calculateDiscountedAmount(
+                totalAmount: additionalAmount,
+                jojaAmount: jojaAmount,
+                amountOverThreshold: amountOverThreshold
+            )
+
+            return VipCalculationResult(
+                willBecomeVip: true,
+                becomeVipReason: .singleTransaction(amount: additionalAmount),
                 effectiveAmount: effectiveAmount,
                 jojaDiscount: jojaDiscount
             )
