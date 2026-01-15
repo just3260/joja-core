@@ -74,7 +74,7 @@ public struct VipCalculator {
         let previousAmount = currentAmount
 
         // Rule 1: 單筆消費達到門檻 (>= 8000) 立即成為 VIP
-        if !wasVip && additionalAmount >= VipRuleConstants.singleTransactionVipThreshold {
+        if !wasVip && additionalAmount >= VipRuleConstants.singleTransactionVipThreshold && currentAmount == 0 {
             let amountOverThreshold = additionalAmount - VipRuleConstants.singleTransactionVipThreshold
             let (effectiveAmount, jojaDiscount) = calculateDiscountedAmount(
                 totalAmount: additionalAmount,
@@ -186,6 +186,13 @@ public struct VipAPIModel: Codable, Hashable, Sendable {
             self.additionalAmount = additionalAmount
             self.jojaAmount = jojaAmount
         }
+
+        public static let sample: VipAPIModel.Request = .init(
+            currentAmount: 7000,
+            isCurrentlyVip: false,
+            additionalAmount: 6000,
+            jojaAmount: 4000
+        )
     }
 
     public struct Response: Codable, Hashable, Sendable {
@@ -222,5 +229,14 @@ public struct VipAPIModel: Codable, Hashable, Sendable {
             self.newTotalAmount = newTotalAmount
             self.finalPayableAmount = finalPayableAmount
         }
+
+        public static let sample: VipAPIModel.Response = .init(
+            willBecomeVip: true,
+            reason: "累積消費從 $8,000 增加到 $11,800",
+            effectiveAmount: 3800,
+            jojaDiscount: 200,
+            newTotalAmount: 11800,
+            finalPayableAmount: 3800
+        )
     }
 }
