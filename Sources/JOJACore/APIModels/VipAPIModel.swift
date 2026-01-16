@@ -183,29 +183,35 @@ public struct VipAPIModel: Codable, Hashable, Sendable {
         /// 會員目前是否為 VIP
         public let isCurrentlyVip: Bool
 
-        /// 本次消費金額
+        /// 本次消費金額（訂單原價）
         public let additionalAmount: Int
 
         /// 其中 JOJA 商品金額
         public let jojaAmount: Int
 
+        /// 訂單額外折扣金額（VIP 折扣計算後再扣除）
+        public let orderDiscount: Int
+
         public init(
             currentAmount: Int,
             isCurrentlyVip: Bool,
             additionalAmount: Int,
-            jojaAmount: Int
+            jojaAmount: Int,
+            orderDiscount: Int = 0
         ) {
             self.currentAmount = currentAmount
             self.isCurrentlyVip = isCurrentlyVip
             self.additionalAmount = additionalAmount
             self.jojaAmount = jojaAmount
+            self.orderDiscount = orderDiscount
         }
 
         public static let sample: VipAPIModel.Request = .init(
             currentAmount: 7000,
             isCurrentlyVip: false,
             additionalAmount: 6000,
-            jojaAmount: 4000
+            jojaAmount: 4000,
+            orderDiscount: 0
         )
     }
 
@@ -222,6 +228,9 @@ public struct VipAPIModel: Codable, Hashable, Sendable {
         /// JOJA 折扣金額
         public let jojaDiscount: Int
 
+        /// 訂單額外折扣金額
+        public let orderDiscount: Int
+
         /// 新的累積總額
         public let newTotalAmount: Int
 
@@ -233,6 +242,7 @@ public struct VipAPIModel: Codable, Hashable, Sendable {
             reason: String?,
             effectiveAmount: Int,
             jojaDiscount: Int,
+            orderDiscount: Int = 0,
             newTotalAmount: Int,
             finalPayableAmount: Int
         ) {
@@ -240,6 +250,7 @@ public struct VipAPIModel: Codable, Hashable, Sendable {
             self.reason = reason
             self.effectiveAmount = effectiveAmount
             self.jojaDiscount = jojaDiscount
+            self.orderDiscount = orderDiscount
             self.newTotalAmount = newTotalAmount
             self.finalPayableAmount = finalPayableAmount
         }
@@ -249,6 +260,7 @@ public struct VipAPIModel: Codable, Hashable, Sendable {
             reason: "累積消費從 $8,000 增加到 $11,800",
             effectiveAmount: 3800,
             jojaDiscount: 200,
+            orderDiscount: 0,
             newTotalAmount: 11800,
             finalPayableAmount: 3800
         )
