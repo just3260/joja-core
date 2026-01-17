@@ -17,15 +17,15 @@ public struct VipRuleConstants {
 
 public enum VipReason: Codable, Hashable, Sendable {
     case singleTransaction(amount: Int)
-    case cumulativeAmount(previousAmount: Int, newAmount: Int)
+    case cumulativeAmount(previousAmount: Int)
     case alreadyVip
 
     public var description: String {
         switch self {
         case .singleTransaction(let amount):
             return "單筆消費 \(amount) 達到門檻"
-        case .cumulativeAmount(let previous, let new):
-            return "累積消費從 \(previous) 增加到 \(new)"
+        case .cumulativeAmount(let previous):
+            return "累積消費從 \(previous) 增加到 "
         case .alreadyVip:
             return "已是 VIP 會員"
         }
@@ -119,8 +119,7 @@ public struct VipCalculator {
             return VipCalculationResult(
                 willBecomeVip: true,
                 becomeVipReason: .cumulativeAmount(
-                    previousAmount: previousAmount,
-                    newAmount: potentialTotal - jojaDiscount
+                    previousAmount: previousAmount
                 ),
                 effectiveAmount: effectiveAmount,
                 jojaDiscount: jojaDiscount

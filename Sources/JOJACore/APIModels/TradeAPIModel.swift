@@ -9,6 +9,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public let items: [TradeItemAPIModel]
     public let amount: Int
     public let discount: Int?
+    public let vipDiscount: Int?
     public let transactionType: TypeAPIModel.Transaction?
     public let spendingLocation: TypeAPIModel.SpendingLocation?
     public let note: String?
@@ -25,6 +26,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         items: [TradeItemAPIModel],
         amount: Int,
         discount: Int?,
+        vipDiscount: Int? = nil,
         transactionType: TypeAPIModel.Transaction?,
         spendingLocation: TypeAPIModel.SpendingLocation?,
         note: String?,
@@ -40,6 +42,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         self.items = items
         self.amount = amount
         self.discount = discount
+        self.vipDiscount = vipDiscount
         self.transactionType = transactionType
         self.spendingLocation = spendingLocation
         self.note = note
@@ -126,6 +129,8 @@ extension TradeAPIModel {
         public let items: [TradeItemAPIModel.Response]
         public let amount: Int
         public let discount: Int?
+        /// VIP JOJA 商品折扣金額
+        public let vipDiscount: Int?
         public let transactionType: TypeAPIModel.Transaction?
         public let spendingLocation: TypeAPIModel.SpendingLocation?
         public let note: String?
@@ -142,6 +147,7 @@ extension TradeAPIModel {
             items: [TradeItemAPIModel.Response],
             amount: Int,
             discount: Int?,
+            vipDiscount: Int? = nil,
             transactionType: TypeAPIModel.Transaction?,
             spendingLocation: TypeAPIModel.SpendingLocation?,
             note: String?,
@@ -157,6 +163,7 @@ extension TradeAPIModel {
             self.items = items
             self.amount = amount
             self.discount = discount
+            self.vipDiscount = vipDiscount
             self.transactionType = transactionType
             self.spendingLocation = spendingLocation
             self.note = note
@@ -251,6 +258,9 @@ extension TradeAPIModel {
     public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let amount: Int
+        public let discount: Int?
+        /// VIP JOJA 商品折扣金額
+        public let vipDiscount: Int?
         public let transactionType: TypeAPIModel.Transaction?
         public let spendingLocation: TypeAPIModel.SpendingLocation?
         public let buyerID: UUID?
@@ -259,6 +269,8 @@ extension TradeAPIModel {
         public init(
             id: UUID,
             amount: Int,
+            discount: Int? = nil,
+            vipDiscount: Int? = nil,
             transactionType: TypeAPIModel.Transaction?,
             spendingLocation: TypeAPIModel.SpendingLocation?,
             buyerID: UUID?,
@@ -266,6 +278,8 @@ extension TradeAPIModel {
         ) {
             self.id = id
             self.amount = amount
+            self.discount = discount
+            self.vipDiscount = vipDiscount
             self.transactionType = transactionType
             self.spendingLocation = spendingLocation
             self.buyerID = buyerID
@@ -275,6 +289,8 @@ extension TradeAPIModel {
         public static let sample: TradeAPIModel.ListData = .init(
             id: UUID(),
             amount: 16800,
+            discount: nil,
+            vipDiscount: nil,
             transactionType: .cash,
             spendingLocation: .tainan,
             buyerID: UUID(),
@@ -286,6 +302,8 @@ extension TradeAPIModel {
                 TradeAPIModel.ListData(
                     id: UUID(),
                     amount: 1680 * index,
+                    discount: nil,
+                    vipDiscount: nil,
                     transactionType: .cash,
                     spendingLocation: .tainan,
                     buyerID: UUID(),
