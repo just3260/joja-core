@@ -5,27 +5,54 @@ public struct PermissionOptions: OptionSet, Codable, Hashable, Sendable {
         self.rawValue = rawValue
     }
 
+    /*
+     權限表：
+     候選會員、會員、交易、布料、商品、Tag
+
+     admin: 127
+        - 所有權限
+        - 所有刪除權限
+
+     staff: 0
+        - 所有讀取權限（不包含布料特殊資料）
+
+     jn: 30
+        - 所有讀取權限（不包含布料特殊資料）
+        - 會員資料變更
+        - 交易資料變更
+        - 商品新增
+        - 商品更新
+
+     */
+
     public let rawValue: Int
-    
-    public static let transaction = PermissionOptions(rawValue: 1 << 0) // 1
-    // candidate
-    public static let deleteCandidate = PermissionOptions(rawValue: 1 << 1) // 2
+
+    // 備用欄位
+    public static let pending = PermissionOptions(rawValue: 1 << 0) // 1
     // member
-    public static let createMember = PermissionOptions(rawValue: 1 << 2) // 4
-    public static let editMember = PermissionOptions(rawValue: 1 << 3) // 8
-    public static let deleteMember = PermissionOptions(rawValue: 1 << 4) // 16
+    public static let editMember = PermissionOptions(rawValue: 1 << 1) // 2
     // trade
-    public static let createTrade = PermissionOptions(rawValue: 1 << 5) // 32
-    public static let deleteTrade = PermissionOptions(rawValue: 1 << 6) // 64
+    public static let editTrade = PermissionOptions(rawValue: 1 << 2) // 4
     // product
-    public static let readProduct = PermissionOptions(rawValue: 1 << 7) // 128
-    public static let createProduct = PermissionOptions(rawValue: 1 << 8) // 256
-    public static let editProduct = PermissionOptions(rawValue: 1 << 9) // 512
-    public static let deleteProduct = PermissionOptions(rawValue: 1 << 10) // 1024
-    // tag
-    public static let createTag = PermissionOptions(rawValue: 1 << 8) // 256
-    public static let editTag = PermissionOptions(rawValue: 1 << 9) // 512
-    public static let deleteTag = PermissionOptions(rawValue: 1 << 10) // 1024
+    public static let createProduct = PermissionOptions(rawValue: 1 << 3) // 8
+    public static let editProduct = PermissionOptions(rawValue: 1 << 4) // 16
+    public static let transferProduct = PermissionOptions(rawValue: 1 << 5) // 32
+    // tag (暫時用不到)
+    public static let createTag = PermissionOptions(rawValue: 1 << 6) // 64
+    public static let editTag = PermissionOptions(rawValue: 1 << 7) // 128
+
+    // 7: 128
+    // 8: 256
+    // 9: 512
+    // 10: 1024
+    // 11: 2048
+    // 12: 4096
+    // 13: 8192
+
+    // 布料管理權限
+    public static let fabric = PermissionOptions(rawValue: 1 << 14) // 16384
+    // 刪除權限
+    public static let delete = PermissionOptions(rawValue: 1 << 15) // 32768
 }
 
 public struct UserAPIModel: Codable, Hashable, Sendable {
