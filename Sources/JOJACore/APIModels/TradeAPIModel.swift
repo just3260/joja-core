@@ -18,6 +18,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
     public let sellerID: UUID?
     public let buyerName: String?
     public let createdAt: Date?
+    public let updatedAt: Date?
     public let log: String?
 
     public init(
@@ -35,6 +36,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         sellerID: UUID?,
         buyerName: String?,
         createdAt: Date?,
+        updatedAt: Date?,
         log: String?
     ) {
         self.id = id
@@ -51,6 +53,7 @@ public struct TradeAPIModel: Codable, Hashable, Sendable {
         self.sellerID = sellerID
         self.buyerName = buyerName
         self.createdAt = createdAt
+        self.updatedAt = updatedAt
         self.log = log
     }
 
@@ -139,6 +142,7 @@ extension TradeAPIModel {
         public let sellerID: UUID?
         public let buyerName: String?
         public let createdAt: Date?
+        public let updatedAt: Date?
         public let log: String?
 
         public init(
@@ -156,6 +160,7 @@ extension TradeAPIModel {
             sellerID: UUID?,
             buyerName: String?,
             createdAt: Date?,
+            updatedAt: Date?,
             log: String?
         ) {
             self.id = id
@@ -172,6 +177,7 @@ extension TradeAPIModel {
             self.sellerID = sellerID
             self.buyerName = buyerName
             self.createdAt = createdAt
+            self.updatedAt = updatedAt
             self.log = log
         }
 
@@ -231,6 +237,7 @@ extension TradeAPIModel {
             sellerID: UUID(),
             buyerName: "王大明",
             createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date(),
+            updatedAt: Date(),
             log: nil
         )
 
@@ -249,6 +256,7 @@ extension TradeAPIModel {
                     sellerID: UUID(),
                     buyerName: "王大明",
                     createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date(),
+                    updatedAt: Date(),
                     log: nil
                 )
             }
@@ -265,6 +273,7 @@ extension TradeAPIModel {
         public let spendingLocation: TypeAPIModel.SpendingLocation?
         public let buyerID: UUID?
         public let createdAt: Date?
+        public let updatedAt: Date?
 
         public init(
             id: UUID,
@@ -274,7 +283,8 @@ extension TradeAPIModel {
             transactionType: TypeAPIModel.Transaction?,
             spendingLocation: TypeAPIModel.SpendingLocation?,
             buyerID: UUID?,
-            createdAt: Date?
+            createdAt: Date?,
+            updatedAt: Date?
         ) {
             self.id = id
             self.amount = amount
@@ -284,6 +294,7 @@ extension TradeAPIModel {
             self.spendingLocation = spendingLocation
             self.buyerID = buyerID
             self.createdAt = createdAt
+            self.updatedAt = updatedAt
         }
 
         public static let sample: TradeAPIModel.ListData = .init(
@@ -294,7 +305,8 @@ extension TradeAPIModel {
             transactionType: .cash,
             spendingLocation: .tainan,
             buyerID: UUID(),
-            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date(),
+            updatedAt: Date()
         )
 
         public static func sampleList(count: Int = 3) -> [TradeAPIModel.ListData] {
@@ -307,7 +319,8 @@ extension TradeAPIModel {
                     transactionType: .cash,
                     spendingLocation: .tainan,
                     buyerID: UUID(),
-                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
+                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date(),
+                    updatedAt: Date()
                 )
             }
         }
@@ -321,7 +334,8 @@ extension TradeAPIModel {
         public let description: String?
         public let buyerID: UUID?
         public let createdAt: Date?
-        
+        public let updatedAt: Date?
+
         public init(
             id: UUID,
             amount: Int,
@@ -329,7 +343,8 @@ extension TradeAPIModel {
             note: String?,
             description: String?,
             buyerID: UUID?,
-            createdAt: Date?
+            createdAt: Date?,
+            updatedAt: Date?
         ) {
             self.id = id
             self.amount = amount
@@ -338,6 +353,7 @@ extension TradeAPIModel {
             self.description = description
             self.buyerID = buyerID
             self.createdAt = createdAt
+            self.updatedAt = updatedAt
         }
         
         public static let sample: TradeAPIModel.SimpleTrade = .init(
@@ -347,7 +363,8 @@ extension TradeAPIModel {
             note: "Mock 交易記錄",
             description: "假資料",
             buyerID: UUID(),
-            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+            createdAt: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date(),
+            updatedAt: Date()
         )
         
         public static func sampleList(count: Int = 3) -> [TradeAPIModel.SimpleTrade] {
@@ -359,7 +376,8 @@ extension TradeAPIModel {
                     note: "Mock 交易記錄",
                     description: "假資料",
                     buyerID: UUID(),
-                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date()
+                    createdAt: Calendar.current.date(byAdding: .day, value: -index * 7, to: Date()) ?? Date(),
+                    updatedAt: Date()
                 )
             }
         }
