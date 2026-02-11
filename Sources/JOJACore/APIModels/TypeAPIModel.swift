@@ -613,9 +613,11 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case lady // 淑女
         case flat // 小平頂
         case bigFlat // 大平頂
-        case scarf // 領巾
+        case shortScarf // 短領巾
+        case longScarf // 長領巾
         case square // 方巾
-        case headbands // 髮帶
+        case narrowHeadbands // 窄髮帶
+        case widthHeadbands // 寬髮帶
         case bucket_Bag // 水桶包
         case tote_bag // 托特包
         case skirt // 裙
@@ -642,12 +644,16 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "小平頂"
                 case .bigFlat:
                     return "大平頂"
-                case .scarf:
-                    return "領巾"
+                case .shortScarf:
+                    return "短領巾"
+                case .longScarf:
+                    return "長領巾"
                 case .square:
                     return "方巾"
-                case .headbands:
-                    return "髮帶"
+                case .narrowHeadbands:
+                    return "窄髮帶"
+                case .widthHeadbands:
+                    return "寬髮帶"
                 case .bucket_Bag:
                     return "水桶包"
                 case .tote_bag:
@@ -675,12 +681,16 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "小平頂"
                 case .bigFlat:
                     return "大平頂"
-                case .scarf:
-                    return "領巾"
+                case .shortScarf:
+                    return "短領巾"
+                case .longScarf:
+                    return "長領巾"
                 case .square:
                     return "方巾"
-                case .headbands:
-                    return "髮帶"
+                case .narrowHeadbands:
+                    return "窄髮帶"
+                case .widthHeadbands:
+                    return "寬髮帶"
                 case .bucket_Bag:
                     return "水桶包"
                 case .tote_bag:
@@ -708,20 +718,24 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "W" // 小平頂
                 case .bigFlat:
                     return "V" // 大平頂
-                    //                case .scarf:
-                    //                    return "" // 領巾
-                    //                case .square:
-                    //                    return "" // 方巾
-                    //                case .headbands:
-                    //                    return "" // 髮帶
-                    //                case .bucket_Bag:
-                    //                    return "" // 水桶包
-                    //                case .tote_bag:
-                    //                    return "" // 托特包
-                    //                case .skirt:
-                    //                    return "" // 裙
+                case .shortScarf:
+                    return "O" // 短領巾
+                case .longScarf:
+                    return "N" // 長領巾
+                case .square:
+                    return "M" // 方巾
+                case .narrowHeadbands:
+                    return "P" // 窄髮帶
+                case .widthHeadbands:
+                    return "Q" //寬髮帶
+                case .bucket_Bag:
+                    return "K" // 水桶包
+                case .tote_bag:
+                    return "E" // 托特包
+                case .skirt:
+                    return "A" // 裙
                 default:
-                    return "N/A"
+                    return ""
             }
         }
         
