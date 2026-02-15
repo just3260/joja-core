@@ -734,8 +734,6 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "E" // 托特包
                 case .skirt:
                     return "A" // 裙
-                default:
-                    return ""
             }
         }
         
@@ -1783,6 +1781,200 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
     }
     
+    /// 進貨來源
+    public enum PurchaseSource: String, TypeCommon {
+        case dongda_yongle
+        case mingxin_yongle
+        case huaxing_yongle
+        case kaichun_yongle
+        case dayi_yongle
+        case wuchao_yongle
+        case yongle_apo
+        case linjieyu_yongle
+        case zhenglong_yongle
+        case liangbaoyun_yongle
+        case quanguo_yongle
+        case yongle_unknown
+        case bihua_unknown
+        case liubizhen_bihua
+        case yixing_bihua
+        case yichang_bihua
+        case gaowei_bihua
+        case zhengjia_bihua
+        case zhengdian_bihua
+        case liuji_bihua
+        case bade_lihua
+        case jp_tomato
+        case jp_nippori
+        case jp_osaka
+        case jp_nagoya
+        case australia
+        case jinkongque_luodong
+        case taichung_market
+        case xumama_tainan
+        case qilaigezi_yongle
+        case fb_group
+        case grandma
+        case hongkong
+        case west_market
+
+        public static func getKey() -> String {
+            "purchase_source"
+        }
+
+        public func getName() -> String {
+            switch self {
+                case .dongda_yongle:
+                    return "東大_永樂"
+                case .mingxin_yongle:
+                    return "明鑫_永樂"
+                case .huaxing_yongle:
+                    return "華興_永樂"
+                case .kaichun_yongle:
+                    return "凱淳_永樂"
+                case .dayi_yongle:
+                    return "大益_永樂"
+                case .wuchao_yongle:
+                    return "烏巢_永樂"
+                case .yongle_apo:
+                    return "永樂阿婆"
+                case .linjieyu_yongle:
+                    return "林倢羽_永樂"
+                case .zhenglong_yongle:
+                    return "正隆_永樂"
+                case .liangbaoyun_yongle:
+                    return "梁寶云_永樂"
+                case .quanguo_yongle:
+                    return "全國_永樂"
+                case .yongle_unknown:
+                    return "永樂？"
+                case .bihua_unknown:
+                    return "碧華？"
+                case .liubizhen_bihua:
+                    return "留碧珍_碧華"
+                case .yixing_bihua:
+                    return "宜興_碧華"
+                case .yichang_bihua:
+                    return "宜昌_碧華"
+                case .gaowei_bihua:
+                    return "高偉_碧華"
+                case .zhengjia_bihua:
+                    return "正佳_碧華"
+                case .zhengdian_bihua:
+                    return "正典_碧華"
+                case .liuji_bihua:
+                    return "劉記_碧華"
+                case .bade_lihua:
+                    return "八德麗華"
+                case .jp_tomato:
+                    return "🇯🇵Tomato"
+                case .jp_nippori:
+                    return "🇯🇵日暮里"
+                case .jp_osaka:
+                    return "🇯🇵大阪"
+                case .jp_nagoya:
+                    return "🇯🇵名古屋"
+                case .australia:
+                    return "澳洲"
+                case .jinkongque_luodong:
+                    return "金孔雀_羅東"
+                case .taichung_market:
+                    return "台中市場"
+                case .xumama_tainan:
+                    return "徐媽媽_台南"
+                case .qilaigezi_yongle:
+                    return "棋來格子_永樂"
+                case .fb_group:
+                    return "FB社團"
+                case .grandma:
+                    return "阿嬤"
+                case .hongkong:
+                    return "香港"
+                case .west_market:
+                    return "西市場"
+            }
+        }
+
+        public func displayName() -> String {
+            switch self {
+                case .dongda_yongle:
+                    return "東大"
+                case .mingxin_yongle:
+                    return "明鑫"
+                case .huaxing_yongle:
+                    return "華興"
+                case .kaichun_yongle:
+                    return "凱淳"
+                case .dayi_yongle:
+                    return "大益"
+                case .wuchao_yongle:
+                    return "烏巢"
+                case .yongle_apo:
+                    return "阿婆"
+                case .linjieyu_yongle:
+                    return "林倢羽"
+                case .zhenglong_yongle:
+                    return "正隆"
+                case .liangbaoyun_yongle:
+                    return "梁寶云"
+                case .quanguo_yongle:
+                    return "全國"
+                case .yongle_unknown:
+                    return "永樂？"
+                case .bihua_unknown:
+                    return "碧華？"
+                case .liubizhen_bihua:
+                    return "留碧珍"
+                case .yixing_bihua:
+                    return "宜興"
+                case .yichang_bihua:
+                    return "宜昌"
+                case .gaowei_bihua:
+                    return "高偉"
+                case .zhengjia_bihua:
+                    return "正佳"
+                case .zhengdian_bihua:
+                    return "正典"
+                case .liuji_bihua:
+                    return "劉記"
+                case .bade_lihua:
+                    return "八德麗華"
+                case .jp_tomato:
+                    return "Tomato"
+                case .jp_nippori:
+                    return "日暮里"
+                case .jp_osaka:
+                    return "大阪"
+                case .jp_nagoya:
+                    return "名古屋"
+                case .australia:
+                    return "澳洲"
+                case .jinkongque_luodong:
+                    return "金孔雀"
+                case .taichung_market:
+                    return "台中市場"
+                case .xumama_tainan:
+                    return "徐媽媽"
+                case .qilaigezi_yongle:
+                    return "棋來格子"
+                case .fb_group:
+                    return "FB社團"
+                case .grandma:
+                    return "阿嬤"
+                case .hongkong:
+                    return "香港"
+                case .west_market:
+                    return "西市場"
+            }
+        }
+
+        public static func find(from name: String) -> PurchaseSource? {
+            return PurchaseSource.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
+
     /// 商品狀態
     public enum InventoryStatus: String, TypeCommon {
         case available      // 可售

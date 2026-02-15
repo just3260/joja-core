@@ -16,10 +16,11 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
     public let note: String?
     public let imageUrl: [String]
     public let products: [ProductTemplateAPIModel]
+    public let purchaseSource: TypeAPIModel.PurchaseSource?
     public let createdAt: Date?
     public let updatedAt: Date?
     public let log: String?
-    
+
     public init(
         id: UUID,
         name: String?,
@@ -35,6 +36,7 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
         note: String?,
         imageUrl: [String],
         products: [ProductTemplateAPIModel],
+        purchaseSource: TypeAPIModel.PurchaseSource? = nil,
         createdAt: Date?,
         updatedAt: Date?,
         log: String?
@@ -53,6 +55,7 @@ public struct FabricAPIModel: Codable, Hashable, Sendable {
         self.note = note
         self.imageUrl = imageUrl
         self.products = products
+        self.purchaseSource = purchaseSource
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.log = log
@@ -72,7 +75,8 @@ extension FabricAPIModel {
         public let description: String?
         public let note: String?
         public let imageUrl: [String]?
-        
+        public let purchaseSource: TypeAPIModel.PurchaseSource?
+
         public init(
             name: String?,
             component: Component,
@@ -84,7 +88,8 @@ extension FabricAPIModel {
 //            tags: [String],
             description: String?,
             note: String?,
-            imageUrl: [String]?
+            imageUrl: [String]?,
+            purchaseSource: TypeAPIModel.PurchaseSource? = nil
         ) {
             self.name = name
             self.component = component
@@ -97,6 +102,7 @@ extension FabricAPIModel {
             self.description = description
             self.note = note
             self.imageUrl = imageUrl
+            self.purchaseSource = purchaseSource
         }
     }
     
@@ -105,17 +111,20 @@ extension FabricAPIModel {
         public let pricing: Int?
         public let description: String?
         public let note: String?
-        
+        public let purchaseSource: TypeAPIModel.PurchaseSource?
+
         public init(
             name: String?,
             pricing: Int?,
             description: String?,
-            note: String?
+            note: String?,
+            purchaseSource: TypeAPIModel.PurchaseSource? = nil
         ) {
             self.name = name
             self.pricing = pricing
             self.description = description
             self.note = note
+            self.purchaseSource = purchaseSource
         }
     }
     
@@ -206,10 +215,11 @@ extension FabricAPIModel {
         public let note: String?
         public let imageUrl: [String]
         public let products: [ProductTemplateAPIModel.ListData]
+        public let purchaseSource: TypeAPIModel.PurchaseSource?
         public let createdAt: Date?
         public let updatedAt: Date?
         public let log: String?
-        
+
         public init(
             id: UUID,
             name: String?,
@@ -225,6 +235,7 @@ extension FabricAPIModel {
             note: String?,
             imageUrl: [String],
             products: [ProductTemplateAPIModel.ListData],
+            purchaseSource: TypeAPIModel.PurchaseSource? = nil,
             createdAt: Date?,
             updatedAt: Date?,
             log: String?
@@ -243,11 +254,12 @@ extension FabricAPIModel {
             self.note = note
             self.imageUrl = imageUrl
             self.products = products
+            self.purchaseSource = purchaseSource
             self.createdAt = createdAt
             self.updatedAt = updatedAt
             self.log = log
         }
-        
+
         public static let sample: FabricAPIModel.Response = .init(
             id: UUID(),
             name: "日本印花棉布",
@@ -277,6 +289,7 @@ extension FabricAPIModel {
         public let stock: Double
         public let component: Component
         public let imageUrl: String?
+        public let purchaseSource: TypeAPIModel.PurchaseSource?
 
         public init(
             id: UUID,
@@ -284,7 +297,8 @@ extension FabricAPIModel {
             sku: String,
             stock: Double,
             component: Component,
-            imageUrl: String?
+            imageUrl: String?,
+            purchaseSource: TypeAPIModel.PurchaseSource? = nil
         ) {
             self.id = id
             self.name = name
@@ -292,6 +306,7 @@ extension FabricAPIModel {
             self.stock = stock
             self.component = component
             self.imageUrl = imageUrl
+            self.purchaseSource = purchaseSource
         }
 
         public static let sample: FabricAPIModel.ListData = .init(
