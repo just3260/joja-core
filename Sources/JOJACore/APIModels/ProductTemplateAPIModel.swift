@@ -314,6 +314,7 @@ extension ProductTemplateAPIModel {
         public let templateId: UUID
         public let templateSku: String
         public let templateType: ProductAPIModel.Style
+        public let price: Int
         public let totalCount: Int
         public let locations: [LocationSummary]
 
@@ -321,12 +322,14 @@ extension ProductTemplateAPIModel {
             templateId: UUID,
             templateSku: String,
             templateType: ProductAPIModel.Style,
+            price: Int,
             totalCount: Int,
             locations: [LocationSummary]
         ) {
             self.templateId = templateId
             self.templateSku = templateSku
             self.templateType = templateType
+            self.price = price
             self.totalCount = totalCount
             self.locations = locations
         }
@@ -335,6 +338,7 @@ extension ProductTemplateAPIModel {
             templateId: UUID(),
             templateSku: "sn-101-B-M",
             templateType: ProductAPIModel.Style.sample,
+            price: 1880,
             totalCount: 8,
             locations: [.sample, .sample2]
         )
