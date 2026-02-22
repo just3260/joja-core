@@ -1788,7 +1788,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case huaxing_yongle
         case kaichun_yongle
         case dayi_yongle
-        case wuchao_yongle
+        case niaochao_yongle
         case yongle_apo
         case linjieyu_yongle
         case zhenglong_yongle
@@ -1834,8 +1834,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "凱淳_永樂"
                 case .dayi_yongle:
                     return "大益_永樂"
-                case .wuchao_yongle:
-                    return "烏巢_永樂"
+                case .niaochao_yongle:
+                    return "鳥巢_永樂"
                 case .yongle_apo:
                     return "永樂阿婆"
                 case .linjieyu_yongle:
@@ -1896,76 +1896,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
 
         public func displayName() -> String {
-            switch self {
-                case .dongda_yongle:
-                    return "東大"
-                case .mingxin_yongle:
-                    return "明鑫"
-                case .huaxing_yongle:
-                    return "華興"
-                case .kaichun_yongle:
-                    return "凱淳"
-                case .dayi_yongle:
-                    return "大益"
-                case .wuchao_yongle:
-                    return "烏巢"
-                case .yongle_apo:
-                    return "阿婆"
-                case .linjieyu_yongle:
-                    return "林倢羽"
-                case .zhenglong_yongle:
-                    return "正隆"
-                case .liangbaoyun_yongle:
-                    return "梁寶云"
-                case .quanguo_yongle:
-                    return "全國"
-                case .yongle_unknown:
-                    return "永樂？"
-                case .bihua_unknown:
-                    return "碧華？"
-                case .liubizhen_bihua:
-                    return "留碧珍"
-                case .yixing_bihua:
-                    return "宜興"
-                case .yichang_bihua:
-                    return "宜昌"
-                case .gaowei_bihua:
-                    return "高偉"
-                case .zhengjia_bihua:
-                    return "正佳"
-                case .zhengdian_bihua:
-                    return "正典"
-                case .liuji_bihua:
-                    return "劉記"
-                case .bade_lihua:
-                    return "八德麗華"
-                case .jp_tomato:
-                    return "Tomato"
-                case .jp_nippori:
-                    return "日暮里"
-                case .jp_osaka:
-                    return "大阪"
-                case .jp_nagoya:
-                    return "名古屋"
-                case .australia:
-                    return "澳洲"
-                case .jinkongque_luodong:
-                    return "金孔雀"
-                case .taichung_market:
-                    return "台中市場"
-                case .xumama_tainan:
-                    return "徐媽媽"
-                case .qilaigezi_yongle:
-                    return "棋來格子"
-                case .fb_group:
-                    return "FB社團"
-                case .grandma:
-                    return "阿嬤"
-                case .hongkong:
-                    return "香港"
-                case .west_market:
-                    return "西市場"
-            }
+            getName()
         }
 
         public static func find(from name: String) -> PurchaseSource? {
