@@ -1817,6 +1817,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case grandma
         case hongkong
         case west_market
+        case childhood
 
         public static func getKey() -> String {
             "purchase_source"
@@ -1892,6 +1893,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "香港"
                 case .west_market:
                     return "西市場"
+                case .childhood:
+                    return "Childhood"
             }
         }
 
