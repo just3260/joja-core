@@ -227,23 +227,26 @@ extension ProductTemplateAPIModel {
     public struct ListData: Codable, Hashable, Sendable {
         public let id: UUID
         public let sku: String
+        public let name: String?
         public let style: ProductAPIModel.Style
-//        public let basePrice: Int
+        public let basePrice: Int
         public let isActive: Bool
         public let inventoryCount: Int
 
         public init(
             id: UUID,
             sku: String,
+            name: String?,
             style: ProductAPIModel.Style,
-//            basePrice: Int,
+            basePrice: Int,
             isActive: Bool,
             inventoryCount: Int
         ) {
             self.id = id
             self.sku = sku
+            self.name = name
             self.style = style
-//            self.basePrice = basePrice
+            self.basePrice = basePrice
             self.isActive = isActive
             self.inventoryCount = inventoryCount
         }
@@ -251,8 +254,9 @@ extension ProductTemplateAPIModel {
         public static let sample: ProductTemplateAPIModel.ListData = .init(
             id: UUID(),
             sku: "sn-101-B-M",
+            name: "日本印花貝蕾帽",
             style: .sample,
-//            basePrice: 1880,
+            basePrice: 1880,
             isActive: true,
             inventoryCount: 3
         )
@@ -262,8 +266,9 @@ extension ProductTemplateAPIModel {
                 ProductTemplateAPIModel.ListData(
                     id: UUID(),
                     sku: "sn-101-B-M-\(index)",
+                    name: "商品模板 \(index)",
                     style: .sample,
-//                    basePrice: 1880,
+                    basePrice: 1880,
                     isActive: index % 3 != 0,
                     inventoryCount: index * 2
                 )

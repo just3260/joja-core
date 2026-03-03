@@ -283,6 +283,82 @@ public struct TradeSearchRequest: Searchable {
     }
 }
 
+public struct ProductTemplateSearchRequest: Searchable {
+    public enum KeywordField: String, Codable, Hashable, CaseIterable, Sendable {
+        case name
+        case sku
+        case description
+
+        public var displayName: String {
+            switch self {
+                case .name: return "名稱"
+                case .sku: return "商品編號"
+                case .description: return "描述"
+            }
+        }
+    }
+    /// 關鍵字搜尋欄位，支援多選
+    public let keywordFields: [KeywordField]?
+    /// 品牌篩選
+    public let brands: [TypeAPIModel.Brand]?
+    /// 商品類型篩選
+    public let productTypes: [TypeAPIModel.ProductType]?
+    /// JOJA 布料商品子類型篩選
+    public let jojaFabricGoods: [TypeAPIModel.JojaFabricGoods]?
+    /// JOJA 其他商品子類型篩選
+    public let jojaOtherGoods: [TypeAPIModel.JojaOtherGoods]?
+    /// 其他品牌商品子類型篩選
+    public let otherBrandGoods: [TypeAPIModel.OtherBrandGoods]?
+    /// 尺寸篩選
+    public let sizes: [TypeAPIModel.Size]?
+    /// 材質/年份/顏色/花色...進階條件
+    public let componentFilters: SearchType.ComponentFilters?
+    /// 價格區間
+    public let priceRange: ClosedRange<Int>?
+    /// 庫存數量區間
+    public let inventoryCountRange: ClosedRange<Int>?
+    /// 建立日期範圍
+    public let createdAtRange: ClosedRange<Date>?
+    /// 更新日期範圍
+    public let updatedAtRange: ClosedRange<Date>?
+    /// 啟用狀態篩選
+    public let isActive: Bool?
+    /// 是否有關聯布料篩選
+    public let hasFabric: Bool?
+
+    public init(
+        keywordFields: [KeywordField]? = nil,
+        brands: [TypeAPIModel.Brand]? = nil,
+        productTypes: [TypeAPIModel.ProductType]? = nil,
+        jojaFabricGoods: [TypeAPIModel.JojaFabricGoods]? = nil,
+        jojaOtherGoods: [TypeAPIModel.JojaOtherGoods]? = nil,
+        otherBrandGoods: [TypeAPIModel.OtherBrandGoods]? = nil,
+        sizes: [TypeAPIModel.Size]? = nil,
+        componentFilters: SearchType.ComponentFilters? = nil,
+        priceRange: ClosedRange<Int>? = nil,
+        inventoryCountRange: ClosedRange<Int>? = nil,
+        createdAtRange: ClosedRange<Date>? = nil,
+        updatedAtRange: ClosedRange<Date>? = nil,
+        isActive: Bool? = nil,
+        hasFabric: Bool? = nil
+    ) {
+        self.keywordFields = keywordFields
+        self.brands = brands
+        self.productTypes = productTypes
+        self.jojaFabricGoods = jojaFabricGoods
+        self.jojaOtherGoods = jojaOtherGoods
+        self.otherBrandGoods = otherBrandGoods
+        self.sizes = sizes
+        self.componentFilters = componentFilters
+        self.priceRange = priceRange
+        self.inventoryCountRange = inventoryCountRange
+        self.createdAtRange = createdAtRange
+        self.updatedAtRange = updatedAtRange
+        self.isActive = isActive
+        self.hasFabric = hasFabric
+    }
+}
+
 public struct SearchAPIModel<T>: Codable, Hashable, Sendable where T: Searchable {
     public let key: String
     public let type: [T]
