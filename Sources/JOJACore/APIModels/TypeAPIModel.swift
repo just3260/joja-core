@@ -799,6 +799,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
     
     /// JOJA 其他商品品項
     public enum JojaOtherGoods: String, TypeCommon {
+        case hairScrunchie // 束髮帶
         case clip_earrings // 釦耳環
         case scarfRing // 領巾環／鈕扣戒指
         case pin // 別針／徽章
@@ -814,6 +815,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         
         public func getName() -> String {
             switch self {
+                case .hairScrunchie:
+                    return "束髮帶"
                 case .clip_earrings:
                     return "釦耳環"
                 case .scarfRing:
@@ -835,6 +838,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
 
         public func displayName() -> String {
             switch self {
+                case .hairScrunchie:
+                    return "束髮帶"
                 case .clip_earrings:
                     return "釦耳環"
                 case .scarfRing:
@@ -874,7 +879,6 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case straps // 手機背帶／腕帶
         case hedabans // 髮箍
         case ponyHook // 馬尾扣
-        case hairScrunchie // 束髮帶
         case pin // 別針／徽章
         case ornaments // 掛飾
         case braceletBangle // 手鍊／手環
@@ -908,8 +912,6 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "髮箍"
                 case .ponyHook:
                     return "馬尾扣"
-                case .hairScrunchie:
-                    return "束髮帶"
                 case .pin:
                     return "別針"
                 case .ornaments:
@@ -945,8 +947,6 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "髮箍"
                 case .ponyHook:
                     return "馬尾扣"
-                case .hairScrunchie:
-                    return "束髮帶"
                 case .pin:
                     return "別針"
                 case .ornaments:
@@ -965,8 +965,15 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         }
     }
     
+    /// 材質分類
+    public enum MaterialCategory: String, Codable, Sendable {
+        case fabric      // 布料
+        case non_fabric  // 非布料
+    }
+
     /// 材質
     public enum Material: String, TypeCommon {
+        // 布料
         case cotton // 棉布
         case linen // 麻
         case denim // 牛仔布
@@ -978,6 +985,28 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case silk // 絲
         case rayon // 嫘縈
         case splicing // 拼接款
+        // 金屬
+        case brass // 黃銅
+        case stainless_steel_316 // 316醫療鋼
+        case stainless_steel_304 // 304不鏽鋼
+        case gold_14k_gf // 14K包金
+        case aluminum // 鋁
+        case silver // 銀
+        case alloy // 合金
+        case copper // 紅銅
+        // 其他
+        case acrylic // 壓克力
+        case glass // 琉璃
+        case pearl // 珍珠
+        case ceramics // 陶瓷
+        case plastic // 塑膠
+        case leather // 皮革
+        case yarns // 紗線
+        case cotton_yarns // 棉線
+        case wool_yarns // 毛線
+        case tulle // 網紗
+        case sequins // 亮片
+        case stone // 天然石
         
         public static func getKey() -> String {
             "material_type"
@@ -1007,9 +1036,49 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "嫘縈"
                 case .splicing:
                     return "拼接款"
+                case .brass:
+                    return "黃銅"
+                case .stainless_steel_316:
+                    return "316醫療鋼"
+                case .stainless_steel_304:
+                    return "304不鏽鋼"
+                case .gold_14k_gf:
+                    return "14K包金"
+                case .aluminum:
+                    return "鋁"
+                case .silver:
+                    return "銀"
+                case .alloy:
+                    return "合金"
+                case .copper:
+                    return "紅銅"
+                case .acrylic:
+                    return "壓克力"
+                case .glass:
+                    return "琉璃"
+                case .pearl:
+                    return "珍珠"
+                case .ceramics:
+                    return "陶瓷"
+                case .plastic:
+                    return "塑膠"
+                case .leather:
+                    return "皮革"
+                case .yarns:
+                    return "紗線"
+                case .cotton_yarns:
+                    return "棉線"
+                case .wool_yarns:
+                    return "毛線"
+                case .tulle:
+                    return "網紗"
+                case .sequins:
+                    return "亮片"
+                case .stone:
+                    return "天然石"
             }
         }
-        
+
         public func displayName() -> String {
             switch self {
                 case .cotton:
@@ -1034,9 +1103,49 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "嫘縈"
                 case .splicing:
                     return "拼接"
+                case .brass:
+                    return "黃銅"
+                case .stainless_steel_316:
+                    return "316鋼"
+                case .stainless_steel_304:
+                    return "304鋼"
+                case .gold_14k_gf:
+                    return "14K金"
+                case .aluminum:
+                    return "鋁"
+                case .silver:
+                    return "銀"
+                case .alloy:
+                    return "合金"
+                case .copper:
+                    return "紅銅"
+                case .acrylic:
+                    return "壓克力"
+                case .glass:
+                    return "琉璃"
+                case .pearl:
+                    return "珍珠"
+                case .ceramics:
+                    return "陶瓷"
+                case .plastic:
+                    return "塑膠"
+                case .leather:
+                    return "皮革"
+                case .yarns:
+                    return "紗線"
+                case .cotton_yarns:
+                    return "棉線"
+                case .wool_yarns:
+                    return "毛線"
+                case .tulle:
+                    return "網紗"
+                case .sequins:
+                    return "亮片"
+                case .stone:
+                    return "天然石"
             }
         }
-        
+
         public func getNames() -> [String] {
             switch self {
                 case .cotton:
@@ -1061,9 +1170,49 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return ["嫘縈"]
                 case .splicing:
                     return ["拼接款"]
+                case .brass:
+                    return ["黃銅"]
+                case .stainless_steel_316:
+                    return ["316醫療鋼", "316鋼"]
+                case .stainless_steel_304:
+                    return ["304不鏽鋼", "304鋼"]
+                case .gold_14k_gf:
+                    return ["14K包金", "14K金"]
+                case .aluminum:
+                    return ["鋁"]
+                case .silver:
+                    return ["銀"]
+                case .alloy:
+                    return ["合金"]
+                case .copper:
+                    return ["紅銅"]
+                case .acrylic:
+                    return ["壓克力"]
+                case .glass:
+                    return ["琉璃"]
+                case .pearl:
+                    return ["珍珠"]
+                case .ceramics:
+                    return ["陶瓷"]
+                case .plastic:
+                    return ["塑膠"]
+                case .leather:
+                    return ["皮革"]
+                case .yarns:
+                    return ["紗線"]
+                case .cotton_yarns:
+                    return ["棉線"]
+                case .wool_yarns:
+                    return ["毛線"]
+                case .tulle:
+                    return ["網紗"]
+                case .sequins:
+                    return ["亮片"]
+                case .stone:
+                    return ["天然石"]
             }
         }
-        
+
         public func getSerial() -> String {
             switch self {
                 case .cotton:
@@ -1088,9 +1237,25 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "A" // 嫘縈
                 case .splicing:
                     return "B" // 拼接款
+                default:
+                    return ""
             }
         }
-        
+
+        public var category: MaterialCategory {
+            switch self {
+            case .cotton, .linen, .denim, .suit, .velvet, .wool,
+                 .synthetic_fiber, .chiffon, .silk, .rayon, .splicing:
+                return .fabric
+            default:
+                return .non_fabric
+            }
+        }
+
+        public static func cases(for category: MaterialCategory) -> [Material] {
+            allCases.filter { $0.category == category }
+        }
+
         public static func find(from name: String) -> Material? {
             return Material.allCases.first { type in
                 type.getNames().contains(name)
