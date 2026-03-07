@@ -288,12 +288,14 @@ public struct ProductTemplateSearchRequest: Searchable {
         case name
         case sku
         case description
+        case originalSku
 
         public var displayName: String {
             switch self {
                 case .name: return "名稱"
                 case .sku: return "商品編號"
                 case .description: return "描述"
+                case .originalSku: return "原始商品編號"
             }
         }
     }

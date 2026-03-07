@@ -17,6 +17,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
     public let createdAt: Date?
     public let updatedAt: Date?
     public let log: String?
+    public let originalSku: String?
 
     public init(
         id: UUID,
@@ -33,7 +34,8 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
         inventories: [ProductInventoryAPIModel],
         createdAt: Date?,
         updatedAt: Date?,
-        log: String?
+        log: String?,
+        originalSku: String? = nil
     ) {
         self.id = id
         self.sku = sku
@@ -50,6 +52,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.log = log
+        self.originalSku = originalSku
     }
 }
 
@@ -63,7 +66,8 @@ extension ProductTemplateAPIModel {
         public let fabricId: UUID?
         public let component: FabricAPIModel.Component?
         public let description: String?
-        
+        public let originalSku: String?
+
         public init(
             sku: String,
             name: String?,
@@ -71,7 +75,8 @@ extension ProductTemplateAPIModel {
             basePrice: Int,
             fabricId: UUID?,
             component: FabricAPIModel.Component?,
-            description: String?
+            description: String?,
+            originalSku: String? = nil
         ) {
             self.sku = sku
             self.name = name
@@ -80,6 +85,7 @@ extension ProductTemplateAPIModel {
             self.fabricId = fabricId
             self.component = component
             self.description = description
+            self.originalSku = originalSku
         }
 
         /// 便利初始化：布料商品
@@ -91,7 +97,8 @@ extension ProductTemplateAPIModel {
             jojaFabric: TypeAPIModel.JojaFabricGoods,
             size: TypeAPIModel.Size,
             basePrice: Int,
-            description: String?
+            description: String?,
+            originalSku: String? = nil
         ) {
             self.sku = sku
             self.name = name
@@ -100,6 +107,7 @@ extension ProductTemplateAPIModel {
             self.fabricId = fabricId
             self.component = component
             self.description = description
+            self.originalSku = originalSku
         }
 
         /// 便利初始化：非布料商品
@@ -113,7 +121,8 @@ extension ProductTemplateAPIModel {
             size: TypeAPIModel.Size,
             component: FabricAPIModel.Component,
             basePrice: Int,
-            description: String?
+            description: String?,
+            originalSku: String? = nil
         ) {
             self.sku = sku
             self.name = name
@@ -129,6 +138,7 @@ extension ProductTemplateAPIModel {
             self.fabricId = nil
             self.component = component
             self.description = description
+            self.originalSku = originalSku
         }
     }
 
@@ -137,17 +147,20 @@ extension ProductTemplateAPIModel {
         public let basePrice: Int?
         public let description: String?
         public let isActive: Bool?
+        public let originalSku: String?
 
         public init(
             name: String?,
             basePrice: Int?,
             description: String?,
-            isActive: Bool?
+            isActive: Bool?,
+            originalSku: String? = nil
         ) {
             self.name = name
             self.basePrice = basePrice
             self.description = description
             self.isActive = isActive
+            self.originalSku = originalSku
         }
     }
 
@@ -168,6 +181,7 @@ extension ProductTemplateAPIModel {
         public let createdAt: Date?
         public let updatedAt: Date?
         public let log: String?
+        public let originalSku: String?
 
         public init(
             id: UUID,
@@ -184,7 +198,8 @@ extension ProductTemplateAPIModel {
             inventories: [ProductInventoryAPIModel.Response],
             createdAt: Date?,
             updatedAt: Date?,
-            log: String?
+            log: String?,
+            originalSku: String? = nil
         ) {
             self.id = id
             self.sku = sku
@@ -201,6 +216,7 @@ extension ProductTemplateAPIModel {
             self.createdAt = createdAt
             self.updatedAt = updatedAt
             self.log = log
+            self.originalSku = originalSku
         }
 
         public static let sample: ProductTemplateAPIModel.Response = .init(
@@ -232,6 +248,7 @@ extension ProductTemplateAPIModel {
         public let basePrice: Int
         public let isActive: Bool
         public let inventoryCount: Int
+        public let originalSku: String?
 
         public init(
             id: UUID,
@@ -240,7 +257,8 @@ extension ProductTemplateAPIModel {
             style: ProductAPIModel.Style,
             basePrice: Int,
             isActive: Bool,
-            inventoryCount: Int
+            inventoryCount: Int,
+            originalSku: String? = nil
         ) {
             self.id = id
             self.sku = sku
@@ -249,6 +267,7 @@ extension ProductTemplateAPIModel {
             self.basePrice = basePrice
             self.isActive = isActive
             self.inventoryCount = inventoryCount
+            self.originalSku = originalSku
         }
 
         public static let sample: ProductTemplateAPIModel.ListData = .init(
