@@ -114,7 +114,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case feat_childhood
         case japan_socks
         case josie_personal
-        case marco
+        case macro
         case vingt_six
         case design_3_14
         case yuguand
@@ -157,8 +157,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return .japan_socks
                 case "Josie私物":
                     return .josie_personal
-                case "MARCO":
-                    return .marco
+                case "MACRO":
+                    return .macro
                 case "Vingt Six":
                     return .vingt_six
                 case "3.14":
@@ -218,8 +218,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "日本襪"
                 case .josie_personal:
                     return "Josie私物"
-                case .marco:
-                    return "MARCO"
+                case .macro:
+                    return "MACRO"
                 case .vingt_six:
                     return "Vingt Six"
                 case .design_3_14:
@@ -277,8 +277,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "日本襪"
                 case .josie_personal:
                     return "Josie私物"
-                case .marco:
-                    return "MARCO"
+                case .macro:
+                    return "MACRO"
                 case .vingt_six:
                     return "Vingt Six"
                 case .design_3_14:
@@ -334,7 +334,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "SO"
                 case .josie_personal:
                     return "JO"
-                case .marco:
+                case .macro:
                     return "MA"
                 case .vingt_six:
                     return "VS"
