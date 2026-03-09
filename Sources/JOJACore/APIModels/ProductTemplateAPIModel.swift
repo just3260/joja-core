@@ -11,7 +11,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
     public let component: FabricAPIModel.Component?
     public let images: [String]
     public let description: String?
-    public let isActive: Bool
+    public let isPublished: Bool
     public let inventoryCount: Int  // 庫存數量
     public let inventories: [ProductInventoryAPIModel]
     public let createdAt: Date?
@@ -29,7 +29,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
         component: FabricAPIModel.Component?,
         images: [String],
         description: String?,
-        isActive: Bool,
+        isPublished: Bool,
         inventoryCount: Int,
         inventories: [ProductInventoryAPIModel],
         createdAt: Date?,
@@ -46,7 +46,7 @@ public struct ProductTemplateAPIModel: Codable, Hashable, Sendable {
         self.component = component
         self.images = images
         self.description = description
-        self.isActive = isActive
+        self.isPublished = isPublished
         self.inventoryCount = inventoryCount
         self.inventories = inventories
         self.createdAt = createdAt
@@ -146,20 +146,20 @@ extension ProductTemplateAPIModel {
         public let name: String?
         public let basePrice: Int?
         public let description: String?
-        public let isActive: Bool?
+        public let isPublished: Bool?
         public let originalSku: String?
 
         public init(
             name: String?,
             basePrice: Int?,
             description: String?,
-            isActive: Bool?,
+            isPublished: Bool?,
             originalSku: String? = nil
         ) {
             self.name = name
             self.basePrice = basePrice
             self.description = description
-            self.isActive = isActive
+            self.isPublished = isPublished
             self.originalSku = originalSku
         }
     }
@@ -175,7 +175,7 @@ extension ProductTemplateAPIModel {
         public let component: FabricAPIModel.Component?
         public let images: [String]
         public let description: String?
-        public let isActive: Bool
+        public let isPublished: Bool
         public let inventoryCount: Int
         public let inventories: [ProductInventoryAPIModel.Response]
         public let createdAt: Date?
@@ -193,7 +193,7 @@ extension ProductTemplateAPIModel {
             component: FabricAPIModel.Component?,
             images: [String],
             description: String?,
-            isActive: Bool,
+            isPublished: Bool,
             inventoryCount: Int,
             inventories: [ProductInventoryAPIModel.Response],
             createdAt: Date?,
@@ -210,7 +210,7 @@ extension ProductTemplateAPIModel {
             self.component = component
             self.images = images
             self.description = description
-            self.isActive = isActive
+            self.isPublished = isPublished
             self.inventoryCount = inventoryCount
             self.inventories = inventories
             self.createdAt = createdAt
@@ -229,7 +229,7 @@ extension ProductTemplateAPIModel {
             component: nil,
             images: ["image1.jpg"],
             description: "使用日本進口布料製作的貝蕾帽",
-            isActive: true,
+            isPublished: true,
             inventoryCount: 3,
             inventories: [],
             createdAt: Calendar.current.date(byAdding: .day, value: -7, to: Date()),
@@ -246,7 +246,7 @@ extension ProductTemplateAPIModel {
         public let name: String?
         public let style: ProductAPIModel.Style
         public let basePrice: Int
-        public let isActive: Bool
+        public let isPublished: Bool
         public let inventoryCount: Int
         public let originalSku: String?
 
@@ -256,7 +256,7 @@ extension ProductTemplateAPIModel {
             name: String?,
             style: ProductAPIModel.Style,
             basePrice: Int,
-            isActive: Bool,
+            isPublished: Bool,
             inventoryCount: Int,
             originalSku: String? = nil
         ) {
@@ -265,7 +265,7 @@ extension ProductTemplateAPIModel {
             self.name = name
             self.style = style
             self.basePrice = basePrice
-            self.isActive = isActive
+            self.isPublished = isPublished
             self.inventoryCount = inventoryCount
             self.originalSku = originalSku
         }
@@ -276,7 +276,7 @@ extension ProductTemplateAPIModel {
             name: "日本印花貝蕾帽",
             style: .sample,
             basePrice: 1880,
-            isActive: true,
+            isPublished: true,
             inventoryCount: 3
         )
 
@@ -288,7 +288,7 @@ extension ProductTemplateAPIModel {
                     name: "商品模板 \(index)",
                     style: .sample,
                     basePrice: 1880,
-                    isActive: index % 3 != 0,
+                    isPublished: index % 3 != 0,
                     inventoryCount: index * 2
                 )
             }

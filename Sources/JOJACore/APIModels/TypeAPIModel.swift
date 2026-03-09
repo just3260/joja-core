@@ -774,7 +774,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                 case .shortScarf:
                     return "O" // 短領巾
                 case .longScarf:
-                    return "N" // 長領巾
+                    return "C" // 長領巾
                 case .square:
                     return "M" // 方巾
                 case .narrowHeadbands:
@@ -2213,6 +2213,123 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
 
         public static func find(from name: String) -> InventoryStatus? {
             return InventoryStatus.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
+
+    // MARK: - Order Status
+    public enum OrderStatus: String, TypeCommon {
+        case created
+        case pendingPayment = "pending_payment"
+        case paid
+        case processing
+        case shipped
+        case delivered
+        case completed
+        case cancelled
+        case refunded
+
+        public static func getKey() -> String {
+            "order_status_type"
+        }
+
+        public func getName() -> String {
+            switch self {
+            case .created:
+                return "已建立"
+            case .pendingPayment:
+                return "待付款"
+            case .paid:
+                return "已付款"
+            case .processing:
+                return "處理中"
+            case .shipped:
+                return "已出貨"
+            case .delivered:
+                return "已送達"
+            case .completed:
+                return "已完成"
+            case .cancelled:
+                return "已取消"
+            case .refunded:
+                return "已退款"
+            }
+        }
+
+        public func displayName() -> String {
+            getName()
+        }
+
+        public static func find(from name: String) -> OrderStatus? {
+            return OrderStatus.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
+
+    // MARK: - Payment Status
+    public enum PaymentStatus: String, TypeCommon {
+        case unpaid
+        case pending
+        case paid
+        case refunded
+
+        public static func getKey() -> String {
+            "payment_status_type"
+        }
+
+        public func getName() -> String {
+            switch self {
+            case .unpaid:
+                return "未付款"
+            case .pending:
+                return "付款中"
+            case .paid:
+                return "已付款"
+            case .refunded:
+                return "已退款"
+            }
+        }
+
+        public func displayName() -> String {
+            getName()
+        }
+
+        public static func find(from name: String) -> PaymentStatus? {
+            return PaymentStatus.allCases.first { type in
+                type.getName() == name
+            }
+        }
+    }
+
+    // MARK: - Shipping Status
+    public enum ShippingStatus: String, TypeCommon {
+        case unshipped
+        case shipped
+        case delivered
+
+        public static func getKey() -> String {
+            "shipping_status_type"
+        }
+
+        public func getName() -> String {
+            switch self {
+            case .unshipped:
+                return "未出貨"
+            case .shipped:
+                return "已出貨"
+            case .delivered:
+                return "已送達"
+            }
+        }
+
+        public func displayName() -> String {
+            getName()
+        }
+
+        public static func find(from name: String) -> ShippingStatus? {
+            return ShippingStatus.allCases.first { type in
                 type.getName() == name
             }
         }

@@ -324,7 +324,7 @@ public struct ProductTemplateSearchRequest: Searchable {
     /// 更新日期範圍
     public let updatedAtRange: ClosedRange<Date>?
     /// 啟用狀態篩選
-    public let isActive: Bool?
+    public let isPublished: Bool?
     /// 是否有關聯布料篩選
     public let hasFabric: Bool?
 
@@ -341,7 +341,7 @@ public struct ProductTemplateSearchRequest: Searchable {
         inventoryCountRange: ClosedRange<Int>? = nil,
         createdAtRange: ClosedRange<Date>? = nil,
         updatedAtRange: ClosedRange<Date>? = nil,
-        isActive: Bool? = nil,
+        isPublished: Bool? = nil,
         hasFabric: Bool? = nil
     ) {
         self.keywordFields = keywordFields
@@ -356,7 +356,7 @@ public struct ProductTemplateSearchRequest: Searchable {
         self.inventoryCountRange = inventoryCountRange
         self.createdAtRange = createdAtRange
         self.updatedAtRange = updatedAtRange
-        self.isActive = isActive
+        self.isPublished = isPublished
         self.hasFabric = hasFabric
     }
 }
