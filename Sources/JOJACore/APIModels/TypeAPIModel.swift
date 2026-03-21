@@ -873,7 +873,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case earCuff // 耳扣
         case mask_chain // 口罩鍊
         case necklace // 項鍊
-        case bracelet // 手環 / 手鍊
+        case bracelet // 手鍊
         case ring // 戒指
         case zakka // 器皿／雜貨
         case straps // 手機背帶／腕帶
@@ -881,7 +881,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case ponyHook // 馬尾扣
         case pin // 別針／徽章
         case ornaments // 掛飾
-        case braceletBangle // 手鍊／手環
+        case bangle // 手環
         case other // 其他
         
         public static func getKey() -> String {
@@ -901,7 +901,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                 case .necklace:
                     return "項鍊"
                 case .bracelet:
-                    return "手環"
+                    return "手鍊"
                 case .ring:
                     return "戒指"
                 case .zakka:
@@ -916,8 +916,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "別針"
                 case .ornaments:
                     return "掛飾"
-                case .braceletBangle:
-                    return "手鍊／手環"
+                case .bangle:
+                    return "手環"
                 case .other:
                     return "其他"
             }
@@ -936,7 +936,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                 case .necklace:
                     return "項鍊"
                 case .bracelet:
-                    return "手環"
+                    return "手鍊"
                 case .ring:
                     return "戒指"
                 case .zakka:
@@ -951,8 +951,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "別針"
                 case .ornaments:
                     return "掛飾"
-                case .braceletBangle:
-                    return "手鍊／手環"
+                case .bangle:
+                    return "手環"
                 case .other:
                     return "其他"
             }
