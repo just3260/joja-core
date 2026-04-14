@@ -752,7 +752,44 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "裙"
             }
         }
-        
+
+        public func printName() -> String {
+            switch self {
+                case .beret:
+                    return "六角貝蕾"
+                case .newsboy:
+                    return "報童帽"
+                case .bucket_hat:
+                    return "漁夫帽"
+                case .sun:
+                    return "太陽帽"
+                case .flower:
+                    return "花形帽"
+                case .lady:
+                    return "淑女帽"
+                case .flat:
+                    return "小平頂貝蕾"
+                case .bigFlat:
+                    return "大平頂貝蕾"
+                case .shortScarf:
+                    return "短領巾"
+                case .longScarf:
+                    return "長領巾"
+                case .square:
+                    return "方巾"
+                case .narrowHeadbands:
+                    return "窄髮帶"
+                case .widthHeadbands:
+                    return "寬髮帶"
+                case .bucket_Bag:
+                    return "水桶包"
+                case .tote_bag:
+                    return "托特包"
+                case .skirt:
+                    return "裙"
+            }
+        }
+
         public func getSerial() -> String {
             switch self {
                 case .beret:
@@ -1111,6 +1148,73 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "304鋼"
                 case .gold_14k_gf:
                     return "14K金"
+                case .aluminum:
+                    return "鋁"
+                case .silver:
+                    return "銀"
+                case .alloy:
+                    return "合金"
+                case .copper:
+                    return "紅銅"
+                case .acrylic:
+                    return "壓克力"
+                case .glass:
+                    return "琉璃"
+                case .pearl:
+                    return "珍珠"
+                case .ceramics:
+                    return "陶瓷"
+                case .plastic:
+                    return "塑膠"
+                case .leather:
+                    return "皮革"
+                case .yarns:
+                    return "紗線"
+                case .cotton_yarns:
+                    return "棉線"
+                case .wool_yarns:
+                    return "毛線"
+                case .tulle:
+                    return "網紗"
+                case .sequins:
+                    return "亮片"
+                case .stone:
+                    return "天然石"
+            }
+        }
+
+        public func printName() -> String {
+            switch self {
+                case .cotton:
+                    return "棉"
+                case .linen:
+                    return "麻"
+                case .denim:
+                    return "牛仔布"
+                case .suit:
+                    return "西裝料"
+                case .velvet:
+                    return "絨布"
+                case .wool:
+                    return "毛料"
+                case .synthetic_fiber:
+                    return "合纖"
+                case .chiffon:
+                    return "雪紡紗"
+                case .silk:
+                    return "絲"
+                case .rayon:
+                    return "嫘縈"
+                case .splicing:
+                    return "拼接款"
+                case .brass:
+                    return "黃銅"
+                case .stainless_steel_316:
+                    return "316醫療鋼"
+                case .stainless_steel_304:
+                    return "304不鏽鋼"
+                case .gold_14k_gf:
+                    return "14K包金"
                 case .aluminum:
                     return "鋁"
                 case .silver:
