@@ -674,7 +674,9 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case bucket_Bag // 水桶包
         case tote_bag // 托特包
         case skirt // 裙
-        
+        case bag_frame // 口金包
+        case tie // 領帶
+
         public static func getKey() -> String {
             "joja_fabric_goods_type"
         }
@@ -713,6 +715,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "托特包"
                 case .skirt:
                     return "裙"
+                case .bag_frame:
+                    return "口金包"
+                case .tie:
+                    return "領帶"
             }
         }
         
@@ -750,6 +756,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "托特包"
                 case .skirt:
                     return "裙"
+                case .bag_frame:
+                    return "口金包"
+                case .tie:
+                    return "領帶"
             }
         }
 
@@ -787,6 +797,10 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "托特包"
                 case .skirt:
                     return "裙"
+                case .bag_frame:
+                    return "口金包"
+                case .tie:
+                    return "領帶"
             }
         }
 
@@ -824,6 +838,11 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "E" // 托特包
                 case .skirt:
                     return "A" // 裙
+                case .bag_frame:
+                    return "U" // 口金包
+                case .tie:
+                    return "I" // 領帶
+
             }
         }
         
@@ -837,13 +856,15 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
     /// JOJA 其他商品品項
     public enum JojaOtherGoods: String, TypeCommon {
         case hairScrunchie // 束髮帶
-        case clip_earrings // 釦耳環
         case scarfRing // 領巾環／鈕扣戒指
         case pin // 別針／徽章
-        case bag_frame // 口金包
         case zakka // 器皿／雜貨
         case ornaments // 掛飾
         case socks // 襪子
+        case ring // 領巾環/鈕扣戒指
+        case earrings // 耳環
+        case necklace // 項鍊
+        case phoneStrap // 手機鍊
         case other // 其他
 
         public static func getKey() -> String {
@@ -854,20 +875,24 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             switch self {
                 case .hairScrunchie:
                     return "束髮帶"
-                case .clip_earrings:
-                    return "釦耳環"
                 case .scarfRing:
                     return "領巾環"
                 case .pin:
                     return "別針"
-                case .bag_frame:
-                    return "口金包"
                 case .zakka:
                     return "器皿／雜貨"
                 case .ornaments:
                     return "掛飾"
                 case .socks:
                     return "襪子"
+                case .ring:
+                    return "領巾環/鈕扣戒指"
+                case .earrings:
+                    return "耳環"
+                case .necklace:
+                    return "項鍊"
+                case .phoneStrap:
+                    return "手機鍊"
                 case .other:
                     return "其他"
             }
@@ -877,20 +902,51 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
             switch self {
                 case .hairScrunchie:
                     return "束髮帶"
-                case .clip_earrings:
-                    return "釦耳環"
                 case .scarfRing:
                     return "領巾環"
                 case .pin:
                     return "別針"
-                case .bag_frame:
-                    return "口金包"
                 case .zakka:
                     return "器皿／雜貨"
                 case .ornaments:
                     return "掛飾"
                 case .socks:
                     return "襪子"
+                case .ring:
+                    return "領巾環/鈕扣戒指"
+                case .earrings:
+                    return "耳環"
+                case .necklace:
+                    return "項鍊"
+                case .phoneStrap:
+                    return "手機鍊"
+                case .other:
+                    return "其他"
+            }
+        }
+
+        public func printName() -> String {
+            switch self {
+                case .hairScrunchie:
+                    return "束髮帶"
+                case .scarfRing:
+                    return "領巾環"
+                case .pin:
+                    return "別針"
+                case .zakka:
+                    return "器皿／雜貨"
+                case .ornaments:
+                    return "掛飾"
+                case .socks:
+                    return "襪子"
+                case .ring:
+                    return "領巾環"
+                case .earrings:
+                    return "耳環"
+                case .necklace:
+                    return "項鍊"
+                case .phoneStrap:
+                    return "手機鍊"
                 case .other:
                     return "其他"
             }
@@ -919,8 +975,22 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case pin // 別針／徽章
         case ornaments // 掛飾
         case bangle // 手環
+        case hairScrunchie // 束髮帶
+        case scarfRing // 領巾環／鈕扣戒指
+        case bag_frame // 口金包
+        case socks // 襪子
+        case earrings // 耳環
+        case phoneStrap // 手機鍊
+        case tie // 領帶
+        case square // 方巾
+        case narrowHeadbands // 窄髮帶
+        case widthHeadbands // 寬髮帶
+        case bucket_Bag // 水桶包
+        case tote_bag // 托特包
+        case skirt // 裙
         case other // 其他
-        
+
+
         public static func getKey() -> String {
             "other_brand_goods_type"
         }
@@ -955,6 +1025,32 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "掛飾"
                 case .bangle:
                     return "手環"
+                case .hairScrunchie:
+                    return "束髮帶"
+                case .scarfRing:
+                    return "領巾環／鈕扣戒指"
+                case .bag_frame:
+                    return "口金包"
+                case .socks:
+                    return "襪子"
+                case .earrings:
+                    return "耳環"
+                case .phoneStrap:
+                    return "手機鍊"
+                case .tie:
+                    return "領帶"
+                case .square:
+                    return "方巾"
+                case .narrowHeadbands:
+                    return "窄髮帶"
+                case .widthHeadbands:
+                    return "寬髮帶"
+                case .bucket_Bag:
+                    return "水桶包"
+                case .tote_bag:
+                    return "托特包"
+                case .skirt:
+                    return "裙"
                 case .other:
                     return "其他"
             }
@@ -990,6 +1086,32 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "掛飾"
                 case .bangle:
                     return "手環"
+                case .hairScrunchie:
+                    return "束髮帶"
+                case .scarfRing:
+                    return "領巾環／鈕扣戒指"
+                case .bag_frame:
+                    return "口金包"
+                case .socks:
+                    return "襪子"
+                case .earrings:
+                    return "耳環"
+                case .phoneStrap:
+                    return "手機鍊"
+                case .tie:
+                    return "領帶"
+                case .square:
+                    return "方巾"
+                case .narrowHeadbands:
+                    return "窄髮帶"
+                case .widthHeadbands:
+                    return "寬髮帶"
+                case .bucket_Bag:
+                    return "水桶包"
+                case .tote_bag:
+                    return "托特包"
+                case .skirt:
+                    return "裙"
                 case .other:
                     return "其他"
             }
