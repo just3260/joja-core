@@ -886,7 +886,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                 case .socks:
                     return "襪子"
                 case .ring:
-                    return "領巾環/鈕扣戒指"
+                    return "領巾環／鈕扣戒指"
                 case .earrings:
                     return "耳環"
                 case .necklace:
@@ -913,7 +913,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                 case .socks:
                     return "襪子"
                 case .ring:
-                    return "領巾環/鈕扣戒指"
+                    return "領巾環／鈕扣戒指"
                 case .earrings:
                     return "耳環"
                 case .necklace:
