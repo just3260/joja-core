@@ -327,6 +327,8 @@ public struct ProductTemplateSearchRequest: Searchable {
     public let isPublished: Bool?
     /// 是否有關聯布料篩選
     public let hasFabric: Bool?
+    /// 庫存所在位置篩選（符合任一位置即納入）
+    public let locationTypes: [TypeAPIModel.Location]?
 
     public init(
         keywordFields: [KeywordField]? = nil,
@@ -342,7 +344,8 @@ public struct ProductTemplateSearchRequest: Searchable {
         createdAtRange: ClosedRange<Date>? = nil,
         updatedAtRange: ClosedRange<Date>? = nil,
         isPublished: Bool? = nil,
-        hasFabric: Bool? = nil
+        hasFabric: Bool? = nil,
+        locationTypes: [TypeAPIModel.Location]? = nil
     ) {
         self.keywordFields = keywordFields
         self.brands = brands
@@ -358,6 +361,7 @@ public struct ProductTemplateSearchRequest: Searchable {
         self.updatedAtRange = updatedAtRange
         self.isPublished = isPublished
         self.hasFabric = hasFabric
+        self.locationTypes = locationTypes
     }
 }
 
