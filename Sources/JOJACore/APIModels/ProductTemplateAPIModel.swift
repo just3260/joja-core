@@ -249,6 +249,7 @@ extension ProductTemplateAPIModel {
         public let isPublished: Bool
         public let inventoryCount: Int
         public let originalSku: String?
+        public let component: FabricAPIModel.Component?
 
         public init(
             id: UUID,
@@ -258,7 +259,8 @@ extension ProductTemplateAPIModel {
             basePrice: Int,
             isPublished: Bool,
             inventoryCount: Int,
-            originalSku: String? = nil
+            originalSku: String? = nil,
+            component: FabricAPIModel.Component? = nil
         ) {
             self.id = id
             self.sku = sku
@@ -268,6 +270,7 @@ extension ProductTemplateAPIModel {
             self.isPublished = isPublished
             self.inventoryCount = inventoryCount
             self.originalSku = originalSku
+            self.component = component
         }
 
         public static let sample: ProductTemplateAPIModel.ListData = .init(
@@ -277,7 +280,8 @@ extension ProductTemplateAPIModel {
             style: .sample,
             basePrice: 1880,
             isPublished: true,
-            inventoryCount: 3
+            inventoryCount: 3,
+            component: .sample
         )
 
         public static func sampleList(page: Int = 1, count: Int = 10) -> [ProductTemplateAPIModel.ListData] {
@@ -289,7 +293,8 @@ extension ProductTemplateAPIModel {
                     style: .sample,
                     basePrice: 1880,
                     isPublished: index % 3 != 0,
-                    inventoryCount: index * 2
+                    inventoryCount: index * 2,
+                    component: .sample
                 )
             }
         }
