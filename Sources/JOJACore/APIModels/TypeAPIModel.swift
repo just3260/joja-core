@@ -551,6 +551,7 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
         case ig // IG
         case website // 官網
         case market // 市集
+        case pinkoi // Pinkoi
 
         public static func getKey() -> String {
             "spending_location_type"
@@ -568,6 +569,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "官網"
                 case .market:
                     return "市集"
+                case .pinkoi:
+                    return "Pinkoi"
             }
         }
 
@@ -583,6 +586,8 @@ public struct TypeAPIModel: Codable, Hashable, Sendable {
                     return "官網"
                 case .market:
                     return "市集"
+                case .pinkoi:
+                    return "Pinkoi"
             }
         }
 
