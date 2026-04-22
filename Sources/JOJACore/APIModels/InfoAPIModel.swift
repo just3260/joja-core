@@ -9,12 +9,15 @@ import Foundation
 
 public struct InfoAPIModel: Codable, Hashable, Sendable {
     public let version: String
-    
-    public init(version: String) {
+    public let minimumClientVersion: String
+
+    public init(version: String, minimumClientVersion: String) {
         self.version = version
+        self.minimumClientVersion = minimumClientVersion
     }
-    
+
     public static let sample: InfoAPIModel = .init(
-        version: "1.2.0"
+        version: "1.2.0",
+        minimumClientVersion: "1.0.0"
     )
 }
