@@ -155,6 +155,7 @@ extension ProductInventoryAPIModel {
         public let serialNumber: String
         public let status: TypeAPIModel.InventoryStatus
         public let location: TypeAPIModel.Location
+        public let actualPrice: Int
         public let templateSku: String
 
         public init(
@@ -162,12 +163,14 @@ extension ProductInventoryAPIModel {
             serialNumber: String,
             status: TypeAPIModel.InventoryStatus,
             location: TypeAPIModel.Location,
+            actualPrice: Int,
             templateSku: String
         ) {
             self.id = id
             self.serialNumber = serialNumber
             self.status = status
             self.location = location
+            self.actualPrice = actualPrice
             self.templateSku = templateSku
         }
 
@@ -176,6 +179,7 @@ extension ProductInventoryAPIModel {
             serialNumber: "sn-101-B-M-001",
             status: .available,
             location: .finish,
+            actualPrice: 1500,
             templateSku: "sn-101-B-M"
         )
 
@@ -186,6 +190,7 @@ extension ProductInventoryAPIModel {
                     serialNumber: "sn-101-B-M-\(String(format: "%03d", index))",
                     status: index % 3 == 0 ? .sold : .available,
                     location: .finish,
+                    actualPrice: 1500,
                     templateSku: "sn-101-B-M"
                 )
             }

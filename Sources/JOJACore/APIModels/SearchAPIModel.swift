@@ -383,6 +383,57 @@ public struct ProductTemplateSearchRequest: Searchable {
     }
 }
 
+public struct ProductInventorySearchRequest: Searchable {
+    public enum KeywordField: String, Codable, Hashable, CaseIterable, Sendable {
+        case serialNumber
+        case templateSku
+        case condition
+        case note
+
+        public var displayName: String {
+            switch self {
+                case .serialNumber: return "序號"
+                case .templateSku: return "商品編號"
+                case .condition: return "狀況"
+                case .note: return "備註"
+            }
+        }
+    }
+
+    /// 關鍵字搜尋欄位，支援多選
+    public let keywordFields: [KeywordField]?
+    /// 商品模板 ID 篩選
+    public let templateID: UUID?
+    /// 庫存狀態篩選
+    public let statuses: [TypeAPIModel.InventoryStatus]?
+    /// 存放位置篩選
+    public let locations: [TypeAPIModel.Location]?
+    /// 實際售價區間
+    public let actualPriceRange: ClosedRange<Int>?
+    /// 建立日期範圍
+    public let createdAtRange: ClosedRange<Date>?
+    /// 更新日期範圍
+    public let updatedAtRange: ClosedRange<Date>?
+
+    public init(
+        keywordFields: [KeywordField]? = nil,
+        templateID: UUID? = nil,
+        statuses: [TypeAPIModel.InventoryStatus]? = nil,
+        locations: [TypeAPIModel.Location]? = nil,
+        actualPriceRange: ClosedRange<Int>? = nil,
+        createdAtRange: ClosedRange<Date>? = nil,
+        updatedAtRange: ClosedRange<Date>? = nil
+    ) {
+        self.keywordFields = keywordFields
+        self.templateID = templateID
+        self.statuses = statuses
+        self.locations = locations
+        self.actualPriceRange = actualPriceRange
+        self.createdAtRange = createdAtRange
+        self.updatedAtRange = updatedAtRange
+    }
+}
+
 public struct SearchAPIModel<T>: Codable, Hashable, Sendable where T: Searchable {
     public let key: String
     public let type: [T]
