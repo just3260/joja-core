@@ -104,6 +104,27 @@ extension UserAPIModel {
 }
 
 extension UserAPIModel {
+    /// 用於員工列表的輕量資料（不含統計資料）
+    public struct StaffInfo: Codable, Hashable, Sendable {
+        public let id: UUID
+        public let username: String
+        public let serviceLocation: [TypeAPIModel.SpendingLocation]
+
+        public init(id: UUID, username: String, serviceLocation: [TypeAPIModel.SpendingLocation]) {
+            self.id = id
+            self.username = username
+            self.serviceLocation = serviceLocation
+        }
+
+        public static let sample: UserAPIModel.StaffInfo = .init(
+            id: UUID(),
+            username: "andrew",
+            serviceLocation: [.taipei]
+        )
+    }
+}
+
+extension UserAPIModel {
     public struct Public: Codable, Hashable, Sendable {
         public let id: UUID
         public let username: String
