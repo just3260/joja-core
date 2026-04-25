@@ -301,6 +301,37 @@ public struct TradeSearchRequest: Searchable {
     }
 }
 
+public enum ProductTemplateSort: String, Codable, Hashable, CaseIterable, Sendable {
+    case updatedAt
+    case sku
+    case inventoryCount
+
+    public var displayName: String {
+        switch self {
+        case .updatedAt:
+            return "最近更新"
+        case .sku:
+            return "商品編號"
+        case .inventoryCount:
+            return "現貨數量"
+        }
+    }
+}
+
+public enum SortOrder: String, Codable, Hashable, CaseIterable, Sendable {
+    case asc
+    case desc
+
+    public var displayName: String {
+        switch self {
+        case .asc:
+            return "由小到大"
+        case .desc:
+            return "由大到小"
+        }
+    }
+}
+
 public struct ProductTemplateSearchRequest: Searchable {
     public enum KeywordField: String, Codable, Hashable, CaseIterable, Sendable {
         case name
