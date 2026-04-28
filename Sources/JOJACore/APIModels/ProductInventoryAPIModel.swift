@@ -50,6 +50,7 @@ extension ProductInventoryAPIModel {
     public struct Request: Codable, Hashable, Sendable {
 
         public let templateId: UUID
+        public let status: TypeAPIModel.InventoryStatus
         public let location: TypeAPIModel.Location
         public let actualPrice: Int
         public let condition: String?
@@ -57,12 +58,14 @@ extension ProductInventoryAPIModel {
 
         public init(
             templateId: UUID,
+            status: TypeAPIModel.InventoryStatus,
             location: TypeAPIModel.Location,
             actualPrice: Int,
             condition: String?,
             note: String?
         ) {
             self.templateId = templateId
+            self.status = status
             self.location = location
             self.actualPrice = actualPrice
             self.condition = condition
@@ -73,17 +76,20 @@ extension ProductInventoryAPIModel {
     public struct UpdateRequest: Codable, Hashable, Sendable {
         public let status: TypeAPIModel.InventoryStatus?
         public let location: TypeAPIModel.Location?
+        public let actualPrice: Int
         public let condition: String?
         public let note: String?
 
         public init(
             status: TypeAPIModel.InventoryStatus?,
             location: TypeAPIModel.Location?,
+            actualPrice: Int,
             condition: String?,
             note: String?
         ) {
             self.status = status
             self.location = location
+            self.actualPrice = actualPrice
             self.condition = condition
             self.note = note
         }
