@@ -76,14 +76,14 @@ extension ProductInventoryAPIModel {
     public struct UpdateRequest: Codable, Hashable, Sendable {
         public let status: TypeAPIModel.InventoryStatus?
         public let location: TypeAPIModel.Location?
-        public let actualPrice: Int
+        public let actualPrice: Int?
         public let condition: String?
         public let note: String?
 
         public init(
             status: TypeAPIModel.InventoryStatus?,
             location: TypeAPIModel.Location?,
-            actualPrice: Int,
+            actualPrice: Int?,
             condition: String?,
             note: String?
         ) {
