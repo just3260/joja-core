@@ -96,6 +96,8 @@ extension TradeAPIModel {
         public let log: String?
         public let buyerID: UUID?
         public let sellerID: UUID?
+        public let createdAt: Date?
+        public let updatedAt: Date?
 
         public init(
             products: [ProductAPIModel.Request]?,
@@ -108,7 +110,9 @@ extension TradeAPIModel {
             description: String?,
             log: String?,
             buyerID: UUID?,
-            sellerID: UUID?
+            sellerID: UUID?,
+            createdAt: Date?,
+            updatedAt: Date?
         ) {
             self.products = products
             self.items = items
@@ -121,6 +125,8 @@ extension TradeAPIModel {
             self.log = log
             self.buyerID = buyerID
             self.sellerID = sellerID
+            self.createdAt = createdAt
+            self.updatedAt = updatedAt
         }
     }
     
